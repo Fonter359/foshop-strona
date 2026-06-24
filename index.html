@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FO SHOP - Oficjalny Sklep</title>
-    <!-- Ikony FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -379,7 +378,7 @@
             margin-bottom: 6px;
         }
 
-        /* SKRZYNKA ZAKUPU */
+        /* SKRZYNKA ZAKUPU (PURCHASE BOX) */
         .purchase-card-box {
             background: #0d0b18;
             border: 1px solid rgba(168, 85, 247, 0.2);
@@ -495,7 +494,6 @@
 </head>
 <body>
 
-    <!-- PASEK NAWIGACJI -->
     <nav class="navbar">
         <div class="logo" onclick="backToStorefront()">👑 FO <span>SHOP</span></div>
         <div class="nav-buttons">
@@ -503,7 +501,6 @@
         </div>
     </nav>
 
-    <!-- WIDOK 1: STRONA GŁÓWNA SKLEPU -->
     <div id="main-storefront">
         <header class="hero">
             <h1>Szukasz produktów do gier?<br><span>Mamy wszystko.</span></h1>
@@ -538,7 +535,6 @@
             </div>
         </section>
 
-        <!-- KATEGORIA: ROBLOX -->
         <section class="shop-section" id="roblox">
             <div class="section-header">🎮 Sklep Roblox</div>
             <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
@@ -626,12 +622,10 @@
             </div>
         </section>
 
-        <!-- KATEGORIA: GRY PC -->
         <section class="shop-section" id="games">
             <div class="section-header"><span>💾</span> Gry PC (Social Club / Launcher Accounts)</div>
             <div class="product-list">
                 
-                <!-- EA FC 26 -->
                 <div class="product-item product-featured" onclick="openProductPage('eafc')">
                     <div class="product-info">
                         <span class="product-title">⚽ EA SPORTS FC 26</span>
@@ -640,7 +634,6 @@
                     <button class="product-btn">100 PLN</button>
                 </div>
 
-                <!-- RDR2 -->
                 <div class="product-item" onclick="openProductPage('rdr2')">
                     <div class="product-info">
                         <span class="product-title">🤠 Red Dead Redemption 2</span>
@@ -649,7 +642,6 @@
                     <button class="product-btn">50 PLN</button>
                 </div>
 
-                <!-- GTA 5 -->
                 <div class="product-item" onclick="openProductPage('gta5')">
                     <div class="product-info">
                         <span class="product-title">🚗 Grand Theft Auto V (GTA 5)</span>
@@ -658,7 +650,6 @@
                     <button class="product-btn">45 PLN</button>
                 </div>
 
-                <!-- MINECRAFT -->
                 <div class="product-item" onclick="openProductPage('minecraft')">
                     <div class="product-info">
                         <span class="product-title">🟩 Minecraft Premium Account</span>
@@ -670,7 +661,6 @@
             </div>
         </section>
 
-        <!-- KATEGORIA: STREAMING -->
         <section class="shop-section" id="streaming">
             <div class="section-header">📺 Usługi Streamingowe</div>
             <div class="product-list">
@@ -690,7 +680,6 @@
         </section>
     </div>
 
-    <!-- WIDOK 2: DEDYKOWANA STRONA PRODUKTU -->
     <div id="product-page-view">
         <div class="back-to-shop-link" onclick="backToStorefront()">
             <i class="fas fa-arrow-left"></i> Wróć do sklepu
@@ -740,12 +729,13 @@
     </footer>
 
     <script>
+        // BAZA DANYCH Z TWOIMI NOWYMI, DEDYKOWANYMI LINKAMI Z SELLAPP!
         const productsData = {
             eafc: {
                 title: "EA SPORTS FC 26 – Pełny Dostęp (PC)",
                 price: "100.00 PLN",
                 image: "eafc.png",
-                buyLink: "https://foshop.sell.app/", // Tutaj wkleisz swój link z SellApp do EA FC 26
+                buyLink: "https://foshop.sell.app/product/ea-sports-fc-26",
                 description: `
                     Zyskaj pełny dostęp (Full Access) do konta platformy EA z najnowszą odsłoną kultowej serii piłkarskiej – EA SPORTS FC 26 na PC! Graj więcej, wygrywaj więcej.
                     <br><br>
@@ -760,10 +750,10 @@
             rdr2: {
                 title: "Red Dead Redemption 2 – Pełny Dostęp (PC)",
                 price: "50.00 PLN",
-                image: "rdr2.png", // TUTAJ ZAKTUALIZOWANA KRÓTKA NAZWA
-                buyLink: "https://foshop.sell.app/",
+                image: "rdr2.png",
+                buyLink: "https://foshop.sell.app/product/red-dead-redemption-2",
                 description: `
-                    Kupujesz pełny dostęp (Full Access) do konta Rockstar Games Social Club z grą Red Dead Redemption 2 na PC! Stań się legendą Dzikiego Zachodu w jednej z najlepiej ocenianych gier wszech czasów.
+                    Kupujesz pełny dostęp (Full Access) do konto Rockstar Games Social Club z grą Red Dead Redemption 2 na PC! Stań się legendą Dzikiego Zachodu w jednej z najlepiej ocenianych gier wszech czasów.
                     <br><br>
                     <div class="game-features-grid">
                         <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>Zaufane źródło. Zmiana maila, hasła i nicku na własne (100% własności).</span></div></div>
@@ -776,8 +766,8 @@
             gta5: {
                 title: "GTA 5 Premium Account – Rockstar Launcher",
                 price: "45.00 PLN",
-                image: "gta5.png", // TUTAJ ZAKTUALIZOWANA KRÓTKA NAZWA
-                buyLink: "https://foshop.sell.app/",
+                image: "gta5.png",
+                buyLink: "https://foshop.sell.app/product/grand-theft-auto-v",
                 description: `
                     Zyskaj pełny dostęp (Full Access) do konta Social Club z dodatkowym losowym bonusem gotówkowym w GTA Online! Podbij Los Santos i stwórz własne imperium przestępcze.
                     <br><br>
@@ -793,7 +783,7 @@
                 title: "Minecraft Premium Account – Pełny Dostęp (PC)",
                 price: "35.00 PLN",
                 image: "mincraft.png",
-                buyLink: "https://foshop.sell.app/",
+                buyLink: "https://foshop.sell.app/product/minecraft-premium",
                 description: `
                     Kupujesz pełny dostęp (Full Access) do oryginalnego konta Minecraft Java & Bedrock Edition na PC. Dołącz do milionów graczy i twórz własne światy bez żadnych ograniczeń.
                     <br><br>
