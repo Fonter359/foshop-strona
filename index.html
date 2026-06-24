@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FO SHOP - Oficjalny Sklep</title>
-    <!-- Ikony FontAwesome do kafelków oraz kategorii -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -129,7 +128,7 @@
             line-height: 1.4;
         }
 
-        /* SEKCJA WYBORU KATEGORII (JAK NA SCREENIE LUSIVE) */
+        /* SEKCJA WYBORU KATEGORII */
         .categories-explore {
             text-align: center;
             max-width: 900px;
@@ -197,7 +196,7 @@
 
         /* STRUKTURA LISTY PRODUKTÓW (UKRYTA DOMYŚLNIE) */
         .shop-section {
-            display: none; /* Ukrywa sekcję na start */
+            display: none;
             max-width: 900px;
             margin: 40px auto 80px auto;
             padding: 0 20px;
@@ -314,7 +313,6 @@
 </head>
 <body>
 
-    <!-- PASEK NAWIGACJI -->
     <nav class="navbar">
         <div class="logo">👑 FO <span>SHOP</span></div>
         <div class="nav-buttons">
@@ -322,13 +320,11 @@
         </div>
     </nav>
 
-    <!-- NAGŁÓWEK HERO -->
     <header class="hero">
         <h1>Szukasz produktów do gier?<br><span>Mamy wszystko.</span></h1>
         <p>Najlepsza jakość, automatyczna wysyłka kont streamingowych 24/7 oraz pełne wsparcie dla produktów Roblox.</p>
     </header>
 
-    <!-- TRZY KAFELKI ZALET -->
     <section class="features-container">
         <div class="feature-box">
             <i class="fas fa-shield-alt"></i>
@@ -338,7 +334,7 @@
         <div class="feature-box">
             <i class="fas fa-bolt"></i>
             <h3>Automatyczna Dostawa</h3>
-            <p>Nasze usługi streamingowe wysyłane sunt w kilka sekund bezpośrednio po opłaceniu zamówienia.</p>
+            <p>Nasze usługi streamingowe wysyłane są w kilka sekund bezpośrednio po opłaceniu zamówienia.</p>
         </div>
         <div class="feature-box">
             <i class="fas fa-headset"></i>
@@ -347,18 +343,15 @@
         </div>
     </section>
 
-    <!-- SEKCJA WYBORU KATEGORII -->
     <section class="categories-explore">
         <h2>Przeglądaj produkty</h2>
         <p>Wybierz interesującą Cię kategorię, aby wyświetlić dostępne produkty.</p>
         
         <div class="category-grid">
-            <!-- Przycisk kafelka Roblox -->
             <div class="category-card" onclick="showCategory('roblox', this)">
                 <i class="fas fa-gamepad"></i>
                 <span>Roblox</span>
             </div>
-            <!-- Przycisk kafelka Streaming -->
             <div class="category-card" onclick="showCategory('streaming', this)">
                 <i class="fas fa-tv"></i>
                 <span>Streaming</span>
@@ -366,7 +359,6 @@
         </div>
     </section>
 
-    <!-- KATEGORIA 1: ROBLOX -->
     <section class="shop-section" id="roblox">
         <div class="section-header"><span>🎮</span> Produkty Roblox</div>
         <div class="product-list">
@@ -384,7 +376,7 @@
                     <span class="product-title">🦊 KITSUNE</span>
                     <span class="badge badge-roblox">PERM</span>
                 </div>
-                <a href="https://foshop.sell.app/product/dragon-perm" target="_blank" class="product-btn">135 PLN</a>
+                <a href="https://foshop.sell.app/product/kitsune-perm" target="_blank" class="product-btn">135 PLN</a>
             </div>
 
             <div class="product-item">
@@ -392,7 +384,7 @@
                     <span class="product-title">❄️ YETI</span>
                     <span class="badge badge-roblox">PERM</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">100 PLN</a>
+                <a href="https://foshop.sell.app/product/yeti-perm" target="_blank" class="product-btn">100 PLN</a>
             </div>
 
             <div class="product-item">
@@ -400,7 +392,7 @@
                     <span class="product-title">🐯 TIGER</span>
                     <span class="badge badge-roblox">PERM</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">100 PLN</a>
+                <a href="https://foshop.sell.app/product/tiger-perm" target="_blank" class="product-btn">100 PLN</a>
             </div>
 
             <div class="product-item">
@@ -408,14 +400,29 @@
                     <span class="product-title">💨 GAS</span>
                     <span class="badge badge-roblox">PERM</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">100 PLN</a>
+                <a href="https://foshop.sell.app/product/gas-perm" target="_blank" class="product-btn">100 PLN</a>
             </div>
 
             <div class="product-item">
                 <div class="product-info">
-                    <span class="product-title">🎮 Fruit Notifier</span>
+                    <span class="product-title">👁️ Control</span>
+                    <span class="badge badge-roblox">PERM</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">100 PLN</a>
+                <a href="https://foshop.sell.app/product/control-perm" target="_blank" class="product-btn">100 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">📡 Fruit Notifier</span>
+                </div>
+                <a href="https://foshop.sell.app/product/fruit-notifier" target="_blank" class="product-btn">100 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">⚡ Exp Boosts 24h</span>
+                </div>
+                <a href="https://foshop.sell.app/product/exp-boosts-24h" target="_blank" class="product-btn">100 PLN</a>
             </div>
 
             <div class="product-item">
@@ -423,27 +430,102 @@
                     <span class="product-title">🌟 BUDDHA</span>
                     <span class="badge badge-roblox">PERM</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">80 PLN</a>
+                <a href="https://foshop.sell.app/product/buddha-perm" target="_blank" class="product-btn">80 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🦖 T-Rex</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/product/t-rex-perm" target="_blank" class="product-btn">75 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🌌 Gravity</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/product/gravity-perm" target="_blank" class="product-btn">75 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">👻 Spirit</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/product/spirit-perm" target="_blank" class="product-btn">75 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🧪 Venom</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/product/venom-perm" target="_blank" class="product-btn">75 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🦣 Mammoth</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/product/mammoth-perm" target="_blank" class="product-btn">75 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🌀 Portal</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/product/portal-perm" target="_blank" class="product-btn">75 PLN</a>
             </div>
 
             <div class="product-item">
                 <div class="product-info">
                     <span class="product-title">⚔️ Dark Blade</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">65 PLN</a>
+                <a href="https://foshop.sell.app/product/dark-blade" target="_blank" class="product-btn">65 PLN</a>
             </div>
 
             <div class="product-item">
                 <div class="product-info">
-                    <span class="product-title">💰 2x Money / 2x Mastery</span>
+                    <span class="product-title">📜 2x Mastery</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">20 PLN</a>
+                <a href="https://foshop.sell.app/product/2x-mastery" target="_blank" class="product-btn">20 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">💰 2x Money</span>
+                </div>
+                <a href="https://foshop.sell.app/product/2x-money" target="_blank" class="product-btn">20 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">📦 +1 Fruit Storage</span>
+                </div>
+                <a href="https://foshop.sell.app/product/1-fruit-storage" target="_blank" class="product-btn">20 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">⛵ Faster Boats</span>
+                </div>
+                <a href="https://foshop.sell.app/product/faster-boats" target="_blank" class="product-btn">20 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🍀 2x Drop Chance</span>
+                </div>
+                <a href="https://foshop.sell.app/product/2x-drop-chance" target="_blank" class="product-btn">20 PLN</a>
             </div>
 
         </div>
     </section>
 
-    <!-- KATEGORIA 2: STREAMING -->
     <section class="shop-section" id="streaming">
         <div class="section-header"><span>📺</span> Usługi Streamingowe</div>
         <div class="product-list">
@@ -458,18 +540,10 @@
 
             <div class="product-item">
                 <div class="product-info">
-                    <span class="product-title">🎬 PRIME VIDEO</span>
-                    <span class="badge badge-streaming">LIFETIME</span>
-                </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">15 PLN</a>
-            </div>
-
-            <div class="product-item">
-                <div class="product-info">
                     <span class="product-title">🏰 DISNEY+</span>
                     <span class="badge badge-streaming">PREMIUM</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">10 PLN</a>
+                <a href="https://foshop.sell.app/product/disney-premium" target="_blank" class="product-btn">10 PLN</a>
             </div>
 
             <div class="product-item">
@@ -477,36 +551,29 @@
                     <span class="product-title">🍣 CRUNCHYROLL</span>
                     <span class="badge badge-streaming">MEGA FAN</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">10 PLN</a>
+                <a href="https://foshop.sell.app/product/crunchyroll" target="_blank" class="product-btn">10 PLN</a>
             </div>
 
         </div>
     </section>
 
-    <!-- STOPKA -->
     <footer class="footer">
         &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Roblox Corporation ani wymienionymi platformami streamingowymi.
     </footer>
 
-    <!-- SKRYPT UKRYWANIA I POKAZYWANIA KATEGORII -->
     <script>
         function showCategory(categoryId, element) {
-            // Ukryj wszystkie sekcje produktów
             document.getElementById('roblox').style.display = 'none';
             document.getElementById('streaming').style.display = 'none';
             
-            // Usuń klasę active ze wszystkich kafelków
             const cards = document.querySelectorAll('.category-card');
             cards.forEach(card => card.classList.remove('active'));
             
-            // Pokaż wybraną sekcję
             const selectedSection = document.getElementById(categoryId);
             selectedSection.style.display = 'block';
             
-            // Dodaj klasę active do klikniętego kafelka
             element.classList.add('active');
             
-            // Płynnie przewiń ekran do nowo otwartej sekcji
             setTimeout(() => {
                 selectedSection.scrollIntoView({ behavior: 'smooth' });
             }, 50);
