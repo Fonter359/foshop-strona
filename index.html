@@ -67,6 +67,7 @@
             margin-bottom: 25px;
         }
 
+        /* Standardowy produkt */
         .product-item {
             background-color: #1c1730;
             border: 1px solid #2d234f;
@@ -81,6 +82,20 @@
         .product-item:hover {
             transform: translateX(4px);
             border-color: #563fa1;
+        }
+
+        /* SPECJALNE WYRÓŻNIENIE DLA SMOKA */
+        .product-featured {
+            background: linear-gradient(105deg, #231a42 0%, #17122e 100%);
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-featured:hover {
+            border-color: #c084fc;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
         }
 
         .product-name {
@@ -101,6 +116,7 @@
             font-weight: bold;
         }
 
+        /* Wygląd przycisku zakupu */
         .product-price {
             background-color: #6c52ca;
             color: #ffffff;
@@ -111,12 +127,13 @@
             text-decoration: none;
             cursor: pointer;
             display: inline-block;
-            transition: background-color 0.2s, box-shadow 0.2s;
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
         }
 
         .product-price:hover {
             background-color: #8269e6;
             box-shadow: 0 0 12px rgba(108, 82, 202, 0.5);
+            transform: scale(1.05);
         }
 
         .footer {
@@ -138,9 +155,9 @@
         <div class="section-title">Owoce (Permanent)</div>
         
         <div class="product-list">
-            <!-- Tutaj podpięliśmy Twój nowy produkt z SellApp -->
-            <div class="product-item">
-                <span class="product-name">DRAGON <span class="badge-perm">PERM</span></span>
+            <!-- Wyróżniony produkt DRAGON z bezpośrednim linkiem do SellApp -->
+            <div class="product-item product-featured">
+                <span class="product-name">🔥 DRAGON <span class="badge-perm">PERM</span></span>
                 <a href="https://foshop.sell.app/product/dragon-perm" target="_blank" class="product-price">135 PLN</a>
             </div>
         </div>
