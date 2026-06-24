@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FO SHOP - Oficjalny Sklep</title>
-    <!-- Ikony FontAwesome do kafelków zalet -->
+    <!-- Ikony FontAwesome do kafelków oraz kategorii -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -12,6 +12,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth; /* Płynne przewijanie po kliknięciu w kategorię */
         }
 
         body {
@@ -21,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* NAWIGACJA (Jak na Lusive) */
+        /* NAWIGACJA */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -40,9 +41,6 @@
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .logo span {
@@ -50,42 +48,16 @@
             text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn-nav {
+        .btn-discord {
             padding: 8px 18px;
             border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .btn-discord {
-            background-color: #1e1b4b;
             color: #a855f7;
+            background-color: #1e1b4b;
             border: 1px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.2s;
         }
 
         .btn-discord:hover {
@@ -94,10 +66,10 @@
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
         }
 
-        /* HERO SECTION (Główny banner powitalny) */
+        /* HERO SECTION */
         .hero {
             text-align: center;
-            padding: 100px 20px 60px 20px;
+            padding: 90px 20px 50px 20px;
             background: radial-gradient(circle at center, rgba(61, 43, 122, 0.15) 0%, rgba(6, 4, 13, 0) 70%);
         }
 
@@ -106,7 +78,6 @@
             font-weight: 800;
             margin-bottom: 15px;
             letter-spacing: 1px;
-            line-height: 1.2;
         }
 
         .hero h1 span {
@@ -127,7 +98,7 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             max-width: 1100px;
-            margin: 0 auto 80px auto;
+            margin: 0 auto 60px auto;
             padding: 0 20px;
         }
 
@@ -135,47 +106,106 @@
             background: #0d0b18;
             border: 1px solid rgba(168, 85, 247, 0.1);
             border-radius: 12px;
-            padding: 25px;
-            text-align: left;
-            transition: border-color 0.2s;
-        }
-
-        .feature-box:hover {
-            border-color: rgba(168, 85, 247, 0.4);
+            padding: 22px;
         }
 
         .feature-box i {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #a855f7;
-            margin-bottom: 15px;
-            background: rgba(168, 85, 247, 0.1);
-            padding: 10px;
-            border-radius: 8px;
+            margin-bottom: 12px;
+            background: rgba(168, 85, 247, 0.15);
+            padding: 8px;
+            border-radius: 6px;
         }
 
         .feature-box h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: #ffffff;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
         }
 
         .feature-box p {
             color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.88rem;
+            line-height: 1.4;
         }
 
-        /* SEKCJE SKLEPU */
+        /* SEKCJA WYBORU KATEGORII (JAK NA SCREENIE LUSIVE) */
+        .categories-explore {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .categories-explore h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .categories-explore p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: #0d0b18;
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            border-radius: 16px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            color: #a855f7;
+            transition: transform 0.2s;
+        }
+
+        .category-card span {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .category-card:hover {
+            border-color: #a855f7;
+            background: #120e24;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .category-card:hover i {
+            transform: scale(1.1);
+        }
+
+        /* STRUKTURA LISTY PRODUKTÓW */
         .shop-section {
             max-width: 900px;
-            margin: 0 auto 60px auto;
+            margin: 0 auto 80px auto;
             padding: 0 20px;
+            scroll-margin-top: 100px; /* Zapobiega chowaniu się nagłówka pod navbar */
         }
 
         .section-header {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ffffff;
             margin-bottom: 25px;
             display: flex;
             align-items: center;
@@ -186,7 +216,6 @@
             color: #a855f7;
         }
 
-        /* LISTA PRODUKTÓW */
         .product-list {
             display: flex;
             flex-direction: column;
@@ -211,7 +240,6 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
         }
 
-        /* WYRÓŻNIENIE DLA SMOKA */
         .product-featured {
             background: linear-gradient(95deg, #16102b 0%, #0d0b18 100%);
             border: 1px solid #a855f7;
@@ -232,7 +260,6 @@
         .product-title {
             font-weight: 600;
             font-size: 1.1rem;
-            letter-spacing: 0.5px;
         }
 
         .badge {
@@ -241,7 +268,6 @@
             padding: 3px 8px;
             border-radius: 6px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .badge-roblox {
@@ -256,7 +282,6 @@
             border: 1px solid rgba(37, 99, 235, 0.3);
         }
 
-        /* PRZYCISK CENY / ZAKUPU */
         .product-btn {
             background-color: #a855f7;
             color: #ffffff;
@@ -267,7 +292,6 @@
             text-decoration: none;
             cursor: pointer;
             transition: all 0.2s ease;
-            border: none;
             box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
         }
 
@@ -277,14 +301,12 @@
             transform: scale(1.03);
         }
 
-        /* STOPKA */
         .footer {
             text-align: center;
             padding: 40px 20px;
             color: #475569;
             font-size: 0.9rem;
             border-top: 1px solid rgba(255, 255, 255, 0.02);
-            margin-top: 40px;
         }
     </style>
 </head>
@@ -293,11 +315,6 @@
     <!-- PASEK NAWIGACJI -->
     <nav class="navbar">
         <div class="logo">👑 FO <span>SHOP</span></div>
-        <ul class="nav-links">
-            <li><a href="#">Strona Główna</a></li>
-            <li><a href="#roblox">Roblox</a></li>
-            <li><a href="#streaming">Streaming</a></li>
-        </ul>
         <div class="nav-buttons">
             <a href="https://discord.gg/TWOJ-LINK" target="_blank" class="btn-nav btn-discord"><i class="fab fa-discord"></i> Discord</a>
         </div>
@@ -325,6 +342,25 @@
             <i class="fas fa-headset"></i>
             <h3>Wsparcie Live 24/7</h3>
             <p>Nasz zespół supportu na serwerze Discord jest gotowy pomóc Ci z każdym pytaniem o każdej porze.</p>
+        </div>
+    </section>
+
+    <!-- SEKCJA WYBORU KATEGORII (JAK NA SCREENIE LUSIVE) -->
+    <section class="categories-explore">
+        <h2>Przeglądaj produkty</h2>
+        <p>Wybierz interesującą Cię kategorię, aby zobaczyć dostępne produkty.</p>
+        
+        <div class="category-grid">
+            <!-- Kafelek Roblox -->
+            <a href="#roblox" class="category-card">
+                <i class="fas fa-gamepad"></i>
+                <span>Roblox</span>
+            </a>
+            <!-- Kafelek Streaming -->
+            <a href="#streaming" class="category-card">
+                <i class="fas fa-tv"></i>
+                <span>Streaming</span>
+            </a>
         </div>
     </section>
 
@@ -370,7 +406,7 @@
                     <span class="product-title">💨 GAS</span>
                     <span class="badge badge-roblox">PERM</span>
                 </div>
-                <a href="https://foshop.sell.app/" target="_btn" class="product-btn">100 PLN</a>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">100 PLN</a>
             </div>
 
             <div class="product-item">
