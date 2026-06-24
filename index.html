@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FO SHOP - Oficjalny Sklep</title>
-    <!-- Ikony FontAwesome do kafelków oraz kategorii -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -190,7 +189,7 @@
             text-decoration: underline;
         }
 
-        /* SEKCJA WYBORU KATEGORII (TERAZ TRZY KAFELKI) */
+        /* SEKCJA WYBORU KATEGORII */
         .categories-explore {
             text-align: center;
             max-width: 1100px;
@@ -378,7 +377,7 @@
             transform: scale(1.03);
         }
 
-        /* NOWY WYGLĄD MODALA/OKIENKA Z DETALAMI GRY */
+        /* WYGLĄD KARTY PRODUKTU PO ROZWINIĘCIU */
         .game-details-box {
             display: none;
             background: #0d0b18;
@@ -397,11 +396,12 @@
         }
 
         .game-img {
-            width: 260px;
-            height: 150px;
-            object-fit: cover;
+            width: 320px;
+            height: auto;
+            object-fit: contain;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
         }
 
         .game-text {
@@ -417,21 +417,21 @@
 
         .game-text ul {
             list-style: none;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .game-text ul li {
             font-size: 0.9rem;
             color: #94a3b8;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .game-text ul li i {
-            color: #34d399;
-            font-size: 0.8rem;
+            color: #a855f7;
+            font-size: 0.85rem;
         }
 
         .game-action {
@@ -444,7 +444,7 @@
         }
 
         .game-price-tag {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #ffffff;
         }
@@ -466,7 +466,6 @@
 </head>
 <body>
 
-    <!-- PASEK NAWIGACJI -->
     <nav class="navbar">
         <div class="logo">👑 FO <span>SHOP</span></div>
         <div class="nav-buttons">
@@ -474,13 +473,11 @@
         </div>
     </nav>
 
-    <!-- NAGŁÓWEK HERO -->
     <header class="hero">
         <h1>Szukasz produktów do gier?<br><span>Mamy wszystko.</span></h1>
-        <p>Najlepsza jakość, automatyczna wysyłka kont, kluczy gamingowych oraz pełne wsparcie dla produktów Roblox.</p>
+        <p>Najlepsza jakość, błyskawiczna realizacja zamówień oraz pełne wsparcie dla produktów Roblox i PC.</p>
     </header>
 
-    <!-- BANER PŁATNOŚCI Z INSTRUKCJĄ -->
     <section class="payment-banner">
         <div class="payment-title-wrap">
             <i class="fas fa-credit-card"></i>
@@ -489,7 +486,6 @@
         <p class="payment-instruction">⚠️ WAŻNE: Aby zapłacić BLIKIEM, kartą lub przelewem, wybierz opcję "Purchase with PayPal" w koszyku!</p>
     </section>
 
-    <!-- TRZY KAFELKI ZALET -->
     <section class="features-container">
         <div class="feature-box">
             <i class="fas fa-shield-alt"></i>
@@ -508,7 +504,6 @@
         </div>
     </section>
 
-    <!-- SEKCJA WYBORU KATEGORII (TRZY ELEMENTY) -->
     <section class="categories-explore">
         <h2>Przeglądaj produkty</h2>
         <p>Wybierz interesującą Cię kategorię, aby wyświetlić dostępne produkty.</p>
@@ -529,11 +524,9 @@
         </div>
     </section>
 
-    <!-- KATEGORIA 1: ROBLOX -->
     <section class="shop-section" id="roblox">
         <div class="section-header"><span>🎮</span> Sklep Roblox</div>
         
-        <!-- PODSEKCJA A: OWOCE PERMANENT -->
         <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
         <div class="product-list">
             <div class="product-item product-featured" onclick="window.open('https://foshop.sell.app/product/dragon-perm', '_blank')">
@@ -590,7 +583,6 @@
             </div>
         </div>
 
-        <!-- PODSEKCJA B: GAMEPASSY I PRZEDMIOTY -->
         <div class="sub-section-title"><i class="fas fa-ticket"></i> Gamepassy & Przedmioty</div>
         <div class="product-list">
             <div class="product-item" onclick="window.open('https://foshop.sell.app/product/fruit-notifier', '_blank')">
@@ -620,14 +612,12 @@
         </div>
     </section>
 
-    <!-- NOWA KATEGORIA 2: GRY (Z FUNKCJĄ KLIKNIJ-ROZWIŃ) -->
     <section class="shop-section" id="games">
         <div class="section-header"><span>💾</span> Gry PC (Social Club Accounts)</div>
         <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px; margin-left: 5px;">Kliknij na wybraną grę, aby zobaczyć szczegóły konta i dokonać zakupu.</p>
         
         <div class="product-list">
             
-            <!-- GRA 1: RDR2 -->
             <div class="product-item product-featured" onclick="toggleDetails('rdr2-details')">
                 <div class="product-info">
                     <span class="product-title">🤠 Red Dead Redemption 2</span>
@@ -635,28 +625,26 @@
                 </div>
                 <button class="product-btn">50 PLN</button>
             </div>
-            <!-- DETALE RDR2 -->
             <div class="game-details-box" id="rdr2-details">
                 <div class="game-details-content">
-                    <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=400&q=80" alt="RDR2" class="game-img">
+                    <img src="https://i.ibb.co/6c30mZ2/rdr2-banner.png" onerror="this.src='https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=400&q=80'" alt="RDR2 FO SHOP" class="game-img">
                     <div class="game-text">
-                        <h4>Red Dead Redemption 2 Premium Account</h4>
-                        <p style="font-size:0.9rem; color:#94a3b8;">Zyskaj pełny dostęp do konta Rockstar Games Social Club zawierającego arcydzieło od Rockstar!</p>
+                        <h4>Red Dead Redemption 2 – Pełny Dostęp (PC)</h4>
+                        <p style="font-size:0.9rem; color:#94a3b8;">Kupujesz pełny dostęp (Full Access) do konta Rockstar Games Social Club z grą Red Dead Redemption 2 na PC!</p>
                         <ul>
-                            <li><i class="fas fa-check"></i> <strong>Full Access (FA)</strong> – pełna zmiana maila, hasła i nicku konta na Twoje własne.</li>
-                            <li><i class="fas fa-check"></i> Zawiera pełny Tryb Fabularny (Story Mode) + Red Dead Online.</li>
-                            <li><i class="fas fa-check"></i> Brak blokad regionalnych (Works Worldwide).</li>
-                            <li><i class="fas fa-clock"></i> <strong>Szybka dostawa (2-15 min)</strong> prosto na Twój adres e-mail!</li>
+                            <li><i class="fas fa-shield-alt"></i> <strong>BEZPIECZNE KONTA</strong> – Zaufane źródło. Zmiana maila, hasła i nicku na własne (100% własności).</li>
+                            <li><i class="fas fa-bolt"></i> <strong>SZYBKA REALIZACJA</strong> – Dostawa na Twój e-mail w zaledwie 2 do 15 minut od zakupu!</li>
+                            <li><i class="fas fa-gamepad"></i> <strong>RÓŻNE OPCJE</strong> – Zestaw zawiera pełny Tryb Fabularny (Story Mode) oraz Red Dead Online.</li>
+                            <li><i class="fas fa-star"></i> <strong>GWARANCJA JAKOŚCI</strong> – 100% wsparcia technicznego i pewność bez blokad regionalnych.</li>
                         </ul>
                     </div>
                     <div class="game-action">
                         <span class="game-price-tag">50 PLN</span>
-                        <a href="TUTAJ_WKLEJ_LINK_DO_RDR2" target="_blank" class="product-btn" style="text-align:center;">Kup Teraz</a>
+                        <a href="https://foshop.sell.app/" target="_blank" class="product-btn" style="text-align:center;">Kup Teraz</a>
                     </div>
                 </div>
             </div>
 
-            <!-- GRA 2: GTA 5 -->
             <div class="product-item" onclick="toggleDetails('gta5-details')">
                 <div class="product-info">
                     <span class="product-title">🚗 Grand Theft Auto V (GTA 5)</span>
@@ -664,23 +652,22 @@
                 </div>
                 <button class="product-btn">45 PLN</button>
             </div>
-            <!-- DETALE GTA 5 -->
             <div class="game-details-box" id="gta5-details">
                 <div class="game-details-content">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" alt="GTA V" class="game-img">
+                    <img src="https://i.ibb.co/y4XGzL4/gta5-banner.png" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80'" alt="GTA V FO SHOP" class="game-img">
                     <div class="game-text">
                         <h4>GTA 5 Premium Account – Rockstar Launcher</h4>
-                        <p style="font-size:0.9rem; color:#94a3b8;">Zyskaj pełny dostęp do konta Social Club spakowanego z ogromnym bonusem gotówkowym w GTA Online!</p>
+                        <p style="font-size:0.9rem; color:#94a3b8;">Zyskaj pełny dostęp (Full Access) do konta Social Club z dodatkowym losowym bonusem gotówkowym!</p>
                         <ul>
-                            <li><i class="fas fa-check"></i> <strong>Full Access (FA)</strong> – 100% własności, zmiana wszystkich danych logowania.</li>
-                            <li><i class="fas fa-check"></i> <strong>Gwarantowana kasa:</strong> Od $500K aż do ponad $100 milionów w GTA Online!</li>
-                            <li><i class="fas fa-check"></i> Odblokowany w pełni Story Mode oraz rozgrywka sieciowa Online.</li>
-                            <li><i class="fas fa-clock"></i> <strong>Szybka realizacja zamówienia (2-15 min)</strong> na e-mail po zakupie!</li>
+                            <li><i class="fas fa-shield-alt"></i> <strong>BEZPIECZNE KONTA</strong> – Pełna modyfikacja danych logowania (e-mail, hasło, nick) tylko dla Ciebie.</li>
+                            <li><i class="fas fa-bolt"></i> <strong>SZYBKA REALIZACJA</strong> – Przetwarzanie w kilka chwil, wysyłka na maila od 2 do 15 minut.</li>
+                            <li><i class="fas fa-money-bill-wave"></i> <strong>RÓŻNE OPCJE</strong> – Pełna gra fabularna + Online z gotówką na start (od $500K do $100M+).</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>GWARANCJA JAKOŚCI</strong> – Legalny produkt działający na całym świecie z pełnym supportem.</li>
                         </ul>
                     </div>
                     <div class="game-action">
                         <span class="game-price-tag">45 PLN</span>
-                        <a href="TUTAJ_WKLEJ_LINK_DO_GTA5" target="_blank" class="product-btn" style="text-align:center;">Kup Teraz</a>
+                        <a href="https://foshop.sell.app/" target="_blank" class="product-btn" style="text-align:center;">Kup Teraz</a>
                     </div>
                 </div>
             </div>
@@ -688,7 +675,6 @@
         </div>
     </section>
 
-    <!-- KATEGORIA 3: STREAMING -->
     <section class="shop-section" id="streaming">
         <div class="section-header"><span>📺</span> Usługi Streamingowe</div>
         <div class="product-list">
@@ -707,14 +693,11 @@
         </div>
     </section>
 
-    <!-- STOPKA -->
     <footer class="footer">
         &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Rockstar Games, Roblox Corporation ani wymienionymi platformami streamingowymi.
     </footer>
 
-    <!-- SKRYPTY JAVASCRIPT -->
     <script>
-        // Pokazywanie odpowiedniej głównej kategorii
         function showCategory(categoryId, element) {
             document.getElementById('roblox').style.display = 'none';
             document.getElementById('games').style.display = 'none';
@@ -733,21 +716,16 @@
             }, 50);
         }
 
-        // Płynne otwieranie/zamykanie detali gry komputerowej po kliknięciu
         function toggleDetails(boxId) {
             const box = document.getElementById(boxId);
             if (box.style.display === 'block') {
                 box.style.display = 'none';
             } else {
-                // Najpierw ukryj inne otwarte detale gier, żeby nie robić bałaganu
                 const allBoxes = document.querySelectorAll('.game-details-box');
                 allBoxes.forEach(b => b.style.display = 'none');
-                
-                // Otwórz kliknięty
                 box.style.display = 'block';
             }
         }
     </script>
-
 </body>
 </html>
