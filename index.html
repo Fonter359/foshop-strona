@@ -4,251 +4,451 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FO SHOP - Oficjalny Sklep</title>
+    <!-- Ikony FontAwesome do kafelków zalet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #0b0914;
+            background-color: #06040d;
             color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            padding: 40px 20px;
+            overflow-x: hidden;
         }
 
-        .shop-container {
-            background: linear-gradient(135deg, #161224 0%, #0f0c1b 100%);
-            border: 2px solid #3d2b7a;
-            border-radius: 16px;
-            width: 100%;
-            max-width: 750px;
-            padding: 35px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        /* NAWIGACJA (Jak na Lusive) */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(6, 4, 13, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.1);
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            letter-spacing: 3px;
-            color: #b096ff;
-            text-shadow: 0 0 15px rgba(176, 150, 255, 0.4);
-            margin-bottom: 8px;
-        }
-
-        .header p {
-            color: #796aab;
-            font-size: 1rem;
-        }
-
-        .category-section {
-            margin-bottom: 35px;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            color: #a855f7;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 18px;
-            border-bottom: 2px solid #3d2b7a;
-            padding-bottom: 6px;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .product-list {
+        .logo span {
+            color: #a855f7;
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+        }
+
+        .nav-links {
             display: flex;
-            flex-direction: column;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-nav {
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-discord {
+            background-color: #1e1b4b;
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-discord:hover {
+            background-color: #a855f7;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+
+        /* HERO SECTION (Główny banner powitalny) */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px 20px;
+            background: radial-gradient(circle at center, rgba(61, 43, 122, 0.15) 0%, rgba(6, 4, 13, 0) 70%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #a855f7;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 35px auto;
+        }
+
+        /* TRZY KAFELKI ZALET */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .feature-box {
+            background: #0d0b18;
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            transition: border-color 0.2s;
+        }
+
+        .feature-box:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
+        .feature-box i {
+            font-size: 1.5rem;
+            color: #a855f7;
+            margin-bottom: 15px;
+            background: rgba(168, 85, 247, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .feature-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .feature-box p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* SEKCJE SKLEPU */
+        .shop-section {
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
             gap: 12px;
         }
 
+        .section-header span {
+            color: #a855f7;
+        }
+
+        /* LISTA PRODUKTÓW */
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
         .product-item {
-            background-color: #1c1730;
-            border: 1px solid #2d234f;
-            border-radius: 10px;
-            padding: 16px 20px;
+            background: #0d0b18;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 18px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: all 0.2s ease;
         }
 
         .product-item:hover {
-            transform: translateX(4px);
-            border-color: #563fa1;
+            transform: translateY(-2px);
+            border-color: rgba(168, 85, 247, 0.3);
+            background: #110e22;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
         }
 
         /* WYRÓŻNIENIE DLA SMOKA */
         .product-featured {
-            background: linear-gradient(105deg, #231a42 0%, #17122e 100%);
-            border: 2px solid #a855f7;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+            background: linear-gradient(95deg, #16102b 0%, #0d0b18 100%);
+            border: 1px solid #a855f7;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
         }
 
         .product-featured:hover {
             border-color: #c084fc;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
         }
 
-        .product-name {
-            font-weight: 600;
-            font-size: 1.1rem;
+        .product-info {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 15px;
         }
 
-        .badge-perm {
-            background-color: #563fa1;
-            color: #ffffff;
-            font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 4px;
+        .product-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
             text-transform: uppercase;
-            font-weight: bold;
+            letter-spacing: 0.5px;
         }
 
-        .badge-stream {
-            background-color: #2563eb;
-            color: #ffffff;
-            font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            font-weight: bold;
+        .badge-roblox {
+            background: rgba(168, 85, 247, 0.15);
+            color: #c084fc;
+            border: 1px solid rgba(168, 85, 247, 0.3);
         }
 
-        .product-price {
-            background-color: #6c52ca;
+        .badge-streaming {
+            background: rgba(37, 99, 235, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        /* PRZYCISK CENY / ZAKUPU */
+        .product-btn {
+            background-color: #a855f7;
             color: #ffffff;
-            font-weight: bold;
-            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 10px 22px;
             border-radius: 8px;
-            font-size: 1rem;
             text-decoration: none;
             cursor: pointer;
-            display: inline-block;
-            transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+            transition: all 0.2s ease;
+            border: none;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
         }
 
-        .product-price:hover {
-            background-color: #8269e6;
-            box-shadow: 0 0 12px rgba(108, 82, 202, 0.5);
-            transform: scale(1.05);
+        .product-btn:hover {
+            background-color: #c084fc;
+            box-shadow: 0 0 18px rgba(168, 85, 247, 0.5);
+            transform: scale(1.03);
         }
 
+        /* STOPKA */
         .footer {
             text-align: center;
-            margin-top: 30px;
+            padding: 40px 20px;
+            color: #475569;
             font-size: 0.9rem;
-            color: #514675;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
-    <div class="shop-container">
-        <div class="header">
-            <h1>FO SHOP</h1>
-            <p>Najlepsze produkty Roblox oraz Konta Streamingowe</p>
+    <!-- PASEK NAWIGACJI -->
+    <nav class="navbar">
+        <div class="logo">👑 FO <span>SHOP</span></div>
+        <ul class="nav-links">
+            <li><a href="#">Strona Główna</a></li>
+            <li><a href="#roblox">Roblox</a></li>
+            <li><a href="#streaming">Streaming</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <a href="https://discord.gg/TWOJ-LINK" target="_blank" class="btn-nav btn-discord"><i class="fab fa-discord"></i> Discord</a>
         </div>
+    </nav>
 
-        <!-- KATEGORIA 1: ROBLOX -->
-        <div class="category-section">
-            <div class="section-title">🎮 Kategoria: Roblox</div>
-            <div class="product-list">
-                
-                <div class="product-item product-featured">
-                    <span class="product-name">🔥 DRAGON <span class="badge-perm">PERM</span></span>
-                    <a href="https://foshop.sell.app/product/dragon-perm" target="_blank" class="product-price">155 PLN</a>
+    <!-- NAGŁÓWEK HERO -->
+    <header class="hero">
+        <h1>Szukasz produktów do gier?<br><span>Mamy wszystko.</span></h1>
+        <p>Najlepsza jakość, automatyczna wysyłka kont streamingowych 24/7 oraz pełne wsparcie dla produktów Roblox.</p>
+    </header>
+
+    <!-- TRZY KAFELKI ZALET -->
+    <section class="features-container">
+        <div class="feature-box">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Gwarancja Jakości</h3>
+            <p>Każdy produkt jest sprawdzany przed wystawieniem. Otrzymujesz dokładnie to, za co płacisz.</p>
+        </div>
+        <div class="feature-box">
+            <i class="fas fa-bolt"></i>
+            <h3>Automatyczna Dostawa</h3>
+            <p>Nasze usługi streamingowe wysyłane są w kilka sekund bezpośrednio po opłaceniu zamówienia.</p>
+        </div>
+        <div class="feature-box">
+            <i class="fas fa-headset"></i>
+            <h3>Wsparcie Live 24/7</h3>
+            <p>Nasz zespół supportu na serwerze Discord jest gotowy pomóc Ci z każdym pytaniem o każdej porze.</p>
+        </div>
+    </section>
+
+    <!-- KATEGORIA 1: ROBLOX (OD NAJWYŻSZEJ DO NAJNIŻSZEJ) -->
+    <section class="shop-section" id="roblox">
+        <div class="section-header"><span>🎮</span> Produkty Roblox</div>
+        <div class="product-list">
+
+            <div class="product-item product-featured">
+                <div class="product-info">
+                    <span class="product-title">🔥 DRAGON</span>
+                    <span class="badge badge-roblox">PERM</span>
                 </div>
-
-                <div class="product-item">
-                    <span class="product-name">🦊 KITSUNE <span class="badge-perm">PERM</span></span>
-                    <a href="https://foshop.sell.app/product/dragon-perm" target="_blank" class="product-price">135 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">❄️ YETI <span class="badge-perm">PERM</span></span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">100 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">🐯 TIGER <span class="badge-perm">PERM</span></span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">100 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">💨 GAS <span class="badge-perm">PERM</span></span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">100 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">🌟 BUDDHA <span class="badge-perm">PERM</span></span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">80 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">🎮 Fruit Notifier</span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">100 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">⚔️ Dark Blade</span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">65 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">💰 2x Money / 2x Mastery</span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">20 PLN</a>
-                </div>
-
+                <a href="https://foshop.sell.app/product/dragon-perm" target="_blank" class="product-btn">155 PLN</a>
             </div>
-        </div>
 
-        <!-- KATEGORIA 2: STREAMING -->
-        <div class="category-section">
-            <div class="section-title">📺 Kategoria: Streaming (Auto-Dostawa)</div>
-            <div class="product-list">
-
-                <div class="product-item">
-                    <span class="product-name">🍿 NETFLIX <span class="badge-stream">PREMIUM</span></span>
-                    <a href="https://foshop.sell.app/product/netflix-premium" target="_blank" class="product-price">15 PLN</a>
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🦊 KITSUNE</span>
+                    <span class="badge badge-roblox">PERM</span>
                 </div>
-
-                <div class="product-item">
-                    <span class="product-name">🏰 DISNEY+ <span class="badge-stream">PREMIUM</span></span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">100 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">🍣 CRUNCHYROLL <span class="badge-stream">MEGA FAN</span></span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">100 PLN</a>
-                </div>
-
-                <div class="product-item">
-                    <span class="product-name">🎬 PRIME VIDEO <span class="badge-stream">LIFETIME</span></span>
-                    <a href="https://foshop.sell.app/" target="_blank" class="product-price">15 PLN</a>
-                </div>
-
+                <a href="https://foshop.sell.app/product/dragon-perm" target="_blank" class="product-btn">135 PLN</a>
             </div>
-        </div>
 
-        <div class="footer">
-            &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone.
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">❄️ YETI</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">100 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🐯 TIGER</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">100 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">💨 GAS</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_btn" class="product-btn">100 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🎮 Fruit Notifier</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">100 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🌟 BUDDHA</span>
+                    <span class="badge badge-roblox">PERM</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">80 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">⚔️ Dark Blade</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">65 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">💰 2x Money / 2x Mastery</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">20 PLN</a>
+            </div>
+
         </div>
-    </div>
+    </section>
+
+    <!-- KATEGORIA 2: STREAMING (OD NAJWYŻSZEJ DO NAJNIŻSZEJ) -->
+    <section class="shop-section" id="streaming">
+        <div class="section-header"><span>📺</span> Usługi Streamingowe</div>
+        <div class="product-list">
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🍿 NETFLIX</span>
+                    <span class="badge badge-streaming">PREMIUM</span>
+                </div>
+                <a href="https://foshop.sell.app/product/netflix-premium" target="_blank" class="product-btn">15 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🎬 PRIME VIDEO</span>
+                    <span class="badge badge-streaming">LIFETIME</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">15 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🏰 DISNEY+</span>
+                    <span class="badge badge-streaming">PREMIUM</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">10 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">🍣 CRUNCHYROLL</span>
+                    <span class="badge badge-streaming">MEGA FAN</span>
+                </div>
+                <a href="https://foshop.sell.app/" target="_blank" class="product-btn">10 PLN</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STOPKA -->
+    <footer class="footer">
+        &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Roblox Corporation ani wymienionymi platformami streamingowymi.
+    </footer>
 
 </body>
 </html>
