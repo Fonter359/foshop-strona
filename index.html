@@ -12,7 +12,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth; /* Płynne przewijanie po kliknięciu w kategorię */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -133,7 +133,7 @@
         .categories-explore {
             text-align: center;
             max-width: 900px;
-            margin: 0 auto 80px auto;
+            margin: 0 auto 40px auto;
             padding: 0 20px;
         }
 
@@ -184,7 +184,7 @@
             letter-spacing: 0.5px;
         }
 
-        .category-card:hover {
+        .category-card:hover, .category-card.active {
             border-color: #a855f7;
             background: #120e24;
             box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
@@ -195,12 +195,13 @@
             transform: scale(1.1);
         }
 
-        /* STRUKTURA LISTY PRODUKTÓW */
+        /* STRUKTURA LISTY PRODUKTÓW (UKRYTA DOMYŚLNIE) */
         .shop-section {
+            display: none; /* Ukrywa sekcję na start */
             max-width: 900px;
-            margin: 0 auto 80px auto;
+            margin: 40px auto 80px auto;
             padding: 0 20px;
-            scroll-margin-top: 100px; /* Zapobiega chowaniu się nagłówka pod navbar */
+            scroll-margin-top: 100px;
         }
 
         .section-header {
@@ -307,6 +308,7 @@
             color: #475569;
             font-size: 0.9rem;
             border-top: 1px solid rgba(255, 255, 255, 0.02);
+            margin-top: 60px;
         }
     </style>
 </head>
@@ -336,7 +338,7 @@
         <div class="feature-box">
             <i class="fas fa-bolt"></i>
             <h3>Automatyczna Dostawa</h3>
-            <p>Nasze usługi streamingowe wysyłane są w kilka sekund bezpośrednio po opłaceniu zamówienia.</p>
+            <p>Nasze usługi streamingowe wysyłane sunt w kilka sekund bezpośrednio po opłaceniu zamówienia.</p>
         </div>
         <div class="feature-box">
             <i class="fas fa-headset"></i>
@@ -345,26 +347,26 @@
         </div>
     </section>
 
-    <!-- SEKCJA WYBORU KATEGORII (JAK NA SCREENIE LUSIVE) -->
+    <!-- SEKCJA WYBORU KATEGORII -->
     <section class="categories-explore">
         <h2>Przeglądaj produkty</h2>
-        <p>Wybierz interesującą Cię kategorię, aby zobaczyć dostępne produkty.</p>
+        <p>Wybierz interesującą Cię kategorię, aby wyświetlić dostępne produkty.</p>
         
         <div class="category-grid">
-            <!-- Kafelek Roblox -->
-            <a href="#roblox" class="category-card">
+            <!-- Przycisk kafelka Roblox -->
+            <div class="category-card" onclick="showCategory('roblox', this)">
                 <i class="fas fa-gamepad"></i>
                 <span>Roblox</span>
-            </a>
-            <!-- Kafelek Streaming -->
-            <a href="#streaming" class="category-card">
+            </div>
+            <!-- Przycisk kafelka Streaming -->
+            <div class="category-card" onclick="showCategory('streaming', this)">
                 <i class="fas fa-tv"></i>
                 <span>Streaming</span>
-            </a>
+            </div>
         </div>
     </section>
 
-    <!-- KATEGORIA 1: ROBLOX (OD NAJWYŻSZEJ DO NAJNIŻSZEJ) -->
+    <!-- KATEGORIA 1: ROBLOX -->
     <section class="shop-section" id="roblox">
         <div class="section-header"><span>🎮</span> Produkty Roblox</div>
         <div class="product-list">
@@ -441,7 +443,7 @@
         </div>
     </section>
 
-    <!-- KATEGORIA 2: STREAMING (OD NAJWYŻSZEJ DO NAJNIŻSZEJ) -->
+    <!-- KATEGORIA 2: STREAMING -->
     <section class="shop-section" id="streaming">
         <div class="section-header"><span>📺</span> Usługi Streamingowe</div>
         <div class="product-list">
@@ -485,6 +487,31 @@
     <footer class="footer">
         &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Roblox Corporation ani wymienionymi platformami streamingowymi.
     </footer>
+
+    <!-- SKRYPT UKRYWANIA I POKAZYWANIA KATEGORII -->
+    <script>
+        function showCategory(categoryId, element) {
+            // Ukryj wszystkie sekcje produktów
+            document.getElementById('roblox').style.display = 'none';
+            document.getElementById('streaming').style.display = 'none';
+            
+            // Usuń klasę active ze wszystkich kafelków
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => card.classList.remove('active'));
+            
+            // Pokaż wybraną sekcję
+            const selectedSection = document.getElementById(categoryId);
+            selectedSection.style.display = 'block';
+            
+            // Dodaj klasę active do klikniętego kafelka
+            element.classList.add('active');
+            
+            // Płynnie przewiń ekran do nowo otwartej sekcji
+            setTimeout(() => {
+                selectedSection.scrollIntoView({ behavior: 'smooth' });
+            }, 50);
+        }
+    </script>
 
 </body>
 </html>
