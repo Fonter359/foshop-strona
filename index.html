@@ -190,10 +190,10 @@
             text-decoration: underline;
         }
 
-        /* SEKCJA WYBORU KATEGORII */
+        /* SEKCJA WYBORU KATEGORII (TERAZ TRZY KAFELKI) */
         .categories-explore {
             text-align: center;
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto 40px auto;
             padding: 0 20px;
         }
@@ -212,9 +212,9 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
-            max-width: 600px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -222,7 +222,7 @@
             background: #0d0b18;
             border: 1px solid rgba(168, 85, 247, 0.15);
             border-radius: 16px;
-            padding: 40px 20px;
+            padding: 35px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -234,13 +234,13 @@
         }
 
         .category-card i {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: #a855f7;
             transition: transform 0.2s;
         }
 
         .category-card span {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
@@ -306,6 +306,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
             transition: all 0.2s ease;
         }
 
@@ -320,11 +321,6 @@
             background: linear-gradient(95deg, #16102b 0%, #0d0b18 100%);
             border: 1px solid #a855f7;
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
-        }
-
-        .product-featured:hover {
-            border-color: #c084fc;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
         }
 
         .product-info {
@@ -358,6 +354,12 @@
             border: 1px solid rgba(37, 99, 235, 0.3);
         }
 
+        .badge-game {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
         .product-btn {
             background-color: #a855f7;
             color: #ffffff;
@@ -373,8 +375,83 @@
 
         .product-btn:hover {
             background-color: #c084fc;
-            box-shadow: 0 0 18px rgba(168, 85, 247, 0.5);
             transform: scale(1.03);
+        }
+
+        /* NOWY WYGLĄD MODALA/OKIENKA Z DETALAMI GRY */
+        .game-details-box {
+            display: none;
+            background: #0d0b18;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: -5px;
+            margin-bottom: 15px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .game-details-content {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .game-img {
+            width: 260px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .game-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .game-text h4 {
+            font-size: 1.3rem;
+            color: #c084fc;
+            margin-bottom: 10px;
+        }
+
+        .game-text ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .game-text ul li {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .game-text ul li i {
+            color: #34d399;
+            font-size: 0.8rem;
+        }
+
+        .game-action {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            min-width: 150px;
+        }
+
+        .game-price-tag {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .footer {
@@ -393,7 +470,6 @@
     <nav class="navbar">
         <div class="logo">👑 FO <span>SHOP</span></div>
         <div class="nav-buttons">
-            <!-- TUTAJ WSTAWIONY POPRAWNY LINK DO DISCORDA -->
             <a href="https://discord.gg/65zCezTq3p" target="_blank" class="btn-nav btn-discord"><i class="fab fa-discord"></i> Discord</a>
         </div>
     </nav>
@@ -401,7 +477,7 @@
     <!-- NAGŁÓWEK HERO -->
     <header class="hero">
         <h1>Szukasz produktów do gier?<br><span>Mamy wszystko.</span></h1>
-        <p>Najlepsza jakość, automatyczna wysyłka kont streamingowych 24/7 oraz pełne wsparcie dla produktów Roblox.</p>
+        <p>Najlepsza jakość, automatyczna wysyłka kont, kluczy gamingowych oraz pełne wsparcie dla produktów Roblox.</p>
     </header>
 
     <!-- BANER PŁATNOŚCI Z INSTRUKCJĄ -->
@@ -422,18 +498,17 @@
         </div>
         <div class="feature-box">
             <i class="fas fa-bolt"></i>
-            <h3>Automatyczna Dostawa</h3>
-            <p>Nasze usługi streamingowe wysyłane są w kilka sekund bezpośrednio po opłaceniu zamówienia.</p>
+            <h3>Szybka Realizacja</h3>
+            <p>Konta i usługi realizowane są w zaledwie kilka minut od momentu zaksięgowania wpłaty.</p>
         </div>
         <div class="feature-box">
             <i class="fas fa-headset"></i>
             <h3>Wsparcie Live 24/7</h3>
-            <!-- TUTAJ WSTAWIONY POPRAWNY LINK DO DISCORDA -->
             <p>Nasz zespół supportu jest gotowy pomóc. Wejdź na nasz <a href="https://discord.gg/65zCezTq3p" target="_blank">Serwer Discord</a> i otwórz Ticket!</p>
         </div>
     </section>
 
-    <!-- SEKCJA WYBORU KATEGORII -->
+    <!-- SEKCJA WYBORU KATEGORII (TRZY ELEMENTY) -->
     <section class="categories-explore">
         <h2>Przeglądaj produkty</h2>
         <p>Wybierz interesującą Cię kategorię, aby wyświetlić dostępne produkty.</p>
@@ -442,6 +517,10 @@
             <div class="category-card" onclick="showCategory('roblox', this)">
                 <i class="fas fa-gamepad"></i>
                 <span>Roblox</span>
+            </div>
+            <div class="category-card" onclick="showCategory('games', this)">
+                <i class="fas fa-desktop"></i>
+                <span>Gry PC</span>
             </div>
             <div class="category-card" onclick="showCategory('streaming', this)">
                 <i class="fas fa-tv"></i>
@@ -457,217 +536,188 @@
         <!-- PODSEKCJA A: OWOCE PERMANENT -->
         <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
         <div class="product-list">
-
-            <div class="product-item product-featured">
-                <div class="product-info">
-                    <span class="product-title">🔥 DRAGON</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/dragon-perm" target="_blank" class="product-btn">155 PLN</a>
+            <div class="product-item product-featured" onclick="window.open('https://foshop.sell.app/product/dragon-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🔥 DRAGON</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">155 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🦊 KITSUNE</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/kitsune-perm" target="_blank" class="product-btn">135 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/kitsune-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🦊 KITSUNE</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">135 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">❄️ YETI</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/yeti-perm" target="_blank" class="product-btn">100 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/yeti-perm', '_blank')">
+                <div class="product-info"><span class="product-title">❄️ YETI</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">100 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🐯 TIGER</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/tiger-perm" target="_blank" class="product-btn">100 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/tiger-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🐯 TIGER</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">100 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">💨 GAS</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/gas-perm" target="_blank" class="product-btn">100 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/gas-perm', '_blank')">
+                <div class="product-info"><span class="product-title">💨 GAS</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">100 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">👁️ Control</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/control-perm" target="_blank" class="product-btn">100 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/control-perm', '_blank')">
+                <div class="product-info"><span class="product-title">👁️ Control</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">100 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🌟 BUDDHA</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/buddha-perm" target="_blank" class="product-btn">80 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/buddha-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🌟 BUDDHA</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">80 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🦖 T-Rex</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/t-rex-perm" target="_blank" class="product-btn">75 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/t-rex-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🦖 T-Rex</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">75 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🌌 Gravity</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/gravity-perm" target="_blank" class="product-btn">75 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/gravity-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🌌 Gravity</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">75 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">👻 Spirit</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/spirit-perm" target="_blank" class="product-btn">75 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/spirit-perm', '_blank')">
+                <div class="product-info"><span class="product-title">👻 Spirit</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">75 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🧪 Venom</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/venom-perm" target="_blank" class="product-btn">75 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/venom-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🧪 Venom</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">75 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🦣 Mammoth</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/mammoth-perm" target="_blank" class="product-btn">75 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/mammoth-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🦣 Mammoth</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">75 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🌀 Portal</span>
-                    <span class="badge badge-roblox">PERM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/portal-perm" target="_blank" class="product-btn">75 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/portal-perm', '_blank')">
+                <div class="product-info"><span class="product-title">🌀 Portal</span><span class="badge badge-roblox">PERM</span></div>
+                <button class="product-btn">75 PLN</button>
             </div>
-
         </div>
 
         <!-- PODSEKCJA B: GAMEPASSY I PRZEDMIOTY -->
         <div class="sub-section-title"><i class="fas fa-ticket"></i> Gamepassy & Przedmioty</div>
         <div class="product-list">
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/fruit-notifier', '_blank')">
+                <div class="product-info"><span class="product-title">📡 Fruit Notifier</span></div><button class="product-btn">100 PLN</button>
+            </div>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/exp-boosts-24h', '_blank')">
+                <div class="product-info"><span class="product-title">⚡ Exp Boosts 24h</span></div><button class="product-btn">100 PLN</button>
+            </div>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/dark-blade', '_blank')">
+                <div class="product-info"><span class="product-title">⚔️ Dark Blade</span></div><button class="product-btn">65 PLN</button>
+            </div>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/2x-mastery', '_blank')">
+                <div class="product-info"><span class="product-title">📜 2x Mastery</span></div><button class="product-btn">20 PLN</button>
+            </div>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/2x-money', '_blank')">
+                <div class="product-info"><span class="product-title">💰 2x Money</span></div><button class="product-btn">20 PLN</button>
+            </div>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/1-fruit-storage', '_blank')">
+                <div class="product-info"><span class="product-title">📦 +1 Fruit Storage</span></div><button class="product-btn">20 PLN</button>
+            </div>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/faster-boats', '_blank')">
+                <div class="product-info"><span class="product-title">⛵ Faster Boats</span></div><button class="product-btn">20 PLN</button>
+            </div>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/2x-drop-chance', '_blank')">
+                <div class="product-info"><span class="product-title">🍀 2x Drop Chance</span></div><button class="product-btn">20 PLN</button>
+            </div>
+        </div>
+    </section>
 
-            <div class="product-item">
+    <!-- NOWA KATEGORIA 2: GRY (Z FUNKCJĄ KLIKNIJ-ROZWIŃ) -->
+    <section class="shop-section" id="games">
+        <div class="section-header"><span>💾</span> Gry PC (Social Club Accounts)</div>
+        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px; margin-left: 5px;">Kliknij na wybraną grę, aby zobaczyć szczegóły konta i dokonać zakupu.</p>
+        
+        <div class="product-list">
+            
+            <!-- GRA 1: RDR2 -->
+            <div class="product-item product-featured" onclick="toggleDetails('rdr2-details')">
                 <div class="product-info">
-                    <span class="product-title">📡 Fruit Notifier</span>
+                    <span class="product-title">🤠 Red Dead Redemption 2</span>
+                    <span class="badge badge-game">Full Access</span>
                 </div>
-                <a href="https://foshop.sell.app/product/fruit-notifier" target="_blank" class="product-btn">100 PLN</a>
+                <button class="product-btn">50 PLN</button>
+            </div>
+            <!-- DETALE RDR2 -->
+            <div class="game-details-box" id="rdr2-details">
+                <div class="game-details-content">
+                    <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=400&q=80" alt="RDR2" class="game-img">
+                    <div class="game-text">
+                        <h4>Red Dead Redemption 2 Premium Account</h4>
+                        <p style="font-size:0.9rem; color:#94a3b8;">Zyskaj pełny dostęp do konta Rockstar Games Social Club zawierającego arcydzieło od Rockstar!</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <strong>Full Access (FA)</strong> – pełna zmiana maila, hasła i nicku konta na Twoje własne.</li>
+                            <li><i class="fas fa-check"></i> Zawiera pełny Tryb Fabularny (Story Mode) + Red Dead Online.</li>
+                            <li><i class="fas fa-check"></i> Brak blokad regionalnych (Works Worldwide).</li>
+                            <li><i class="fas fa-clock"></i> <strong>Szybka dostawa (2-15 min)</strong> prosto na Twój adres e-mail!</li>
+                        </ul>
+                    </div>
+                    <div class="game-action">
+                        <span class="game-price-tag">50 PLN</span>
+                        <a href="TUTAJ_WKLEJ_LINK_DO_RDR2" target="_blank" class="product-btn" style="text-align:center;">Kup Teraz</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="product-item">
+            <!-- GRA 2: GTA 5 -->
+            <div class="product-item" onclick="toggleDetails('gta5-details')">
                 <div class="product-info">
-                    <span class="product-title">⚡ Exp Boosts 24h</span>
+                    <span class="product-title">🚗 Grand Theft Auto V (GTA 5)</span>
+                    <span class="badge badge-game">Full Access</span>
                 </div>
-                <a href="https://foshop.sell.app/product/exp-boosts-24h" target="_blank" class="product-btn">100 PLN</a>
+                <button class="product-btn">45 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">⚔️ Dark Blade</span>
+            <!-- DETALE GTA 5 -->
+            <div class="game-details-box" id="gta5-details">
+                <div class="game-details-content">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" alt="GTA V" class="game-img">
+                    <div class="game-text">
+                        <h4>GTA 5 Premium Account – Rockstar Launcher</h4>
+                        <p style="font-size:0.9rem; color:#94a3b8;">Zyskaj pełny dostęp do konta Social Club spakowanego z ogromnym bonusem gotówkowym w GTA Online!</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> <strong>Full Access (FA)</strong> – 100% własności, zmiana wszystkich danych logowania.</li>
+                            <li><i class="fas fa-check"></i> <strong>Gwarantowana kasa:</strong> Od $500K aż do ponad $100 milionów w GTA Online!</li>
+                            <li><i class="fas fa-check"></i> Odblokowany w pełni Story Mode oraz rozgrywka sieciowa Online.</li>
+                            <li><i class="fas fa-clock"></i> <strong>Szybka realizacja zamówienia (2-15 min)</strong> na e-mail po zakupie!</li>
+                        </ul>
+                    </div>
+                    <div class="game-action">
+                        <span class="game-price-tag">45 PLN</span>
+                        <a href="TUTAJ_WKLEJ_LINK_DO_GTA5" target="_blank" class="product-btn" style="text-align:center;">Kup Teraz</a>
+                    </div>
                 </div>
-                <a href="https://foshop.sell.app/product/dark-blade" target="_blank" class="product-btn">65 PLN</a>
-            </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">📜 2x Mastery</span>
-                </div>
-                <a href="https://foshop.sell.app/product/2x-mastery" target="_blank" class="product-btn">20 PLN</a>
-            </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">💰 2x Money</span>
-                </div>
-                <a href="https://foshop.sell.app/product/2x-money" target="_blank" class="product-btn">20 PLN</a>
-            </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">📦 +1 Fruit Storage</span>
-                </div>
-                <a href="https://foshop.sell.app/product/1-fruit-storage" target="_blank" class="product-btn">20 PLN</a>
-            </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">⛵ Faster Boats</span>
-                </div>
-                <a href="https://foshop.sell.app/product/faster-boats" target="_blank" class="product-btn">20 PLN</a>
-            </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🍀 2x Drop Chance</span>
-                </div>
-                <a href="https://foshop.sell.app/product/2x-drop-chance" target="_blank" class="product-btn">20 PLN</a>
             </div>
 
         </div>
     </section>
 
-    <!-- KATEGORIA 2: STREAMING -->
+    <!-- KATEGORIA 3: STREAMING -->
     <section class="shop-section" id="streaming">
         <div class="section-header"><span>📺</span> Usługi Streamingowe</div>
         <div class="product-list">
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🍿 NETFLIX</span>
-                    <span class="badge badge-streaming">PREMIUM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/netflix-premium" target="_blank" class="product-btn">15 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/netflix-premium', '_blank')">
+                <div class="product-info"><span class="product-title">🍿 NETFLIX</span><span class="badge badge-streaming">PREMIUM</span></div>
+                <button class="product-btn">15 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🏰 DISNEY+</span>
-                    <span class="badge badge-streaming">PREMIUM</span>
-                </div>
-                <a href="https://foshop.sell.app/product/disney-premium" target="_blank" class="product-btn">10 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/disney-premium', '_blank')">
+                <div class="product-info"><span class="product-title">🏰 DISNEY+</span><span class="badge badge-streaming">PREMIUM</span></div>
+                <button class="product-btn">10 PLN</button>
             </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">🍣 CRUNCHYROLL</span>
-                    <span class="badge badge-streaming">MEGA FAN</span>
-                </div>
-                <a href="https://foshop.sell.app/product/crunchyroll" target="_blank" class="product-btn">10 PLN</a>
+            <div class="product-item" onclick="window.open('https://foshop.sell.app/product/crunchyroll', '_blank')">
+                <div class="product-info"><span class="product-title">🍣 CRUNCHYROLL</span><span class="badge badge-streaming">MEGA FAN</span></div>
+                <button class="product-btn">10 PLN</button>
             </div>
-
         </div>
     </section>
 
     <!-- STOPKA -->
     <footer class="footer">
-        &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Roblox Corporation ani wymienionymi platformami streamingowymi.
+        &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Rockstar Games, Roblox Corporation ani wymienionymi platformami streamingowymi.
     </footer>
 
-    <!-- SKRYPT UKRYWANIA I POKAZYWANIA KATEGORII -->
+    <!-- SKRYPTY JAVASCRIPT -->
     <script>
+        // Pokazywanie odpowiedniej głównej kategorii
         function showCategory(categoryId, element) {
             document.getElementById('roblox').style.display = 'none';
+            document.getElementById('games').style.display = 'none';
             document.getElementById('streaming').style.display = 'none';
             
             const cards = document.querySelectorAll('.category-card');
@@ -681,6 +731,21 @@
             setTimeout(() => {
                 selectedSection.scrollIntoView({ behavior: 'smooth' });
             }, 50);
+        }
+
+        // Płynne otwieranie/zamykanie detali gry komputerowej po kliknięciu
+        function toggleDetails(boxId) {
+            const box = document.getElementById(boxId);
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+            } else {
+                // Najpierw ukryj inne otwarte detale gier, żeby nie robić bałaganu
+                const allBoxes = document.querySelectorAll('.game-details-box');
+                allBoxes.forEach(b => b.style.display = 'none');
+                
+                // Otwórz kliknięty
+                box.style.display = 'block';
+            }
         }
     </script>
 
