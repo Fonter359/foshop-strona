@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FO SHOP - Oficjalny Sklep</title>
+    <!-- Ikony FontAwesome do kafelków oraz kategorii -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -177,6 +178,16 @@
             color: #64748b;
             font-size: 0.88rem;
             line-height: 1.4;
+        }
+
+        .feature-box a {
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .feature-box a:hover {
+            text-decoration: underline;
         }
 
         /* SEKCJA WYBORU KATEGORII */
@@ -378,18 +389,22 @@
 </head>
 <body>
 
+    <!-- PASEK NAWIGACJI -->
     <nav class="navbar">
         <div class="logo">👑 FO <span>SHOP</span></div>
         <div class="nav-buttons">
-            <a href="https://discord.gg/TWOJ-LINK" target="_blank" class="btn-nav btn-discord"><i class="fab fa-discord"></i> Discord</a>
+            <!-- TUTAJ WSTAWIONY POPRAWNY LINK DO DISCORDA -->
+            <a href="https://discord.gg/65zCezTq3p" target="_blank" class="btn-nav btn-discord"><i class="fab fa-discord"></i> Discord</a>
         </div>
     </nav>
 
+    <!-- NAGŁÓWEK HERO -->
     <header class="hero">
         <h1>Szukasz produktów do gier?<br><span>Mamy wszystko.</span></h1>
         <p>Najlepsza jakość, automatyczna wysyłka kont streamingowych 24/7 oraz pełne wsparcie dla produktów Roblox.</p>
     </header>
 
+    <!-- BANER PŁATNOŚCI Z INSTRUKCJĄ -->
     <section class="payment-banner">
         <div class="payment-title-wrap">
             <i class="fas fa-credit-card"></i>
@@ -398,6 +413,7 @@
         <p class="payment-instruction">⚠️ WAŻNE: Aby zapłacić BLIKIEM, kartą lub przelewem, wybierz opcję "Purchase with PayPal" w koszyku!</p>
     </section>
 
+    <!-- TRZY KAFELKI ZALET -->
     <section class="features-container">
         <div class="feature-box">
             <i class="fas fa-shield-alt"></i>
@@ -412,10 +428,12 @@
         <div class="feature-box">
             <i class="fas fa-headset"></i>
             <h3>Wsparcie Live 24/7</h3>
-            <p>Nasz zespół supportu na serwerze Discord jest gotowy pomóc Ci z każdym pytaniem o każdej porze.</p>
+            <!-- TUTAJ WSTAWIONY POPRAWNY LINK DO DISCORDA -->
+            <p>Nasz zespół supportu jest gotowy pomóc. Wejdź na nasz <a href="https://discord.gg/65zCezTq3p" target="_blank">Serwer Discord</a> i otwórz Ticket!</p>
         </div>
     </section>
 
+    <!-- SEKCJA WYBORU KATEGORII -->
     <section class="categories-explore">
         <h2>Przeglądaj produkty</h2>
         <p>Wybierz interesującą Cię kategorię, aby wyświetlić dostępne produkty.</p>
@@ -432,9 +450,11 @@
         </div>
     </section>
 
+    <!-- KATEGORIA 1: ROBLOX -->
     <section class="shop-section" id="roblox">
         <div class="section-header"><span>🎮</span> Sklep Roblox</div>
         
+        <!-- PODSEKCJA A: OWOCE PERMANENT -->
         <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
         <div class="product-list">
 
@@ -544,6 +564,7 @@
 
         </div>
 
+        <!-- PODSEKCJA B: GAMEPASSY I PRZEDMIOTY -->
         <div class="sub-section-title"><i class="fas fa-ticket"></i> Gamepassy & Przedmioty</div>
         <div class="product-list">
 
@@ -606,6 +627,7 @@
         </div>
     </section>
 
+    <!-- KATEGORIA 2: STREAMING -->
     <section class="shop-section" id="streaming">
         <div class="section-header"><span>📺</span> Usługi Streamingowe</div>
         <div class="product-list">
@@ -637,10 +659,12 @@
         </div>
     </section>
 
+    <!-- STOPKA -->
     <footer class="footer">
         &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Roblox Corporation ani wymienionymi platformami streamingowymi.
     </footer>
 
+    <!-- SKRYPT UKRYWANIA I POKAZYWANIA KATEGORII -->
     <script>
         function showCategory(categoryId, element) {
             document.getElementById('roblox').style.display = 'none';
