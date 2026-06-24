@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FO SHOP - Oficjalny Sklep</title>
+    <!-- Ikony FontAwesome do kafelków oraz kategorii -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -68,7 +69,7 @@
         /* HERO SECTION */
         .hero {
             text-align: center;
-            padding: 90px 20px 50px 20px;
+            padding: 70px 20px 30px 20px;
             background: radial-gradient(circle at center, rgba(61, 43, 122, 0.15) 0%, rgba(6, 4, 13, 0) 70%);
         }
 
@@ -88,7 +89,40 @@
             color: #94a3b8;
             font-size: 1.2rem;
             max-width: 600px;
-            margin: 0 auto 35px auto;
+            margin: 0 auto 25px auto;
+        }
+
+        /* POPRAWIONY BANER PŁATNOŚCI (BEZ PSC) */
+        .payment-banner {
+            background: linear-gradient(90deg, rgba(14, 116, 144, 0.2) 0%, rgba(108, 82, 202, 0.2) 50%, rgba(14, 116, 144, 0.2) 100%);
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            padding: 15px 25px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .payment-banner i {
+            font-size: 1.6rem;
+            color: #38bdf8;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+        }
+
+        .payment-banner p {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .payment-banner p span {
+            color: #38bdf8;
         }
 
         /* TRZY KAFELKI ZALET */
@@ -194,7 +228,7 @@
             transform: scale(1.1);
         }
 
-        /* STRUKTURA LISTY PRODUKTÓW (UKRYTA DOMYŚLNIE) */
+        /* STRUKTURA LISTY PRODUKTÓW */
         .shop-section {
             display: none;
             max-width: 900px;
@@ -204,16 +238,30 @@
         }
 
         .section-header {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 25px;
             display: flex;
             align-items: center;
             gap: 12px;
+            border-bottom: 2px solid #2d234f;
+            padding-bottom: 8px;
         }
 
         .section-header span {
             color: #a855f7;
+        }
+
+        .sub-section-title {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            font-weight: 600;
+            margin: 25px 0 15px 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .product-list {
@@ -313,6 +361,7 @@
 </head>
 <body>
 
+    <!-- PASEK NAWIGACJI -->
     <nav class="navbar">
         <div class="logo">👑 FO <span>SHOP</span></div>
         <div class="nav-buttons">
@@ -320,11 +369,19 @@
         </div>
     </nav>
 
+    <!-- NAGŁÓWEK HERO -->
     <header class="hero">
         <h1>Szukasz produktów do gier?<br><span>Mamy wszystko.</span></h1>
         <p>Najlepsza jakość, automatyczna wysyłka kont streamingowych 24/7 oraz pełne wsparcie dla produktów Roblox.</p>
     </header>
 
+    <!-- POPRAWIONY BANER PŁATNOŚCI -->
+    <section class="payment-banner">
+        <i class="fas fa-credit-card"></i>
+        <p>Akceptujemy bezpieczne płatności: <span>PayPal</span>, <span>BLIK</span> oraz <span>Kartą Płatniczą</span>!</p>
+    </section>
+
+    <!-- TRZY KAFELKI ZALET -->
     <section class="features-container">
         <div class="feature-box">
             <i class="fas fa-shield-alt"></i>
@@ -343,6 +400,7 @@
         </div>
     </section>
 
+    <!-- SEKCJA WYBORU KATEGORII -->
     <section class="categories-explore">
         <h2>Przeglądaj produkty</h2>
         <p>Wybierz interesującą Cię kategorię, aby wyświetlić dostępne produkty.</p>
@@ -359,8 +417,12 @@
         </div>
     </section>
 
+    <!-- KATEGORIA 1: ROBLOX -->
     <section class="shop-section" id="roblox">
-        <div class="section-header"><span>🎮</span> Produkty Roblox</div>
+        <div class="section-header"><span>🎮</span> Sklep Roblox</div>
+        
+        <!-- PODSEKCJA A: OWOCE PERMANENT -->
+        <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
         <div class="product-list">
 
             <div class="product-item product-featured">
@@ -409,20 +471,6 @@
                     <span class="badge badge-roblox">PERM</span>
                 </div>
                 <a href="https://foshop.sell.app/product/control-perm" target="_blank" class="product-btn">100 PLN</a>
-            </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">📡 Fruit Notifier</span>
-                </div>
-                <a href="https://foshop.sell.app/product/fruit-notifier" target="_blank" class="product-btn">100 PLN</a>
-            </div>
-
-            <div class="product-item">
-                <div class="product-info">
-                    <span class="product-title">⚡ Exp Boosts 24h</span>
-                </div>
-                <a href="https://foshop.sell.app/product/exp-boosts-24h" target="_blank" class="product-btn">100 PLN</a>
             </div>
 
             <div class="product-item">
@@ -481,6 +529,26 @@
                 <a href="https://foshop.sell.app/product/portal-perm" target="_blank" class="product-btn">75 PLN</a>
             </div>
 
+        </div>
+
+        <!-- PODSEKCJA B: GAMEPASSY I PRZEDMIOTY -->
+        <div class="sub-section-title"><i class="fas fa-ticket"></i> Gamepassy & Przedmioty</div>
+        <div class="product-list">
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">📡 Fruit Notifier</span>
+                </div>
+                <a href="https://foshop.sell.app/product/fruit-notifier" target="_blank" class="product-btn">100 PLN</a>
+            </div>
+
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-title">⚡ Exp Boosts 24h</span>
+                </div>
+                <a href="https://foshop.sell.app/product/exp-boosts-24h" target="_blank" class="product-btn">100 PLN</a>
+            </div>
+
             <div class="product-item">
                 <div class="product-info">
                     <span class="product-title">⚔️ Dark Blade</span>
@@ -526,6 +594,7 @@
         </div>
     </section>
 
+    <!-- KATEGORIA 2: STREAMING -->
     <section class="shop-section" id="streaming">
         <div class="section-header"><span>📺</span> Usługi Streamingowe</div>
         <div class="product-list">
@@ -557,10 +626,12 @@
         </div>
     </section>
 
+    <!-- STOPKA -->
     <footer class="footer">
         &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Roblox Corporation ani wymienionymi platformami streamingowymi.
     </footer>
 
+    <!-- SKRYPT UKRYWANIA I POKAZYWANIA KATEGORII -->
     <script>
         function showCategory(categoryId, element) {
             document.getElementById('roblox').style.display = 'none';
