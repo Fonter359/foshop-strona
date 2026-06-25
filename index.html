@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* TŁO NEONOWE - ANTY-NUDA */
+        /* TŁO NEONOWE */
         .ambient-glow {
             position: absolute;
             width: 600px;
@@ -36,7 +36,7 @@
             pointer-events: none;
         }
 
-        /* CUSTOM NAVIGATION */
+        /* NAWIGACJA */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -88,7 +88,7 @@
             box-shadow: 0 6px 25px rgba(88, 101, 242, 0.5);
         }
 
-        /* HERO SECTION REDESIGN */
+        /* HERO SECTION */
         .hero {
             text-align: center;
             padding: 80px 20px 40px 20px;
@@ -116,7 +116,7 @@
             line-height: 1.6;
         }
 
-        /* SYSTEM METOD PŁATNOŚCI */
+        /* METODY PŁATNOŚCI */
         .pay-banner-v2 {
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(168, 85, 247, 0.15);
@@ -164,7 +164,7 @@
             color: #c084fc;
         }
 
-        /* SEKCJA KATEGORII - CYBER CARDS */
+        /* KATEGORIE */
         .categories-title {
             text-align: center;
             margin-bottom: 35px;
@@ -236,7 +236,7 @@
 
         .cyber-category-card.active i { color: #34d399; }
 
-        /* SEKCJE PRODUKTÓW */
+        /* KARTY PRODUKTÓW */
         .showcase-container {
             display: none;
             max-width: 1100px;
@@ -246,8 +246,9 @@
         }
 
         .sub-section-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
+            margin-top: 40px;
             margin-bottom: 25px;
             display: flex;
             align-items: center;
@@ -256,6 +257,8 @@
             border-left: 4px solid #a855f7;
             padding-left: 12px;
         }
+
+        .sub-section-title:first-child { margin-top: 0; }
 
         .showcase-grid {
             display: grid;
@@ -351,7 +354,7 @@
             color: #030207;
         }
 
-        /* PODSTRONA DETALI PRODUKTU PC */
+        /* KARTA PRODUKTU PC */
         #product-page-view {
             display: none;
             max-width: 1200px;
@@ -488,9 +491,6 @@
             line-height: 1.6;
         }
 
-        .rebuild-description-container strong { color: #ffffff; }
-
-        /* GRID DLA CECH GRY W OPISIE */
         .game-features-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -584,78 +584,122 @@
         </section>
 
         <div class="showcase-container" id="roblox">
-            <div class="sub-section-title"><i class="fas fa-gem"></i> Permanent Fruits & Gamepasses</div>
-            <div class="showcase-grid">
+            <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
+            <div class="showcase-grid" style="margin-bottom: 40px;">
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/dragon-perm', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-dragon"></i></div><span class="card-badge badge-purple">Perm</span></div>
-                    <div class="card-info-main"><h3>DRAGON Fruit</h3></div>
+                    <div class="card-info-main"><h3>DRAGON [PERM]</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">155 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/kitsune-perm', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-cat"></i></div><span class="card-badge badge-purple">Perm</span></div>
-                    <div class="card-info-main"><h3>KITSUNE Fruit</h3></div>
+                    <div class="card-info-main"><h3>KITSUNE [PERM]</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">135 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
-                </div>
-                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/dough-perm', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-cookie"></i></div><span class="card-badge badge-purple">Perm</span></div>
-                    <div class="card-info-main"><h3>DOUGH Fruit</h3></div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">110 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
-                </div>
-                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/leopard-perm', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-paw"></i></div><span class="card-badge badge-purple">Perm</span></div>
-                    <div class="card-info-main"><h3>LEOPARD Fruit</h3></div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">110 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/yeti-perm', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-snowflake"></i></div><span class="card-badge badge-purple">Perm</span></div>
-                    <div class="card-info-main"><h3>YETI Fruit</h3></div>
+                    <div class="card-info-main"><h3>YETI [PERM]</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/tiger-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-paw"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>TIGER [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/gas-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-wind"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>GAS [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/control-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-eye"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>Control [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/buddha-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-sun"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>BUDDHA [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">80 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/t-rex-perm', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-bone"></i></div><span class="card-badge badge-purple">Perm</span></div>
-                    <div class="card-info-main"><h3>T-REX Fruit</h3></div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">90 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                    <div class="card-info-main"><h3>T-Rex [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">75 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/gravity-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-meteor"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>Gravity [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">75 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/spirit-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-ghost"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>Spirit [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">75 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/venom-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-flask"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>Venom [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">75 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/mammoth-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-elephant"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>Mammoth [PERM]</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">75 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/portal-perm', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-door-open"></i></div><span class="card-badge badge-purple">Perm</span></div>
-                    <div class="card-info-main"><h3>PORTAL Fruit</h3></div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">85 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
-                </div>
-                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/buddha-perm', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-star"></i></div><span class="card-badge badge-purple">Perm</span></div>
-                    <div class="card-info-main"><h3>BUDDHA Fruit</h3></div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">80 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
-                </div>
-                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/fruit-notifier', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-bell"></i></div><span class="card-badge badge-blue">Pass</span></div>
-                    <div class="card-info-main"><h3>Fruit Notifier Pass</h3></div>
+                    <div class="card-info-main"><h3>Portal [PERM]</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">75 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
+            </div>
+
+            <div class="sub-section-title"><i class="fas fa-ticket"></i> Game Passy & Przedmioty</div>
+            <div class="showcase-grid">
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/fruit-notifier', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-bell"></i></div><span class="card-badge badge-blue">Premium</span></div>
+                    <div class="card-info-main"><h3>Fruit Notifier Pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/exp-boosts-24h', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-bolt"></i></div><span class="card-badge badge-blue">Premium</span></div>
+                    <div class="card-info-main"><h3>Exp Boosts 24h Pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/dark-blade', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-shield"></i></div><span class="card-badge badge-blue">Pass</span></div>
-                    <div class="card-info-main"><h3>Dark Blade (Yoru) Pass</h3></div>
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-sword"></i></div><span class="card-badge badge-blue">Premium</span></div>
+                    <div class="card-info-main"><h3>Dark Blade (Yoru)</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">65 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/2x-mastery', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-dumbbell"></i></div><span class="card-badge badge-blue">Pass</span></div>
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-dumbbell"></i></div><span class="card-badge badge-blue">Standard</span></div>
                     <div class="card-info-main"><h3>2x Mastery Pass</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">20 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/2x-money', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-coins"></i></div><span class="card-badge badge-blue">Pass</span></div>
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-coins"></i></div><span class="card-badge badge-blue">Standard</span></div>
                     <div class="card-info-main"><h3>2x Money Pass</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">20 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
-                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/fast-boats', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-ship"></i></div><span class="card-badge badge-blue">Pass</span></div>
-                    <div class="card-info-main"><h3>Fast Boats Pass</h3></div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">12 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/1-fruit-storage', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-box-archive"></i></div><span class="card-badge badge-blue">Standard</span></div>
+                    <div class="card-info-main"><h3>+1 Fruit Storage</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">20 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/faster-boats', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-ship"></i></div><span class="card-badge badge-blue">Standard</span></div>
+                    <div class="card-info-main"><h3>Faster Boats Pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">20 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/2x-drop-chance', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-clover"></i></div><span class="card-badge badge-blue">Standard</span></div>
+                    <div class="card-info-main"><h3>2x Drop Chance Pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">20 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
             </div>
         </div>
 
         <div class="showcase-container" id="games">
-            <div class="sub-section-title"><i class="fas fa-database"></i> Gry PC Premium (Full Access)</div>
+            <div class="sub-section-title"><i class="fas fa-desktop"></i> Gry PC Premium (Full Access)</div>
             <div class="showcase-grid">
                 <div class="cyber-product-card" onclick="openProductPageV2('eafc')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-soccer-ball"></i></div><span class="card-badge badge-green">FA Account</span></div>
@@ -681,7 +725,7 @@
         </div>
 
         <div class="showcase-container" id="streaming">
-            <div class="sub-section-title"><i class="fas fa-tv"></i> Subskrypcje & Konta Premium</div>
+            <div class="sub-section-title"><i class="fas fa-wand-magic-sparkles"></i> Usługi Strumieniowe Premium</div>
             <div class="showcase-grid">
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/netflix-premium', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-video"></i></div><span class="card-badge badge-purple">Streaming</span></div>
@@ -691,6 +735,11 @@
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/disney-premium', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-film"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>DISNEY+ Premium</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/crunchyroll', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-tv"></i></div><span class="card-badge badge-purple">Streaming</span></div>
+                    <div class="card-info-main"><h3>CRUNCHYROLL Mega Fan</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
             </div>
@@ -774,7 +823,7 @@
                     <br><br>
                     <div class="game-features-grid">
                         <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>Zaufane źródło. Zmiana maila, hasła i nicku na własne (100% własności).</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>SZYBKA REALIZACJA</strong><span>Dostawa na Twój address e-mail w zaledwie 2 do 15 minut od opłacenia zakupu!</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>SZYBKA REALIZACJA</strong><span>Dostawa na Twój adres e-mail w zaledwie 2 do 15 minut od opłacenia zakupu!</span></div></div>
                         <div class="game-feature-item"><i class="fas fa-gamepad"></i><div class="game-feature-text"><strong>RÓŻNE OPCJE</strong><span>Zestaw zawiera pełny Tryb Fabularny (Story Mode) oraz Red Dead Online.</span></div></div>
                         <div class="game-feature-item"><i class="fas fa-star"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>100% wsparcia technicznego i pewność działania bez blokad regionalnych.</span></div></div>
                     </div>
@@ -815,16 +864,13 @@
         };
 
         function showCategoryV2(categoryId, element) {
-            // Ukryj wszystkie sekcje
             document.getElementById('roblox').style.display = 'none';
             document.getElementById('games').style.display = 'none';
             document.getElementById('streaming').style.display = 'none';
             
-            // Usuń klasę aktywną ze wszystkich kart menu
             const cards = document.querySelectorAll('.cyber-category-card');
             cards.forEach(card => card.classList.remove('active'));
             
-            // Pokaż wybraną sekcję i dodaj klasę aktywną do klikniętej karty
             const selectedSection = document.getElementById(categoryId);
             if (selectedSection) {
                 selectedSection.style.display = 'block';
@@ -856,7 +902,6 @@
             window.scrollTo(0, 0);
         }
         
-        // Automatyczne załadowanie pierwszej kategorii (Roblox) przy wejściu na stronę
         window.addEventListener('DOMContentLoaded', () => {
             const firstCard = document.querySelector('.cyber-category-card');
             if(firstCard) showCategoryV2('roblox', firstCard);
