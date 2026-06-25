@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FO SHOP - Premium Store</title>
-    <!-- Ikony FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
@@ -171,14 +170,14 @@
             margin-bottom: 35px;
         }
 
-        .categories-title h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+        .categories-title h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 25px; }
 
         .categories-grid-v2 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             max-width: 1000px;
-            margin: 0 auto 70px auto;
+            margin: 0 auto 50px auto;
             padding: 0 20px;
         }
 
@@ -190,7 +189,7 @@
             background: linear-gradient(145deg, #0e0c15 0%, #07050b 100%);
             border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 20px;
-            padding: 40px 30px;
+            padding: 30px 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -207,14 +206,14 @@
         }
 
         .cyber-category-card i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #ffffff;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             transition: transform 0.3s ease;
         }
 
         .cyber-category-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
             letter-spacing: -0.3px;
         }
@@ -237,19 +236,31 @@
 
         .cyber-category-card.active i { color: #34d399; }
 
-        /* PRODUKTY - NOWY CYBER GRID */
+        /* SEKCJE PRODUKTÓW */
         .showcase-container {
             display: none;
             max-width: 1100px;
-            margin: 0 auto 100px auto;
+            margin: 0 auto 60px auto;
             padding: 0 20px;
+            animation: viewSlipIn 0.3s ease-out;
+        }
+
+        .sub-section-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e2e8f0;
+            border-left: 4px solid #a855f7;
+            padding-left: 12px;
         }
 
         .showcase-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
-            margin-top: 30px;
         }
 
         .cyber-product-card {
@@ -340,9 +351,7 @@
             color: #030207;
         }
 
-        /* -------------------------------------------------- */
-        /* TOTALNY REBUILD PODSTRONY PRODUKTU (KEYSER FIVEM V2) */
-        /* -------------------------------------------------- */
+        /* PODSTRONA DETALI PRODUKTU PC */
         #product-page-view {
             display: none;
             max-width: 1200px;
@@ -408,7 +417,6 @@
             margin-bottom: 30px;
         }
 
-        /* PURCHASE BOX REDESIGN */
         .rebuild-purchase-card {
             background: linear-gradient(135deg, #0b0912 0%, #050409 100%);
             border: 1px solid rgba(168, 85, 247, 0.25);
@@ -463,7 +471,6 @@
         .rebuild-buy-button-anchor:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 30px rgba(168, 85, 247, 0.5);
-            background: linear-gradient(135deg, #c084fc 0%, #b866ff 100%);
         }
 
         .rebuild-desc-header {
@@ -483,6 +490,25 @@
 
         .rebuild-description-container strong { color: #ffffff; }
 
+        /* GRID DLA CECH GRY W OPISIE */
+        .game-features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .game-feature-item {
+            display: flex;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .game-feature-item i { font-size: 1.3rem; color: #a855f7; margin-top: 3px; }
+        .game-feature-text strong { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+        .game-feature-text span { font-size: 0.85rem; color: #94a3b8; }
+
         .rebuild-checkout-footer {
             margin-top: 40px;
             background: rgba(255, 255, 255, 0.01);
@@ -498,7 +524,7 @@
         .rebuild-gateways-row { display: flex; gap: 18px; font-size: 1.6rem; color: #64748b; }
 
         @keyframes viewSlipIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -517,7 +543,6 @@
 
     <div class="ambient-glow"></div>
 
-    <!-- NAWIGACJA -->
     <nav class="navbar">
         <div class="logo" onclick="backToStorefront()">👑 FO <span>SHOP</span></div>
         <div class="nav-buttons">
@@ -525,14 +550,12 @@
         </div>
     </nav>
 
-    <!-- WIDOK 1: ODŚWIEŻONA STRONA GŁÓWNA (STOREFRONT) -->
     <div id="main-storefront">
         <header class="hero">
             <h1>Zmień zasady gry z<br><span>FO SHOP Premium</span></h1>
             <p>Najwyższa jakość, błyskawiczna wysyłka w kilka minut oraz stuprocentowa gwarancja satysfakcji na konta PC oraz produkty Roblox.</p>
         </header>
 
-        <!-- BEZPIECZNE METODY PŁATNOŚCI -->
         <section class="pay-banner-v2">
             <div class="pay-left">
                 <i class="fas fa-shield-halved"></i>
@@ -541,7 +564,6 @@
             <div class="pay-right-badge">⚠️ BLIK/Karta? Wybierz PayPal w koszyku!</div>
         </section>
 
-        <!-- WYBÓR KATEGORII -->
         <section class="categories-title">
             <h2>Przeglądaj asortyment sklepu</h2>
             
@@ -554,19 +576,18 @@
                     <i class="fas fa-desktop"></i>
                     <h3>Konta Gry PC</h3>
                 </div>
-                <div class="cyber-category-card" onclick="showCategory('streaming', this)">
+                <div class="cyber-category-card" onclick="showCategoryV2('streaming', this)">
                     <i class="fas fa-wand-magic-sparkles"></i>
                     <h3>Streaming</h3>
                 </div>
             </div>
         </section>
 
-        <!-- KATEGORIA A: ROBLOX -->
         <div class="showcase-container" id="roblox">
             <div class="sub-section-title"><i class="fas fa-gem"></i> Permanent Fruits & Gamepasses</div>
             <div class="showcase-grid">
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/dragon-perm', '_blank')">
-                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-fire"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-dragon"></i></div><span class="card-badge badge-purple">Perm</span></div>
                     <div class="card-info-main"><h3>DRAGON Fruit</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">155 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
@@ -575,66 +596,90 @@
                     <div class="card-info-main"><h3>KITSUNE Fruit</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">135 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/dough-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-cookie"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>DOUGH Fruit</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">110 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/leopard-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-paw"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>LEOPARD Fruit</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">110 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/yeti-perm', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-snowflake"></i></div><span class="card-badge badge-purple">Perm</span></div>
                     <div class="card-info-main"><h3>YETI Fruit</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/t-rex-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-bone"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>T-REX Fruit</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">90 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/portal-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-door-open"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>PORTAL Fruit</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">85 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/buddha-perm', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-star"></i></div><span class="card-badge badge-purple">Perm</span></div>
                     <div class="card-info-main"><h3>BUDDHA Fruit</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">80 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/fruit-notifier', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-bell"></i></div><span class="card-badge badge-blue">Pass</span></div>
+                    <div class="card-info-main"><h3>Fruit Notifier Pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">75 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/dark-blade', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-shield"></i></div><span class="card-badge badge-blue">Pass</span></div>
-                    <div class="card-info-main"><h3>Dark Blade pass</h3></div>
+                    <div class="card-info-main"><h3>Dark Blade (Yoru) Pass</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">65 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/2x-mastery', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-dumbbell"></i></div><span class="card-badge badge-blue">Pass</span></div>
+                    <div class="card-info-main"><h3>2x Mastery Pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">20 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/2x-money', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-coins"></i></div><span class="card-badge badge-blue">Pass</span></div>
                     <div class="card-info-main"><h3>2x Money Pass</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">20 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/fast-boats', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-ship"></i></div><span class="card-badge badge-blue">Pass</span></div>
+                    <div class="card-info-main"><h3>Fast Boats Pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">12 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
             </div>
         </div>
 
-        <!-- KATEGORIA B: KONTA GRY PC (KLIK OTWIERA DEDYKOWANĄ PODSTRONĘ) -->
         <div class="showcase-container" id="games">
             <div class="sub-section-title"><i class="fas fa-database"></i> Gry PC Premium (Full Access)</div>
             <div class="showcase-grid">
-                
-                <!-- EA FC 26 -->
                 <div class="cyber-product-card" onclick="openProductPageV2('eafc')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-soccer-ball"></i></div><span class="card-badge badge-green">FA Account</span></div>
                     <div class="card-info-main"><h3>EA SPORTS FC 26</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
-
-                <!-- RDR2 -->
                 <div class="cyber-product-card" onclick="openProductPageV2('rdr2')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-hat-cowboy"></i></div><span class="card-badge badge-green">FA Account</span></div>
                     <div class="card-info-main"><h3>Red Dead Redemption 2</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">50.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
-
-                <!-- GTA 5 -->
                 <div class="cyber-product-card" onclick="openProductPageV2('gta5')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-car"></i></div><span class="card-badge badge-green">FA Account</span></div>
                     <div class="card-info-main"><h3>Grand Theft Auto V</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">45.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
-
-                <!-- MINECRAFT -->
                 <div class="cyber-product-card" onclick="openProductPageV2('minecraft')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-cube"></i></div><span class="card-badge badge-green">FA Account</span></div>
                     <div class="card-info-main"><h3>Minecraft Premium Java/Bedrock</h3></div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">35.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
-
             </div>
         </div>
 
-        <!-- KATEGORIA C: STREAMING -->
         <div class="showcase-container" id="streaming">
             <div class="sub-section-title"><i class="fas fa-tv"></i> Subskrypcje & Konta Premium</div>
             <div class="showcase-grid">
@@ -652,24 +697,20 @@
         </div>
     </div>
 
-    <!-- WIDOK 2: NOWY, TOTALNIE PRZEBUDOWANY PANEL PRZEGLĄDU PRODUKTU -->
     <div id="product-page-view">
         <div class="back-to-shop-btn" onclick="backToStorefront()">
             <i class="fas fa-arrow-left-long"></i> Powrót do oferty sklepu
         </div>
 
         <div class="rebuild-product-layout">
-            <!-- LEWA STRONA: OBRAZEK -->
             <div class="rebuild-media-side">
                 <img id="p-view-image" src="" alt="Baner Gry">
             </div>
 
-            <!-- PRAWA STRONA: OPIS, KOSZYK I AKCJA -->
             <div class="rebuild-details-side">
                 <h2 id="p-view-title">Nazwa Produktu PC</h2>
                 <div class="rebuild-price-badge-top" id="p-view-price-top">0.00 PLN</div>
 
-                <!-- PANEL TRANSAKCJI -->
                 <div class="rebuild-purchase-card">
                     <div class="rebuild-status-bar">
                         <span>Dostawca: FO SHOP</span>
@@ -687,7 +728,6 @@
                     Opis gry...
                 </div>
 
-                <!-- STOPKA TRANSAKCJI -->
                 <div class="rebuild-checkout-footer">
                     <span>Szyfrowane połączenie SSL</span>
                     <div class="rebuild-gateways-row">
@@ -701,7 +741,6 @@
         </div>
     </div>
 
-    <!-- STOPKA -->
     <footer class="footer">
         &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone.<br>
         Strona internetowa jest własnością niezależną, niepowiązaną z Rockstar Games, Mojang Synergies, Electronic Arts ani Roblox Corporation.
@@ -710,7 +749,7 @@
     <script>
         const productsData = {
             eafc: {
-                title: "EA SPORTS FC 26 – Pełny Dostęp (PC)",
+                title: "EA SPORTS FC 26 Pełny Dostęp (PC)",
                 price: "100.00 PLN",
                 image: "eafc.png",
                 buyLink: "https://foshop.sell.app/product/ea-sports-fc-26",
@@ -726,7 +765,7 @@
                 `
             },
             rdr2: {
-                title: "Red Dead Redemption 2 – Pełny Dostęp (PC)",
+                title: "Red Dead Redemption 2 Pełny Dostęp (PC)",
                 price: "50.00 PLN",
                 image: "rdr2.png",
                 buyLink: "https://foshop.sell.app/product/red-dead-redemption-2",
@@ -735,14 +774,14 @@
                     <br><br>
                     <div class="game-features-grid">
                         <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>Zaufane źródło. Zmiana maila, hasła i nicku na własne (100% własności).</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>SZYBKA REALIZACJA</strong><span>Dostawa na Twój adres e-mail w zaledwie 2 do 15 minut od opłacenia zakupu!</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>SZYBKA REALIZACJA</strong><span>Dostawa na Twój address e-mail w zaledwie 2 do 15 minut od opłacenia zakupu!</span></div></div>
                         <div class="game-feature-item"><i class="fas fa-gamepad"></i><div class="game-feature-text"><strong>RÓŻNE OPCJE</strong><span>Zestaw zawiera pełny Tryb Fabularny (Story Mode) oraz Red Dead Online.</span></div></div>
                         <div class="game-feature-item"><i class="fas fa-star"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>100% wsparcia technicznego i pewność działania bez blokad regionalnych.</span></div></div>
                     </div>
                 `
             },
             gta5: {
-                title: "GTA 5 Premium Account – Rockstar Launcher",
+                title: "GTA 5 Premium Account Rockstar Launcher",
                 price: "45.00 PLN",
                 image: "gta5.png",
                 buyLink: "https://foshop.sell.app/product/grand-theft-auto-v",
@@ -758,7 +797,7 @@
                 `
             },
             minecraft: {
-                title: "Minecraft Premium Account – Pełny Dostęp (PC)",
+                title: "Minecraft Premium Account Pełny Dostęp (PC)",
                 price: "35.00 PLN",
                 image: "mincraft.png",
                 buyLink: "https://foshop.sell.app/product/minecraft-premium",
@@ -776,21 +815,23 @@
         };
 
         function showCategoryV2(categoryId, element) {
+            // Ukryj wszystkie sekcje
             document.getElementById('roblox').style.display = 'none';
             document.getElementById('games').style.display = 'none';
             document.getElementById('streaming').style.display = 'none';
             
+            // Usuń klasę aktywną ze wszystkich kart menu
             const cards = document.querySelectorAll('.cyber-category-card');
             cards.forEach(card => card.classList.remove('active'));
             
+            // Pokaż wybraną sekcję i dodaj klasę aktywną do klikniętej karty
             const selectedSection = document.getElementById(categoryId);
-            selectedSection.style.display = 'block';
-            
-            element.classList.add('active');
-            
-            setTimeout(() => {
-                selectedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 60);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+            if (element) {
+                element.classList.add('active');
+            }
         }
 
         function openProductPageV2(productId) {
@@ -815,7 +856,7 @@
             window.scrollTo(0, 0);
         }
         
-        // Auto-load pierwszej kategorii przy wejściu
+        // Automatyczne załadowanie pierwszej kategorii (Roblox) przy wejściu na stronę
         window.addEventListener('DOMContentLoaded', () => {
             const firstCard = document.querySelector('.cyber-category-card');
             if(firstCard) showCategoryV2('roblox', firstCard);
