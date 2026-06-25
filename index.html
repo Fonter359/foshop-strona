@@ -3,744 +3,711 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FO SHOP - Oficjalny Sklep</title>
+    <title>FO SHOP - Premium Store</title>
     <!-- Ikony FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #06040d;
+            background-color: #030207;
             color: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* NAWIGACJA */
+        /* TŁO NEONOWE - ANTY-NUDA */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(0,0,0,0) 70%);
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* CUSTOM NAVIGATION */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
-            background: rgba(6, 4, 13, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 20px 8%;
+            background: rgba(3, 2, 7, 0.75);
+            backdrop-filter: blur(16px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #ffffff;
-            letter-spacing: 2px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             cursor: pointer;
         }
 
         .logo span {
-            color: #a855f7;
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+            background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .btn-discord {
-            padding: 8px 18px;
-            border-radius: 8px;
+            padding: 10px 22px;
+            border-radius: 10px;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
-            color: #a855f7;
-            background-color: #1e1b4b;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            transition: all 0.2s;
+            color: #ffffff;
+            background: #5865F2;
+            box-shadow: 0 4px 20px rgba(88, 101, 242, 0.3);
+            transition: all 0.2s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .btn-discord:hover {
-            background-color: #a855f7;
-            color: #ffffff;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(88, 101, 242, 0.5);
         }
 
-        /* STRONA GŁÓWNA - KONTENER */
-        #main-storefront {
-            display: block;
-        }
-
-        /* HERO SECTION */
+        /* HERO SECTION REDESIGN */
         .hero {
             text-align: center;
-            padding: 70px 20px 30px 20px;
-            background: radial-gradient(circle at center, rgba(61, 43, 122, 0.15) 0%, rgba(6, 4, 13, 0) 70%);
+            padding: 80px 20px 40px 20px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
         .hero h1 span {
-            color: #a855f7;
-            text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+            background: linear-gradient(135deg, #34d399 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
             color: #94a3b8;
             font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 25px auto;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        /* BANER PŁATNOŚCI */
-        .payment-banner {
-            background: linear-gradient(90deg, rgba(14, 116, 144, 0.2) 0%, rgba(108, 82, 202, 0.2) 50%, rgba(14, 116, 144, 0.2) 100%);
-            border: 2px solid #a855f7;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-            border-radius: 12px;
-            max-width: 850px;
-            margin: 0 auto 40px auto;
-            padding: 20px 25px;
-            text-align: center;
+        /* SYSTEM METOD PŁATNOŚCI */
+        .pay-banner-v2 {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            border-radius: 16px;
+            max-width: 900px;
+            margin: 30px auto 60px auto;
+            padding: 16px 25px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .payment-title-wrap {
+        @media(max-width: 768px) {
+            .pay-banner-v2 { flex-direction: column; text-align: center; justify-content: center; }
+        }
+
+        .pay-left {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .payment-banner i {
-            font-size: 1.6rem;
-            color: #38bdf8;
-            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+        .pay-left i {
+            font-size: 1.4rem;
+            color: #34d399;
         }
 
-        .payment-banner p {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .payment-banner p span {
-            color: #38bdf8;
-        }
-
-        .payment-instruction {
-            font-size: 0.95rem;
-            color: #a78bfa;
+        .pay-left p {
             font-weight: 600;
-            background: rgba(167, 139, 250, 0.1);
-            padding: 6px 15px;
-            border-radius: 6px;
-            border: 1px dashed rgba(167, 139, 250, 0.3);
+            font-size: 1rem;
+            color: #e2e8f0;
         }
 
-        /* SEKCJA WYBORU KATEGORII */
-        .categories-explore {
-            text-align: center;
-            max-width: 1100px;
-            margin: 0 auto 40px auto;
-            padding: 0 20px;
-        }
+        .pay-left p span { color: #38bdf8; }
 
-        .categories-explore h2 {
-            font-size: 1.8rem;
+        .pay-right-badge {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px dashed #a855f7;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            color: #c084fc;
         }
 
-        .categories-explore p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
+        /* SEKCJA KATEGORII - CYBER CARDS */
+        .categories-title {
+            text-align: center;
+            margin-bottom: 35px;
         }
 
-        .category-grid {
+        .categories-title h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+
+        .categories-grid-v2 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .category-card {
-            background: #0d0b18;
-            border: 1px solid rgba(168, 85, 247, 0.15);
-            border-radius: 16px;
-            padding: 35px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .category-card i {
-            font-size: 2.3rem;
-            color: #a855f7;
-        }
-
-        .category-card span {
-            font-size: 1.15rem;
-            font-weight: 700;
-        }
-
-        .category-card:hover, .category-card.active {
-            border-color: #a855f7;
-            background: #120e24;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
-            transform: translateY(-4px);
-        }
-
-        /* STRUKTURA LISTY PRODUKTÓW */
-        .shop-section {
-            display: none;
-            max-width: 900px;
-            margin: 40px auto 80px auto;
+            max-width: 1000px;
+            margin: 0 auto 70px auto;
             padding: 0 20px;
         }
 
-        .section-header {
-            font-size: 1.6rem;
+        @media(max-width: 768px) {
+            .categories-grid-v2 { grid-template-columns: 1fr; }
+        }
+
+        .cyber-category-card {
+            background: linear-gradient(145deg, #0e0c15 0%, #07050b 100%);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-category-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cyber-category-card i {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .cyber-category-card h3 {
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #2d234f;
-            padding-bottom: 8px;
+            letter-spacing: -0.3px;
         }
 
-        .sub-section-title {
-            font-size: 1.15rem;
-            color: #94a3b8;
-            font-weight: 600;
-            margin: 25px 0 15px 5px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .cyber-category-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.1);
         }
 
-        .product-list {
+        .cyber-category-card:hover i {
+            transform: scale(1.1);
+            color: #a855f7;
+        }
+
+        .cyber-category-card.active {
+            border-color: #34d399;
+            box-shadow: 0 10px 30px rgba(52, 211, 153, 0.1);
+        }
+
+        .cyber-category-card.active i { color: #34d399; }
+
+        /* PRODUKTY - NOWY CYBER GRID */
+        .showcase-container {
+            display: none;
+            max-width: 1100px;
+            margin: 0 auto 100px auto;
+            padding: 0 20px;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .cyber-product-card {
+            background: #09070f;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            justify-content: space-between;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
 
-        .product-item {
-            background: #0d0b18;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+        .cyber-product-card:hover {
+            border-color: rgba(168, 85, 247, 0.3);
+            background: #0d0a17;
+            transform: translateY(-3px);
+        }
+
+        .card-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .card-icon-wrap {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px;
             border-radius: 12px;
-            padding: 18px 25px;
+            font-size: 1.2rem;
+            color: #c084fc;
+        }
+
+        .cyber-product-card:hover .card-icon-wrap {
+            color: #ffffff;
+            background: #a855f7;
+            border-color: #a855f7;
+        }
+
+        .card-badge {
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-purple { background: rgba(168, 85, 247, 0.12); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.2); }
+        .badge-blue { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); }
+        .badge-green { background: rgba(52, 211, 153, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.2); }
+
+        .card-info-main h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .card-footer-price-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 15px;
+        }
+
+        .card-price-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: 600; }
+        .card-price-val { font-size: 1.3rem; font-weight: 800; color: #ffffff; }
+
+        .card-arrow-btn {
+            background: rgba(255, 255, 255, 0.03);
+            width: 38px; height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            transition: all 0.2s ease;
+        }
+
+        .cyber-product-card:hover .card-arrow-btn {
+            background: #ffffff;
+            color: #030207;
+        }
+
+        /* -------------------------------------------------- */
+        /* TOTALNY REBUILD PODSTRONY PRODUKTU (KEYSER FIVEM V2) */
+        /* -------------------------------------------------- */
+        #product-page-view {
+            display: none;
+            max-width: 1200px;
+            margin: 40px auto 100px auto;
+            padding: 0 40px;
+            animation: viewSlipIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .back-to-shop-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        .product-item:hover {
-            transform: translateY(-2px);
-            border-color: rgba(168, 85, 247, 0.3);
-            background: #110e22;
-        }
-
-        .product-featured {
-            background: linear-gradient(95deg, #16102b 0%, #0d0b18 100%);
-            border: 1px solid #a855f7;
-        }
-
-        .product-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .product-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .badge {
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 6px;
-            text-transform: uppercase;
-        }
-
-        .badge-roblox { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
-        .badge-streaming { background: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.3); }
-        .badge-game { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-
-        .product-btn {
-            background-color: #a855f7;
+        .back-to-shop-btn:hover {
             color: #ffffff;
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 10px 22px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        /* DEDYKOWANA STRONA PRODUKTU */
-        #product-page-view {
-            display: none;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 40px;
-            animation: pageFadeIn 0.4s ease-in-out;
-        }
-
-        .back-to-shop-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #a855f7;
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 30px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .back-to-shop-link:hover {
-            color: #c084fc;
-        }
-
-        .single-product-container {
+        .rebuild-product-layout {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 50px;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
             align-items: start;
         }
 
-        @media (max-width: 900px) {
-            .single-product-container { grid-template-columns: 1fr; gap: 30px; }
+        @media(max-width: 992px) {
+            .rebuild-product-layout { grid-template-columns: 1fr; gap: 40px; }
         }
 
-        .single-product-image-side img {
+        .rebuild-media-side img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
         }
 
-        .single-product-info-side h2 {
-            font-size: 2.4rem;
+        .rebuild-details-side h2 {
+            font-size: 2.6rem;
             font-weight: 800;
-            margin-bottom: 10px;
-            color: #ffffff;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+            line-height: 1.1;
         }
 
-        .single-product-price-range {
-            font-size: 1.4rem;
+        .rebuild-price-badge-top {
+            font-size: 1.5rem;
+            font-weight: 800;
             color: #34d399;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .single-product-desc-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #ffffff;
-            border-bottom: 1px solid #2d234f;
-            padding-bottom: 6px;
-            margin-top: 10px;
-        }
-
-        .single-product-description {
-            font-size: 0.95rem;
-            color: #94a3b8;
-            line-height: 1.6;
             margin-bottom: 30px;
         }
 
-        .single-product-description ul {
-            margin-top: 10px;
-            margin-left: 20px;
+        /* PURCHASE BOX REDESIGN */
+        .rebuild-purchase-card {
+            background: linear-gradient(135deg, #0b0912 0%, #050409 100%);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 35px;
+            position: relative;
         }
 
-        .single-product-description li {
-            margin-bottom: 6px;
-        }
-
-        /* SKRZYNKA ZAKUPU */
-        .purchase-card-box {
-            background: #0d0b18;
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-        }
-
-        .stock-status-row {
+        .rebuild-status-bar {
             display: flex;
             justify-content: space-between;
+            font-size: 0.85rem;
             color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .stock-green { color: #34d399; font-weight: 600; }
-
-        .final-price-large {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             margin-bottom: 20px;
         }
 
-        .action-button-large {
+        .status-online-tag { color: #34d399; display: flex; align-items: center; gap: 6px; }
+        .status-online-tag::before { content: ''; width: 8px; height: 8px; background: #34d399; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #34d399; }
+
+        .rebuild-large-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .rebuild-buy-button-anchor {
             width: 100%;
-            background: #a855f7;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            font-weight: 700;
+            background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+            color: #ffffff;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 800;
             font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .action-button-large:hover { background: #c084fc; }
-
-        /* BANER BEZPIECZNYCH PŁATNOŚCI */
-        .guaranteed-checkout-box {
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .checkout-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #64748b;
-            margin-bottom: 12px;
-        }
-
-        .checkout-logos {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            font-size: 1.6rem;
-            color: #94a3b8;
-        }
-
-        .game-features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .game-feature-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 8px;
-            padding: 12px 15px;
-            display: flex;
-            align-items: flex-start;
             gap: 12px;
+            box-shadow: 0 4px 25px rgba(168, 85, 247, 0.35);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
         }
 
-        .game-feature-item i {
-            color: #a855f7;
-            font-size: 1.1rem;
-            margin-top: 2px;
+        .rebuild-buy-button-anchor:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(168, 85, 247, 0.5);
+            background: linear-gradient(135deg, #c084fc 0%, #b866ff 100%);
         }
 
-        .game-feature-text strong {
-            display: block;
-            font-size: 0.9rem;
+        .rebuild-desc-header {
+            font-size: 1.25rem;
+            font-weight: 700;
             color: #ffffff;
-            margin-bottom: 2px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
         }
 
-        .game-feature-text span {
-            font-size: 0.85rem;
-            color: #64748b;
-            line-height: 1.4;
+        .rebuild-description-container {
+            font-size: 1rem;
+            color: #94a3b8;
+            line-height: 1.6;
         }
 
-        @keyframes pageFadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        .rebuild-description-container strong { color: #ffffff; }
+
+        .rebuild-checkout-footer {
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rebuild-checkout-footer span { font-size: 0.75rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+        .rebuild-gateways-row { display: flex; gap: 18px; font-size: 1.6rem; color: #64748b; }
+
+        @keyframes viewSlipIn {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: #334155;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            margin-top: 100px;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
-    <!-- PASEK NAWIGACJI -->
+    <div class="ambient-glow"></div>
+
+    <!-- NAWIGACJA -->
     <nav class="navbar">
         <div class="logo" onclick="backToStorefront()">👑 FO <span>SHOP</span></div>
         <div class="nav-buttons">
-            <a href="https://discord.gg/65zCezTq3p" target="_blank" class="btn-nav btn-discord"><i class="fab fa-discord"></i> Discord</a>
+            <a href="https://discord.gg/65zCezTq3p" target="_blank" class="btn-discord"><i class="fab fa-discord"></i> Serwer Discord</a>
         </div>
     </nav>
 
-    <!-- WIDOK 1: STRONA GŁÓWNA SKLEPU -->
+    <!-- WIDOK 1: ODŚWIEŻONA STRONA GŁÓWNA (STOREFRONT) -->
     <div id="main-storefront">
         <header class="hero">
-            <h1>Szukasz produktów do gier?<br><span>Mamy wszystko.</span></h1>
-            <p>Najlepsza jakość, błyskawiczna realizacja zamówień oraz pełne wsparcie dla produktów PC i Roblox.</p>
+            <h1>Zmień zasady gry z<br><span>FO SHOP Premium</span></h1>
+            <p>Najwyższa jakość, błyskawiczna wysyłka w kilka minut oraz stuprocentowa gwarancja satysfakcji na konta PC oraz produkty Roblox.</p>
         </header>
 
-        <section class="payment-banner">
-            <div class="payment-title-wrap">
-                <i class="fas fa-credit-card"></i>
-                <p>Akceptujemy płatności: <span>BLIK</span>, <span>Kartę</span>, <span>Przelew</span> oraz <span>PayPal</span>!</p>
+        <!-- BEZPIECZNE METODY PŁATNOŚCI -->
+        <section class="pay-banner-v2">
+            <div class="pay-left">
+                <i class="fas fa-shield-halved"></i>
+                <p>Bezpieczne bramki płatnicze: <span>BLIK</span>, <span>Karta</span>, <span>Przelew</span> oraz <span>PayPal</span></p>
             </div>
-            <p class="payment-instruction">⚠️ WAŻNE: Aby zapłacić BLIKIEM, kartą lub przelewem, wybierz opcję "Purchase with PayPal" w koszyku!</p>
+            <div class="pay-right-badge">⚠️ BLIK/Karta? Wybierz PayPal w koszyku!</div>
         </section>
 
-        <section class="categories-explore">
-            <h2>Przeglądaj kategorie</h2>
-            <p>Wybierz interesującą Cię kategorię, aby wyświetlić dostępne produkty.</p>
+        <!-- WYBÓR KATEGORII -->
+        <section class="categories-title">
+            <h2>Przeglądaj asortyment sklepu</h2>
             
-            <div class="category-grid">
-                <div class="category-card" onclick="showCategory('roblox', this)">
+            <div class="categories-grid-v2">
+                <div class="cyber-category-card" onclick="showCategoryV2('roblox', this)">
                     <i class="fas fa-gamepad"></i>
-                    <span>Roblox</span>
+                    <h3>Roblox Store</h3>
                 </div>
-                <div class="category-card" onclick="showCategory('games', this)">
+                <div class="cyber-category-card" onclick="showCategoryV2('games', this)">
                     <i class="fas fa-desktop"></i>
-                    <span>Gry PC</span>
+                    <h3>Konta Gry PC</h3>
                 </div>
-                <div class="category-card" onclick="showCategory('streaming', this)">
-                    <i class="fas fa-tv"></i>
-                    <span>Streaming</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- KATEGORIA: ROBLOX -->
-        <section class="shop-section" id="roblox">
-            <div class="section-header">🎮 Sklep Roblox</div>
-            <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
-            <div class="product-list">
-                <div class="product-item product-featured" onclick="window.open('https://foshop.sell.app/product/dragon-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🔥 DRAGON</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">155 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/kitsune-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🦊 KITSUNE</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">135 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/yeti-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">❄️ YETI</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">100 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/tiger-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🐯 TIGER</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">100 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/gas-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">💨 GAS</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">100 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/control-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">👁️ Control</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">100 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/buddha-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🌟 BUDDHA</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">80 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/t-rex-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🦖 T-Rex</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">75 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/gravity-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🌌 Gravity</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">75 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/spirit-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">👻 Spirit</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">75 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/venom-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🧪 Venom</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">75 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/mammoth-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🦣 Mammoth</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">75 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/portal-perm', '_blank')">
-                    <div class="product-info"><span class="product-title">🌀 Portal</span><span class="badge badge-roblox">PERM</span></div>
-                    <button class="product-btn">75 PLN</button>
-                </div>
-            </div>
-
-            <div class="sub-section-title"><i class="fas fa-ticket"></i> Gamepassy & Przedmioty</div>
-            <div class="product-list">
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/fruit-notifier', '_blank')">
-                    <div class="product-info"><span class="product-title">📡 Fruit Notifier</span></div><button class="product-btn">100 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/exp-boosts-24h', '_blank')">
-                    <div class="product-info"><span class="product-title">⚡ Exp Boosts 24h</span></div><button class="product-btn">100 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/dark-blade', '_blank')">
-                    <div class="product-info"><span class="product-title">⚔️ Dark Blade</span></div><button class="product-btn">65 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/2x-mastery', '_blank')">
-                    <div class="product-info"><span class="product-title">📜 2x Mastery</span></div><button class="product-btn">20 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/2x-money', '_blank')">
-                    <div class="product-info"><span class="product-title">💰 2x Money</span></div><button class="product-btn">20 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/1-fruit-storage', '_blank')">
-                    <div class="product-info"><span class="product-title">📦 +1 Fruit Storage</span></div><button class="product-btn">20 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/faster-boats', '_blank')">
-                    <div class="product-info"><span class="product-title">⛵ Faster Boats</span></div><button class="product-btn">20 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/2x-drop-chance', '_blank')">
-                    <div class="product-info"><span class="product-title">🍀 2x Drop Chance</span></div><button class="product-btn">20 PLN</button>
+                <div class="cyber-category-card" onclick="showCategory('streaming', this)">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <h3>Streaming</h3>
                 </div>
             </div>
         </section>
 
-        <!-- KATEGORIA: GRY PC -->
-        <section class="shop-section" id="games">
-            <div class="section-header"><span>💾</span> Gry PC (Social Club / Launcher Accounts)</div>
-            <div class="product-list">
+        <!-- KATEGORIA A: ROBLOX -->
+        <div class="showcase-container" id="roblox">
+            <div class="sub-section-title"><i class="fas fa-gem"></i> Permanent Fruits & Gamepasses</div>
+            <div class="showcase-grid">
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/dragon-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-fire"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>DRAGON Fruit</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">155 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/kitsune-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-cat"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>KITSUNE Fruit</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">135 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/yeti-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-snowflake"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>YETI Fruit</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/buddha-perm', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-star"></i></div><span class="card-badge badge-purple">Perm</span></div>
+                    <div class="card-info-main"><h3>BUDDHA Fruit</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">80 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/dark-blade', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-shield"></i></div><span class="card-badge badge-blue">Pass</span></div>
+                    <div class="card-info-main"><h3>Dark Blade pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">65 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/2x-money', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-coins"></i></div><span class="card-badge badge-blue">Pass</span></div>
+                    <div class="card-info-main"><h3>2x Money Pass</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">20 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORIA B: KONTA GRY PC (KLIK OTWIERA DEDYKOWANĄ PODSTRONĘ) -->
+        <div class="showcase-container" id="games">
+            <div class="sub-section-title"><i class="fas fa-database"></i> Gry PC Premium (Full Access)</div>
+            <div class="showcase-grid">
                 
                 <!-- EA FC 26 -->
-                <div class="product-item product-featured" onclick="openProductPage('eafc')">
-                    <div class="product-info">
-                        <span class="product-title">⚽ EA SPORTS FC 26</span>
-                        <span class="badge badge-game">Full Access</span>
-                    </div>
-                    <button class="product-btn">100 PLN</button>
+                <div class="cyber-product-card" onclick="openProductPageV2('eafc')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-soccer-ball"></i></div><span class="card-badge badge-green">FA Account</span></div>
+                    <div class="card-info-main"><h3>EA SPORTS FC 26</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">100.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
 
                 <!-- RDR2 -->
-                <div class="product-item" onclick="openProductPage('rdr2')">
-                    <div class="product-info">
-                        <span class="product-title">🤠 Red Dead Redemption 2</span>
-                        <span class="badge badge-game">Full Access</span>
-                    </div>
-                    <button class="product-btn">50 PLN</button>
+                <div class="cyber-product-card" onclick="openProductPageV2('rdr2')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-hat-cowboy"></i></div><span class="card-badge badge-green">FA Account</span></div>
+                    <div class="card-info-main"><h3>Red Dead Redemption 2</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">50.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
 
                 <!-- GTA 5 -->
-                <div class="product-item" onclick="openProductPage('gta5')">
-                    <div class="product-info">
-                        <span class="product-title">🚗 Grand Theft Auto V (GTA 5)</span>
-                        <span class="badge badge-game">Full Access</span>
-                    </div>
-                    <button class="product-btn">45 PLN</button>
+                <div class="cyber-product-card" onclick="openProductPageV2('gta5')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-car"></i></div><span class="card-badge badge-green">FA Account</span></div>
+                    <div class="card-info-main"><h3>Grand Theft Auto V</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">45.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
 
                 <!-- MINECRAFT -->
-                <div class="product-item" onclick="openProductPage('minecraft')">
-                    <div class="product-info">
-                        <span class="product-title">🟩 Minecraft Premium Account</span>
-                        <span class="badge badge-game">Full Access</span>
-                    </div>
-                    <button class="product-btn">35 PLN</button>
+                <div class="cyber-product-card" onclick="openProductPageV2('minecraft')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-cube"></i></div><span class="card-badge badge-green">FA Account</span></div>
+                    <div class="card-info-main"><h3>Minecraft Premium Java/Bedrock</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">35.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
 
             </div>
-        </section>
-
-        <!-- KATEGORIA: STREAMING -->
-        <section class="shop-section" id="streaming">
-            <div class="section-header">📺 Usługi Streamingowe</div>
-            <div class="product-list">
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/netflix-premium', '_blank')">
-                    <div class="product-info"><span class="product-title">🍿 NETFLIX</span><span class="badge badge-streaming">PREMIUM</span></div>
-                    <button class="product-btn">15 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/disney-premium', '_blank')">
-                    <div class="product-info"><span class="product-title">🏰 DISNEY+</span><span class="badge badge-streaming">PREMIUM</span></div>
-                    <button class="product-btn">10 PLN</button>
-                </div>
-                <div class="product-item" onclick="window.open('https://foshop.sell.app/product/crunchyroll', '_blank')">
-                    <div class="product-info"><span class="product-title">🍣 CRUNCHYROLL</span><span class="badge badge-streaming">MEGA FAN</span></div>
-                    <button class="product-btn">10 PLN</button>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- WIDOK 2: DEDYKOWANA STRONA PRODUKTU -->
-    <div id="product-page-view">
-        <div class="back-to-shop-link" onclick="backToStorefront()">
-            <i class="fas fa-arrow-left"></i> Wróć do sklepu
         </div>
 
-        <div class="single-product-container">
-            <div class="single-product-image-side">
-                <img id="p-view-image" src="" alt="Produkt">
+        <!-- KATEGORIA C: STREAMING -->
+        <div class="showcase-container" id="streaming">
+            <div class="sub-section-title"><i class="fas fa-tv"></i> Subskrypcje & Konta Premium</div>
+            <div class="showcase-grid">
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/netflix-premium', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-video"></i></div><span class="card-badge badge-purple">Streaming</span></div>
+                    <div class="card-info-main"><h3>NETFLIX Premium 4K</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">15.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/disney-premium', '_blank')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-film"></i></div><span class="card-badge badge-purple">Streaming</span></div>
+                    <div class="card-info-main"><h3>DISNEY+ Premium</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WIDOK 2: NOWY, TOTALNIE PRZEBUDOWANY PANEL PRZEGLĄDU PRODUKTU -->
+    <div id="product-page-view">
+        <div class="back-to-shop-btn" onclick="backToStorefront()">
+            <i class="fas fa-arrow-left-long"></i> Powrót do oferty sklepu
+        </div>
+
+        <div class="rebuild-product-layout">
+            <!-- LEWA STRONA: OBRAZEK -->
+            <div class="rebuild-media-side">
+                <img id="p-view-image" src="" alt="Baner Gry">
             </div>
 
-            <div class="single-product-info-side">
-                <h2 id="p-view-title">Nazwa Produktu</h2>
-                <div class="single-product-price-range" id="p-view-price-top">0.00 PLN</div>
+            <!-- PRAWA STRONA: OPIS, KOSZYK I AKCJA -->
+            <div class="rebuild-details-side">
+                <h2 id="p-view-title">Nazwa Produktu PC</h2>
+                <div class="rebuild-price-badge-top" id="p-view-price-top">0.00 PLN</div>
 
-                <div class="purchase-card-box">
-                    <div class="stock-status-row">
-                        <span>Status produktu:</span>
-                        <span class="stock-green"><i class="fas fa-check"></i> W magazynie</span>
+                <!-- PANEL TRANSAKCJI -->
+                <div class="rebuild-purchase-card">
+                    <div class="rebuild-status-bar">
+                        <span>Dostawca: FO SHOP</span>
+                        <span class="status-online-tag">Automatyczna wysyłka</span>
                     </div>
-                    <div class="final-price-large" id="p-view-price-main">0.00 PLN</div>
+                    <div class="rebuild-large-price" id="p-view-price-main">0.00 PLN</div>
                     
-                    <a id="p-view-buy-btn" href="" target="_blank" class="action-button-large">
-                        <i class="fas fa-shopping-cart"></i> Kup Teraz
+                    <a id="p-view-buy-btn" href="" target="_blank" class="rebuild-buy-button-anchor">
+                        <i class="fas fa-bolt"></i> Zamów i Odbierz Teraz
                     </a>
                 </div>
 
-                <div class="single-product-desc-title">Opis produktu</div>
-                <div class="single-product-description" id="p-view-description">
-                    Treść opisu...
+                <div class="rebuild-desc-header">Pełna specyfikacja produktu</div>
+                <div class="rebuild-description-container" id="p-view-description">
+                    Opis gry...
                 </div>
 
-                <div class="guaranteed-checkout-box">
-                    <div class="checkout-title">Gwarantowane bezpieczne płatności</div>
-                    <div class="checkout-logos">
-                        <i class="fab fa-cc-paypal" style="color: #003087;"></i>
-                        <i class="fab fa-cc-visa" style="color: #1a1f71;"></i>
-                        <i class="fab fa-cc-mastercard" style="color: #eb001b;"></i>
-                        <i class="fas fa-mobile-alt" style="color: #34d399;"></i>
+                <!-- STOPKA TRANSAKCJI -->
+                <div class="rebuild-checkout-footer">
+                    <span>Szyfrowane połączenie SSL</span>
+                    <div class="rebuild-gateways-row">
+                        <i class="fab fa-cc-paypal" style="color:#00457c;"></i>
+                        <i class="fab fa-cc-visa" style="color:#1a1f71;"></i>
+                        <i class="fab fa-cc-mastercard" style="color:#eb001b;"></i>
+                        <i class="fas fa-mobile-screen-button" style="color:#34d399;"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- STOPKA -->
     <footer class="footer">
-        &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone. Strona nie jest powiązana z Rockstar Games, Mojang, EA Sports, Roblox Corporation ani wymienionymi platformami streamingowymi.
+        &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone.<br>
+        Strona internetowa jest własnością niezależną, niepowiązaną z Rockstar Games, Mojang Synergies, Electronic Arts ani Roblox Corporation.
     </footer>
 
     <script>
-        // WYCZYSZCZONE, PROSTE RELATYWNE ŚCIEŻKI DO PLIKÓW - BEZ BŁĘDÓW!
         const productsData = {
             eafc: {
                 title: "EA SPORTS FC 26 – Pełny Dostęp (PC)",
@@ -748,7 +715,7 @@
                 image: "eafc.png",
                 buyLink: "https://foshop.sell.app/product/ea-sports-fc-26",
                 description: `
-                    Zyskaj pełny dostęp (Full Access) do konto platformy EA z najnowszą odsłoną kultowej serii piłkarskiej – EA SPORTS FC 26 na PC! Graj więcej, wygrywaj więcej.
+                    Zyskaj pełny dostęp (Full Access) do konta platformy EA z najnowszą odsłoną kultowej serii piłkarskiej – EA SPORTS FC 26 na PC! Graj więcej, wygrywaj więcej.
                     <br><br>
                     <div class="game-features-grid">
                         <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>100% własności. Dowolna zmiana adresu e-mail, hasła oraz loginu.</span></div></div>
@@ -761,7 +728,7 @@
             rdr2: {
                 title: "Red Dead Redemption 2 – Pełny Dostęp (PC)",
                 price: "50.00 PLN",
-                image: "rdr2.png", // DOKŁADNA NAZWA Z MAŁYCH LITER
+                image: "rdr2.png",
                 buyLink: "https://foshop.sell.app/product/red-dead-redemption-2",
                 description: `
                     Kupujesz pełny dostęp (Full Access) do konta Rockstar Games Social Club z grą Red Dead Redemption 2 na PC! Stań się legendą Dzikiego Zachodu w jednej z najlepiej ocenianych gier wszech czasów.
@@ -777,7 +744,7 @@
             gta5: {
                 title: "GTA 5 Premium Account – Rockstar Launcher",
                 price: "45.00 PLN",
-                image: "gta5.png", // DOKŁADNA NAZWA Z MAŁYCH LITER
+                image: "gta5.png",
                 buyLink: "https://foshop.sell.app/product/grand-theft-auto-v",
                 description: `
                     Zyskaj pełny dostęp (Full Access) do konta Social Club z dodatkowym losowym bonusem gotówkowym w GTA Online! Podbij Los Santos i stwórz własne imperium przestępcze.
@@ -808,12 +775,12 @@
             }
         };
 
-        function showCategory(categoryId, element) {
+        function showCategoryV2(categoryId, element) {
             document.getElementById('roblox').style.display = 'none';
             document.getElementById('games').style.display = 'none';
             document.getElementById('streaming').style.display = 'none';
             
-            const cards = document.querySelectorAll('.category-card');
+            const cards = document.querySelectorAll('.cyber-category-card');
             cards.forEach(card => card.classList.remove('active'));
             
             const selectedSection = document.getElementById(categoryId);
@@ -822,11 +789,11 @@
             element.classList.add('active');
             
             setTimeout(() => {
-                selectedSection.scrollIntoView({ behavior: 'smooth' });
-            }, 50);
+                selectedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 60);
         }
 
-        function openProductPage(productId) {
+        function openProductPageV2(productId) {
             const product = productsData[productId];
             if (!product) return;
 
@@ -847,6 +814,12 @@
             document.getElementById('main-storefront').style.display = 'block';
             window.scrollTo(0, 0);
         }
+        
+        // Auto-load pierwszej kategorii przy wejściu
+        window.addEventListener('DOMContentLoaded', () => {
+            const firstCard = document.querySelector('.cyber-category-card');
+            if(firstCard) showCategoryV2('roblox', firstCard);
+        });
     </script>
 </body>
 </html>
