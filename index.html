@@ -844,14 +844,16 @@
         </div>
     </div>
 
+    <nav style="display:none;" id="active-product-tracker" data-current=""></nav>
+
     <footer class="footer">
         &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone.<br>
         Strona internetowa jest własnością niezależną, niepowiązaną z Rockstar Games, Mojang Synergies, Electronic Arts ani Roblox Corporation.
     </footer>
 
     <script>
-        // KONFIGURACJA TWOJEGO API Z SELL.APP
-        // Wklej tutaj swój klucz token z Sell.app (Panel boczny -> Developers -> API Tokens)
+        // ======= KONFIGURACJA API Z SELL.APP =======
+        // Wklej tutaj swój klucz token wygenerowany z Sell.app (Panel boczny -> Developers -> API Tokens)
         const SELL_APP_API_TOKEN = "TWÓJ_KLUCZ_API_Z_SELL_APP"; 
 
         const productsData = {
@@ -898,13 +900,12 @@
                 description: `W pełni zweryfikowane, starsze konta Discord z co najmniej 3-miesięcznym stażem.`
             },
             
-            // PRODUKTY STREAMING (Obsługiwane dynamicznie przez API)
+            // PRODUKTY STREAMING (Pobierające wartości na żywo i zapętlone przez interwał)
             netflix: {
                 title: "NETFLIX Premium 4K UHD",
                 price: "15.00 PLN",
                 image: "netflix.png",
                 buyLink: "https://foshop.sell.app/product/netflix-premium",
-                sellAppId: null, // Możesz tu wpisać liczbowe ID produktu z Sell.app lub skrypt dopasuje go po tytule/linku
                 stock: 0,
                 description: `Dostęp do konta premium Netflix w najwyższej jakości Ultra HD 4K.`
             },
@@ -913,7 +914,6 @@
                 price: "10.00 PLN",
                 image: "disney.png",
                 buyLink: "https://foshop.sell.app/product/disney-premium",
-                sellAppId: null,
                 stock: 0,
                 description: `Pełny dostęp premium do platformy Disney+.`
             },
@@ -922,21 +922,20 @@
                 price: "10.00 PLN",
                 image: "crunchyroll.png",
                 buyLink: "https://foshop.sell.app/product/crunchyroll",
-                sellAppId: null,
                 stock: 0,
                 description: `Konto Crunchyroll w wersji Mega Fan.`
             }
         };
 
-        // Funkcja pobierająca dane prosto z Twojego sklepu Sell.app
+        // Funkcja pobierająca dane prosto z Twojego sklepu Sell.app z pętli czasowej
         async function fetchSellAppStock() {
             if (SELL_APP_API_TOKEN === "TWÓJ_KLUCZ_API_Z_SELL_APP") {
-                console.log("Nie ustawiono tokenu API. Wyświetlam domyślne stany.");
-                // Domyślne wartości zastępcze jeśli zapomnisz tokenu:
-                productsData.netflix.stock = 15;
-                productsData.disney.stock = 0;
-                productsData.crunchyroll.stock = 8;
+                console.log("Używam wartości demonstracyjnych (Brak tokenu API).");
+                productsData.netflix.stock = 5;
+                productsData.disney.stock = 3;
+                productsData.crunchyroll.stock = 4;
                 updateStreamingTiles();
+                refreshActiveProductPageLive();
                 return;
             }
 
@@ -949,32 +948,29 @@
                     }
                 });
 
-                if (!response.ok) throw new Error("Błąd podczas pobierania danych z Sell.app API");
+                if (!response.ok) throw new Error("Błąd autoryzacji lub połączenia z bramką Sell.app");
 
                 const json = await response.json();
-                const sellAppProducts = json.data; // Lista produktów ze sklepu
+                const sellAppProducts = json.data;
 
-                // Przeanalizuj pobrane dane i dopasuj do naszych kluczy: netflix, disney, crunchyroll
+                // Dopasowanie i automatyczna analiza stanów w pętli
                 sellAppProducts.forEach(remoteProduct => {
-                    // Szukamy dopasowania po linku lub tytule
                     for (let key in productsData) {
-                        if (productsData[key].buyLink && productsData[key].buyLink.includes(remoteProduct.slug) || 
+                        if ((productsData[key].buyLink && productsData[key].buyLink.includes(remoteProduct.slug)) || 
                             remoteProduct.title.toLowerCase().includes(key)) {
                             
-                            // Aktualizujemy stan magazynowy pobrany na żywo z bazy Sell.app
                             productsData[key].stock = remoteProduct.stock === -1 ? 999 : remoteProduct.stock;
-                            // Jeśli produkt jest oznaczony jako niedostępny w ogóle
                             if (remoteProduct.out_of_stock) productsData[key].stock = 0;
                         }
                     }
                 });
 
                 updateStreamingTiles();
+                // Jeśli użytkownik ma aktualnie otwarty podgląd karty produktu, odśwież jego stan na żywo
+                refreshActiveProductPageLive();
 
             } catch (error) {
-                console.error(error);
-                // W razie problemów z internetem/błędu API wpisz cokolwiek żeby strona nie wywaliła błędu
-                document.querySelectorAll('.card-stock-status').forEach(el => el.innerHTML = `<i class="fas fa-triangle-exclamation"></i> Błąd synchronizacji`);
+                console.error("Błąd synchronizacji API:", error);
             }
         }
 
@@ -995,6 +991,32 @@
                     }
                 }
             });
+        }
+
+        // Odświeżanie danych wewnątrz otwartej karty bez konieczności jej przeładowywania
+        function refreshActiveProductPageLive() {
+            const currentActiveId = document.getElementById('active-product-tracker').getAttribute('data-current');
+            if (!currentActiveId) return;
+            
+            const product = productsData[currentActiveId];
+            if (!product || !product.hasOwnProperty('stock')) return;
+
+            const buyBtn = document.getElementById('p-view-buy-btn');
+            const statusTag = document.getElementById('p-view-status-tag');
+
+            if (product.stock > 0) {
+                statusTag.innerHTML = `Automatyczna wysyłka (Magazyn: ${product.stock} szt.)`;
+                buyBtn.href = product.buyLink;
+                buyBtn.innerHTML = `<i class="fas fa-bolt"></i> Zamów i Odbierz Teraz`;
+                buyBtn.classList.remove('disabled');
+                buyBtn.style.pointerEvents = "auto"; 
+            } else {
+                statusTag.innerHTML = `<span style="color:#ef4444;"><i class="fas fa-circle-xmark"></i> Wyprzedane na Sell.app</span>`;
+                buyBtn.removeAttribute('href');
+                buyBtn.innerHTML = `<i class="fas fa-ban"></i> Wyprzedane (Brak sztuk)`;
+                buyBtn.classList.add('disabled');
+                buyBtn.style.pointerEvents = "none";
+            }
         }
 
         function showCategoryV2(categoryId, element) {
@@ -1019,6 +1041,8 @@
             const product = productsData[productId];
             if (!product) return;
 
+            document.getElementById('active-product-tracker').setAttribute('data-current', productId);
+
             document.getElementById('p-view-title').innerText = product.title;
             document.getElementById('p-view-price-top').innerText = product.price;
             document.getElementById('p-view-price-main').innerText = product.price;
@@ -1028,8 +1052,7 @@
             const buyBtn = document.getElementById('p-view-buy-btn');
             const statusTag = document.getElementById('p-view-status-tag');
 
-            // ANALIZA LIVE STANU Z SELL.APP
-            if (productId === 'netflix' || productId === 'disney' || productId === 'crunchyroll') {
+            if (product.hasOwnProperty('stock')) {
                 if (product.stock > 0) {
                     statusTag.innerHTML = `Automatyczna wysyłka (Magazyn: ${product.stock} szt.)`;
                     buyBtn.href = product.buyLink;
@@ -1057,6 +1080,7 @@
         }
 
         function backToStorefront() {
+            document.getElementById('active-product-tracker').setAttribute('data-current', '');
             document.getElementById('product-page-view').style.display = 'none';
             document.getElementById('main-storefront').style.display = 'block';
             window.scrollTo(0, 0);
@@ -1066,8 +1090,11 @@
             const firstCard = document.querySelector('.cyber-category-card');
             if(firstCard) showCategoryV2('roblox', firstCard);
             
-            // Odpal live sprawdzanie bazy sklepu sell.app
+            // Pierwsze sprawdzenie bazy Sell.app
             fetchSellAppStock();
+            
+            // KOD AUTOMATYCZNEJ AKTUALIZACJI: Wywołuj zapytanie do Sell.app co 30 sekund (30000 ms) na żywo
+            setInterval(fetchSellAppStock, 30000);
         });
     </script>
 </body>
