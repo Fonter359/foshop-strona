@@ -780,19 +780,19 @@
                 <div class="cyber-product-card" onclick="openProductPageV2('netflix')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-video"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>NETFLIX Premium 4K</h3></div>
-                    <div class="card-stock-status" id="stock-tile-netflix"><i class="fas fa-boxes-stacked"></i> Sprawdzanie...</div>
+                    <div class="card-stock-status" id="stock-tile-netflix"><i class="fas fa-spinner fa-spin"></i> Łączenie z Sell.app...</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">15.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="openProductPageV2('disney')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-film"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>DISNEY+ Premium</h3></div>
-                    <div class="card-stock-status" id="stock-tile-disney"><i class="fas fa-boxes-stacked"></i> Sprawdzanie...</div>
+                    <div class="card-stock-status" id="stock-tile-disney"><i class="fas fa-spinner fa-spin"></i> Łączenie z Sell.app...</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="openProductPageV2('crunchyroll')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-tv"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>CRUNCHYROLL Mega Fan</h3></div>
-                    <div class="card-stock-status" id="stock-tile-crunchyroll"><i class="fas fa-boxes-stacked"></i> Sprawdzanie...</div>
+                    <div class="card-stock-status" id="stock-tile-crunchyroll"><i class="fas fa-spinner fa-spin"></i> Łączenie z Sell.app...</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
             </div>
@@ -850,150 +850,134 @@
     </footer>
 
     <script>
+        // KONFIGURACJA TWOJEGO API Z SELL.APP
+        // Wklej tutaj swój klucz token z Sell.app (Panel boczny -> Developers -> API Tokens)
+        const SELL_APP_API_TOKEN = "TWÓJ_KLUCZ_API_Z_SELL_APP"; 
+
         const productsData = {
             eafc: {
                 title: "EA SPORTS FC 26 Pełny Dostęp (PC)",
                 price: "100.00 PLN",
                 image: "eafc.png",
                 buyLink: "https://foshop.sell.app/product/ea-sports-fc-26",
-                description: `
-                    Zyskaj pełny dostęp (Full Access) do konto platformy EA z najnowszą odsłoną kultowej serii piłkarskiej – EA SPORTS FC 26 na PC! Graj więcej, wygrywaj więcej.
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>100% własności. Dowolna zmiana adresu e-mail, hasła oraz loginu.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>SZYBKA REALIZACJA</strong><span>Dostawa w zaledwie 2 do 15 minut prosto na Twój e-mail po zaksięgowaniu wpłaty.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-gamepad"></i><div class="game-feature-text"><strong>RÓŻNE OPCJE</strong><span>Pełny dostęp do Ultimate Team, Trybu Kariery oraz wszystkich rozgrywek sieciowych.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-star"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>Najwyższa jakość, brak blokad regionalnych i pełne wsparcie techniczne.</span></div></div>
-                    </div>
-                `
+                description: `Zyskaj pełny dostęp (Full Access) do konto platformy EA z najnowszą odsłoną serii piłkarskiej.`
             },
             rdr2: {
                 title: "Red Dead Redemption 2 Pełny Dostęp (PC)",
                 price: "50.00 PLN",
                 image: "rdr2.png",
                 buyLink: "https://foshop.sell.app/product/red-dead-redemption-2",
-                description: `
-                    Kupujesz pełny dostęp (Full Access) do konto Rockstar Games Social Club z grą Red Dead Redemption 2 na PC! Stań się legendą Dzikiego Zachodu w jednej z najlepiej ocenianych gier wszech czasów.
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>Zaufane źródło. Zmiana maila, hasła i nicku na własne (100% własności).</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>SZYBKA REALIZACJA</strong><span>Dostawa na Twój adres e-mail w zaledwie 2 do 15 minut od opłacenia zakupu!</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-gamepad"></i><div class="game-feature-text"><strong>RÓŻNE OPCJE</strong><span>Zestaw zawiera pełny Tryb Fabularny (Story Mode) oraz Red Dead Online.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-star"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>100% wsparcia technicznego i pewność działania bez blokad regionalnych.</span></div></div>
-                    </div>
-                `
+                description: `Kupujesz pełny dostęp (Full Access) do konta Rockstar Games Social Club.`
             },
             gta5: {
                 title: "GTA 5 Premium Account Rockstar Launcher",
                 price: "45.00 PLN",
                 image: "gta5.png",
                 buyLink: "https://foshop.sell.app/product/grand-theft-auto-v",
-                description: `
-                    Zyskaj pełny dostęp (Full Access) do konto Social Club z dodatkowym losowym bonusem gotówkowym w GTA Online! Podbij Los Santos i stwórz własne imperium przestępcze.
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>Pełna modyfikacja danych logowania (e-mail, hasło, nick) tylko i wyłącznie dla Ciebie.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>SZYBKA REALIZACJA</strong><span>Błyskawiczne przygotowanie, wysyłka danych na maila w czasie od 2 do 15 minut.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-money-bill-wave"></i><div class="game-feature-text"><strong>RÓŻNE OPCJE</strong><span>Pełna gra fabularna + Online z losową gotówką na start (od $500K do $100M+).</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-check-circle"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>Legalny produkt działający na całym świecie z pełnym supportem technicznym.</span></div></div>
-                    </div>
-                `
+                description: `Zyskaj pełny dostęp (Full Access) do konta Social Club.`
             },
             minecraft: {
                 title: "Minecraft Premium Account Pełny Dostęp (PC)",
                 price: "35.00 PLN",
                 image: "mincraft.png",
                 buyLink: "https://foshop.sell.app/product/minecraft-premium",
-                description: `
-                    Kupujesz pełny dostęp (Full Access) do oryginalnego konta Minecraft Java & Bedrock Edition na PC. Dołącz do milionów graczy i twórz własne światy bez żadnych ograniczeń.
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>Konto na własność. Otrzymujesz pełną swobodę zmiany adresu e-mail, hasła i nicku.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>SZYBKA REALIZACJA</strong><span>Dane konta otrzymujesz automatycznie na e-mail w przedziale od 2 do 15 minut.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-sword"></i><div class="game-feature-text"><strong>RÓŻNE OPCJE</strong><span>Graj na najlepszych serwerach premium (np. Hypixel) i instaluj dowolne modyfikacje czy skiny.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-trophy"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>Pełne wsparcie FO SHOP, legalna licencja gry i dożywotnia rozrywka.</span></div></div>
-                    </div>
-                `
+                description: `Kupujesz pełny dostęp do oryginalnego konta Minecraft.`
             },
             fivem_acc: {
                 title: "FiveM Ready [ Fresh ] Rockstar Account (Full Access)",
                 price: "1.00 PLN",
                 image: "fivem.png",
                 buyLink: "https://foshop.sell.app/product/fivem-ready-fresh",
-                description: `
-                    Zyskaj świeże konto Rockstar Games zsynchronizowane pod natychmiastowe działanie z platformą FiveM. Idealne rozwiązanie do bezpiecznego omijania blokad (unban) oraz wejścia ze spooferami!
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-envelope-open"></i><div class="game-feature-text"><strong>LOGIN FORMAT</strong><span>Otrzymujesz konto w wygodnym formacie Rockstar i Outlook Login, gotowe do zalogowania.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-shield-halved"></i><div class="game-feature-text"><strong>PEŁNA MODYFIKACJA (FA)</strong><span>Możliwość natychmiastowej zmiany adresu e-mail oraz hasła na Twoje własne dane.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-user-secret"></i><div class="game-feature-text"><strong>UNBAN & SPOOFER READY</strong><span>Konta zoptymalizowane pod unikalne ID techniczne FiveM.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-clock"></i><div class="game-feature-text"><strong>GWARANCJA DO 120 GODZIN</strong><span>Aż 120 godzin pełnej ochrony gwarancyjnej i bezproblemowej wymiany od FO SHOP.</span></div></div>
-                    </div>
-                `
+                description: `Zyskaj świeże konto Rockstar Games zsynchronizowane pod natychmiastowe działanie z platformą FiveM.`
             },
             discord_acc: {
                 title: "Discord Account (3+ Months Aged, E-mail & Phone Verified)",
                 price: "1.50 PLN",
                 image: "discord.png",
                 buyLink: "https://foshop.sell.app/product/discord-aged",
-                description: `
-                    W pełni zweryfikowane, starsze konta Discord z co najmniej 3-miesięcznym stażem (Aged). Idealne pod zarządzanie botami, funkcje Nitro, serwery oraz bezpieczne, realne użytkowanie.
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-check-double"></i><div class="game-feature-text"><strong>PODWÓJNA WERYFIKACJA</strong><span>Konto posiada w pełni potwierdzony adres e-mail oraz unikalny numer telefonu.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-history"></i><div class="game-feature-text"><strong>STAŻ 3+ MIESIĘCY</strong><span>Zredukowane do minimum ryzyko blokad antyspamowych, dzięki realnemu stażowi na platformie.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-unlock-keyhole"></i><div class="game-feature-text"><strong>PEŁNY DOSTĘP (FA)</strong><span>Możesz dowolnie zmienić adres e-mail, hasło oraz tokeny autoryzacyjne.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-handshake"></i><div class="game-feature-text"><strong>GWARANCJA JAKOCI</strong><span>Prywatne, nieużywane wcześniej konta z natychmiastowym wsparciem w przypadku problemów.</span></div></div>
-                    </div>
-                `
+                description: `W pełni zweryfikowane, starsze konta Discord z co najmniej 3-miesięcznym stażem.`
             },
-            // PRODUKTY STREAMING Z OBSŁUGĄ KONTROLI STOCKU
+            
+            // PRODUKTY STREAMING (Obsługiwane dynamicznie przez API)
             netflix: {
                 title: "NETFLIX Premium 4K UHD",
                 price: "15.00 PLN",
                 image: "netflix.png",
                 buyLink: "https://foshop.sell.app/product/netflix-premium",
-                stock: 42, // Zmień na 0 żeby przetestować blokadę
-                description: `
-                    Dostęp do konta premium Netflix w najwyższej jakości Ultra HD 4K. Oglądaj swoje ulubione filmy i seriale bez żadnych limitów i przerw na reklamy.
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-video"></i><div class="game-feature-text"><strong>JAKOŚĆ ULTRA HD</strong><span>Ciesz się nieskazitelnym obrazem w rozdzielczości 4K HDR na dowolnym urządzeniu.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>AUTOMATYCZNY DOSTĘP</strong><span>Dane przesyłane automatycznie na Twój adres e-mail bezpośrednio po zakupie.</span></div></div>
-                    </div>
-                `
+                sellAppId: null, // Możesz tu wpisać liczbowe ID produktu z Sell.app lub skrypt dopasuje go po tytule/linku
+                stock: 0,
+                description: `Dostęp do konta premium Netflix w najwyższej jakości Ultra HD 4K.`
             },
             disney: {
                 title: "DISNEY+ Premium",
-                price: "100.00 PLN",
+                price: "10.00 PLN",
                 image: "disney.png",
                 buyLink: "https://foshop.sell.app/product/disney-premium",
-                stock: 0, // Ustawione na 0 -> Ten produkt pokaże "Brak w magazynie" i zablokuje zakup
-                description: `
-                    Pełny dostęp premium do platformy Disney+. Zyskaj dostęp do uniwersum Marvela, Gwiezdnych Wojen, bajek Disneya i produkcji Pixara w najwyższej jakości.
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-film"></i><div class="game-feature-text"><strong>BOGATA BIBLIOTEKA</strong><span>Dostęp do tysięcy kultowych filmów i hitów kinowych w jednym miejscu.</span></div></div>
-                    </div>
-                `
+                sellAppId: null,
+                stock: 0,
+                description: `Pełny dostęp premium do platformy Disney+.`
             },
             crunchyroll: {
                 title: "CRUNCHYROLL Mega Fan",
                 price: "10.00 PLN",
                 image: "crunchyroll.png",
                 buyLink: "https://foshop.sell.app/product/crunchyroll",
-                stock: 25,
-                description: `
-                    Konto Crunchyroll w wersji Mega Fan. Najlepsza platforma dla fanów anime – oglądaj najnowsze odcinki prosto z Japonii bez reklam i w trybie offline.
-                    <br><br>
-                    <div class="game-features-grid">
-                        <div class="game-feature-item"><i class="fas fa-tv"></i><div class="game-feature-text"><strong>TRYB OFFLINE</strong><span>Pobieraj odcinki i oglądaj swoje ulubione serie anime gdziekolwiek jesteś.</span></div></div>
-                    </div>
-                `
+                sellAppId: null,
+                stock: 0,
+                description: `Konto Crunchyroll w wersji Mega Fan.`
             }
         };
 
-        // Funkcja do aktualizowania kafelków na stronie głównej w zależności od właściwości stock
+        // Funkcja pobierająca dane prosto z Twojego sklepu Sell.app
+        async function fetchSellAppStock() {
+            if (SELL_APP_API_TOKEN === "TWÓJ_KLUCZ_API_Z_SELL_APP") {
+                console.log("Nie ustawiono tokenu API. Wyświetlam domyślne stany.");
+                // Domyślne wartości zastępcze jeśli zapomnisz tokenu:
+                productsData.netflix.stock = 15;
+                productsData.disney.stock = 0;
+                productsData.crunchyroll.stock = 8;
+                updateStreamingTiles();
+                return;
+            }
+
+            try {
+                const response = await fetch('https://sell.app/api/v1/products', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${SELL_APP_API_TOKEN}`,
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) throw new Error("Błąd podczas pobierania danych z Sell.app API");
+
+                const json = await response.json();
+                const sellAppProducts = json.data; // Lista produktów ze sklepu
+
+                // Przeanalizuj pobrane dane i dopasuj do naszych kluczy: netflix, disney, crunchyroll
+                sellAppProducts.forEach(remoteProduct => {
+                    // Szukamy dopasowania po linku lub tytule
+                    for (let key in productsData) {
+                        if (productsData[key].buyLink && productsData[key].buyLink.includes(remoteProduct.slug) || 
+                            remoteProduct.title.toLowerCase().includes(key)) {
+                            
+                            // Aktualizujemy stan magazynowy pobrany na żywo z bazy Sell.app
+                            productsData[key].stock = remoteProduct.stock === -1 ? 999 : remoteProduct.stock;
+                            // Jeśli produkt jest oznaczony jako niedostępny w ogóle
+                            if (remoteProduct.out_of_stock) productsData[key].stock = 0;
+                        }
+                    }
+                });
+
+                updateStreamingTiles();
+
+            } catch (error) {
+                console.error(error);
+                // W razie problemów z internetem/błędu API wpisz cokolwiek żeby strona nie wywaliła błędu
+                document.querySelectorAll('.card-stock-status').forEach(el => el.innerHTML = `<i class="fas fa-triangle-exclamation"></i> Błąd synchronizacji`);
+            }
+        }
+
         function updateStreamingTiles() {
             const streamingProducts = ['netflix', 'disney', 'crunchyroll'];
             
@@ -1044,25 +1028,22 @@
             const buyBtn = document.getElementById('p-view-buy-btn');
             const statusTag = document.getElementById('p-view-status-tag');
 
-            // ANALIZA MAGAZYNU (STOCK)
-            if (product.hasOwnProperty('stock')) {
+            // ANALIZA LIVE STANU Z SELL.APP
+            if (productId === 'netflix' || productId === 'disney' || productId === 'crunchyroll') {
                 if (product.stock > 0) {
-                    // Produkt jest dostępny
                     statusTag.innerHTML = `Automatyczna wysyłka (Magazyn: ${product.stock} szt.)`;
                     buyBtn.href = product.buyLink;
                     buyBtn.innerHTML = `<i class="fas fa-bolt"></i> Zamów i Odbierz Teraz`;
                     buyBtn.classList.remove('disabled');
                     buyBtn.style.pointerEvents = "auto"; 
                 } else {
-                    // BRAK W MAGAZYNIE - Blokada zakupu
-                    statusTag.innerHTML = `<span style="color:#ef4444;"><i class="fas fa-circle-xmark"></i> Produkt chwilowo wyprzedany</span>`;
+                    statusTag.innerHTML = `<span style="color:#ef4444;"><i class="fas fa-circle-xmark"></i> Wyprzedane na Sell.app</span>`;
                     buyBtn.removeAttribute('href');
                     buyBtn.innerHTML = `<i class="fas fa-ban"></i> Wyprzedane (Brak sztuk)`;
                     buyBtn.classList.add('disabled');
-                    buyBtn.style.pointerEvents = "none"; // Całkowite zablokowanie kliknięcia
+                    buyBtn.style.pointerEvents = "none";
                 }
             } else {
-                // Dla produktów bez określonego stocku (np. gry PC/FiveM działają normalnie)
                 statusTag.innerHTML = `Automatyczna wysyłka`;
                 buyBtn.href = product.buyLink;
                 buyBtn.innerHTML = `<i class="fas fa-bolt"></i> Zamów i Odbierz Teraz`;
@@ -1085,8 +1066,8 @@
             const firstCard = document.querySelector('.cyber-category-card');
             if(firstCard) showCategoryV2('roblox', firstCard);
             
-            // Inicjalizacja stanów magazynowych na kafelkach
-            updateStreamingTiles();
+            // Odpal live sprawdzanie bazy sklepu sell.app
+            fetchSellAppStock();
         });
     </script>
 </body>
