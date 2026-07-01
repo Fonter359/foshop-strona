@@ -174,14 +174,17 @@
 
         .categories-grid-v2 {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            max-width: 1000px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
             margin: 0 auto 50px auto;
             padding: 0 20px;
         }
 
-        @media(max-width: 768px) {
+        @media(max-width: 992px) {
+            .categories-grid-v2 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width: 576px) {
             .categories-grid-v2 { grid-template-columns: 1fr; }
         }
 
@@ -189,7 +192,7 @@
             background: linear-gradient(145deg, #0e0c15 0%, #07050b 100%);
             border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 20px;
-            padding: 30px 20px;
+            padding: 25px 15px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -576,6 +579,10 @@
                     <i class="fas fa-desktop"></i>
                     <h3>Konta Gry PC</h3>
                 </div>
+                <div class="cyber-category-card" onclick="showCategoryV2('fivem', this)">
+                    <i class="fas fa-car-burst"></i>
+                    <h3>FiveM Store</h3>
+                </div>
                 <div class="cyber-category-card" onclick="showCategoryV2('streaming', this)">
                     <i class="fas fa-wand-magic-sparkles"></i>
                     <h3>Streaming</h3>
@@ -583,6 +590,7 @@
             </div>
         </section>
 
+        <!-- ROBLOX STORE -->
         <div class="showcase-container" id="roblox">
             <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
             <div class="showcase-grid" style="margin-bottom: 40px;">
@@ -698,6 +706,7 @@
             </div>
         </div>
 
+        <!-- KONTA GRY PC -->
         <div class="showcase-container" id="games">
             <div class="sub-section-title"><i class="fas fa-desktop"></i> Gry PC Premium (Full Access)</div>
             <div class="showcase-grid">
@@ -724,6 +733,24 @@
             </div>
         </div>
 
+        <!-- FIVEM STORE -->
+        <div class="showcase-container" id="fivem">
+            <div class="sub-section-title"><i class="fas fa-car-on"></i> Produkty i Konta pod FiveM</div>
+            <div class="showcase-grid">
+                <div class="cyber-product-card" onclick="openProductPageV2('fivem_acc')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-key"></i></div><span class="card-badge badge-purple">FiveM Ready</span></div>
+                    <div class="card-info-main"><h3>FiveM Ready [ Fresh ] Rockstar Account</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">1.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
+                </div>
+                <div class="cyber-product-card" onclick="openProductPageV2('discord_acc')">
+                    <div class="card-top-row"><div class="card-icon-wrap"><i class="fab fa-discord"></i></div><span class="card-badge badge-purple">3+ Months</span></div>
+                    <div class="card-info-main"><h3>Discord Account (E-mail + Phone Verified)</h3></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">1.50 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STREAMING -->
         <div class="showcase-container" id="streaming">
             <div class="sub-section-title"><i class="fas fa-wand-magic-sparkles"></i> Usługi Strumieniowe Premium</div>
             <div class="showcase-grid">
@@ -746,6 +773,7 @@
         </div>
     </div>
 
+    <!-- KARTA PODGLĄDU PRODUKTU -->
     <div id="product-page-view">
         <div class="back-to-shop-btn" onclick="backToStorefront()">
             <i class="fas fa-arrow-left-long"></i> Powrót do oferty sklepu
@@ -803,7 +831,7 @@
                 image: "eafc.png",
                 buyLink: "https://foshop.sell.app/product/ea-sports-fc-26",
                 description: `
-                    Zyskaj pełny dostęp (Full Access) do konta platformy EA z najnowszą odsłoną kultowej serii piłkarskiej – EA SPORTS FC 26 na PC! Graj więcej, wygrywaj więcej.
+                    Zyskaj pełny dostęp (Full Access) do konto platformy EA z najnowszą odsłoną kultowej serii piłkarskiej – EA SPORTS FC 26 na PC! Graj więcej, wygrywaj więcej.
                     <br><br>
                     <div class="game-features-grid">
                         <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>100% własności. Dowolna zmiana adresu e-mail, hasła oraz loginu.</span></div></div>
@@ -835,7 +863,7 @@
                 image: "gta5.png",
                 buyLink: "https://foshop.sell.app/product/grand-theft-auto-v",
                 description: `
-                    Zyskaj pełny dostęp (Full Access) do konta Social Club z dodatkowym losowym bonusem gotówkowym w GTA Online! Podbij Los Santos i stwórz własne imperium przestępcze.
+                    Zyskaj pełny dostęp (Full Access) do konto Social Club z dodatkowym losowym bonusem gotówkowym w GTA Online! Podbij Los Santos i stwórz własne imperium przestępcze.
                     <br><br>
                     <div class="game-features-grid">
                         <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>Pełna modyfikacja danych logowania (e-mail, hasło, nick) tylko i wyłącznie dla Ciebie.</span></div></div>
@@ -860,12 +888,45 @@
                         <div class="game-feature-item"><i class="fas fa-trophy"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>Pełne wsparcie FO SHOP, legalna licencja gry i dożywotnia rozrywka.</span></div></div>
                     </div>
                 `
+            },
+            fivem_acc: {
+                title: "FiveM Ready [ Fresh ] Rockstar Account (Full Access)",
+                price: "1.00 PLN",
+                image: "fivem.png",
+                buyLink: "https://foshop.sell.app/product/fivem-ready-fresh",
+                description: `
+                    Zyskaj świeże konto Rockstar Games zsynchronizowane pod natychmiastowe działanie z platformą FiveM. Idealne rozwiązanie do bezpiecznego omijania blokad (unban) oraz wejścia ze spooferami!
+                    <br><br>
+                    <div class="game-features-grid">
+                        <div class="game-feature-item"><i class="fas fa-envelope-open"></i><div class="game-feature-text"><strong>LOGIN FORMAT</strong><span>Otrzymujesz konto w wygodnym formacie Rockstar i Outlook Login, gotowe do zalogowania.</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-shield-halved"></i><div class="game-feature-text"><strong>PEŁNA MODYFIKACJA (FA)</strong><span>Możliwość natychmiastowej zmiany adresu e-mail oraz hasła na Twoje własne dane.</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-user-secret"></i><div class="game-feature-text"><strong>UNBAN & SPOOFER READY</strong><span>Konta zoptymalizowane pod unikalne ID techniczne FiveM.</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-clock"></i><div class="game-feature-text"><strong>GWARANCJA DO 120 GODZIN</strong><span>Aż 120 godzin pełnej ochrony gwarancyjnej i bezproblemowej wymiany od FO SHOP.</span></div></div>
+                    </div>
+                `
+            },
+            discord_acc: {
+                title: "Discord Account (3+ Months Aged, E-mail & Phone Verified)",
+                price: "1.50 PLN",
+                image: "discord.png",
+                buyLink: "https://foshop.sell.app/product/discord-aged",
+                description: `
+                    W pełni zweryfikowane, starsze konta Discord z co najmniej 3-miesięcznym stażem (Aged). Idealne pod zarządzanie botami, funkcje Nitro, serwery oraz bezpieczne, realne użytkowanie.
+                    <br><br>
+                    <div class="game-features-grid">
+                        <div class="game-feature-item"><i class="fas fa-check-double"></i><div class="game-feature-text"><strong>PODWÓJNA WERYFIKACJA</strong><span>Konto posiada w pełni potwierdzony adres e-mail oraz unikalny numer telefonu.</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-history"></i><div class="game-feature-text"><strong>STAŻ 3+ MIESIĘCY</strong><span>Zredukowane do minimum ryzyko blokad antyspamowych, dzięki realnemu stażowi na platformie.</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-unlock-keyhole"></i><div class="game-feature-text"><strong>PEŁNY DOSTĘP (FA)</strong><span>Możesz dowolnie zmienić adres e-mail, hasło oraz tokeny autoryzacyjne.</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-handshake"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>Prywatne, nieużywane wcześniej konta z natychmiastowym wsparciem w przypadku problemów.</span></div></div>
+                    </div>
+                `
             }
         };
 
         function showCategoryV2(categoryId, element) {
             document.getElementById('roblox').style.display = 'none';
             document.getElementById('games').style.display = 'none';
+            document.getElementById('fivem').style.display = 'none';
             document.getElementById('streaming').style.display = 'none';
             
             const cards = document.querySelectorAll('.cyber-category-card');
