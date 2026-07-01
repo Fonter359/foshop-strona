@@ -375,7 +375,6 @@
             align-items: center;
             gap: 6px;
         }
-        .card-stock-status.out-of-stock { color: #ef4444; }
 
         .card-footer-price-row {
             display: flex;
@@ -412,6 +411,18 @@
             padding: 0 40px;
             animation: viewSlipIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
+        .back-to-shop-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #94a3b8;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: color 0.2s ease;
+        }
+        .back-to-shop-btn:hover { color: #fff; }
 
         .rebuild-product-layout {
             display: grid;
@@ -547,20 +558,6 @@
             box-shadow: 0 6px 30px rgba(16, 185, 129, 0.5) !important;
         }
 
-        .rebuild-buy-button-anchor.disabled {
-            background: #1e1b29 !important;
-            color: #4b4859 !important;
-            box-shadow: none !important;
-            cursor: not-allowed !important;
-            transform: none !important;
-        }
-        
-        .rebuild-desc-header { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 8px; }
-        .rebuild-description-container { font-size: 1rem; color: #94a3b8; line-height: 1.6; }
-
-        .rebuild-checkout-footer { margin-top: 40px; background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
-        .rebuild-gateways-row { display: flex; gap: 18px; font-size: 1.6rem; color: #64748b; }
-
         /* MODAL KOSZYKA */
         .cart-modal {
             display: none;
@@ -639,23 +636,6 @@
             display: block; text-decoration: none;
             box-shadow: 0 4px 20px rgba(168,85,247,0.3);
         }
-        .btn-checkout:hover { transform: translateY(-1px); }
-
-        .game-features-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .game-feature-item {
-            display: flex;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .game-feature-item i { color: #a855f7; margin-top: 2px; }
 
         @keyframes viewSlipIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideLeft { from { transform: translateX(100%); } to { transform: translateX(0); } }
@@ -677,22 +657,20 @@
         </div>
     </nav>
 
-    <!-- MODAL KOSZYKA -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-header">
             <h2>🛒 Twój Koszyk</h2>
             <div class="cart-close" onclick="toggleCart(false)"><i class="fas fa-xmark"></i></div>
         </div>
         <div class="cart-items-container" id="cart-items-content">
-            <!-- Produkty w koszyku -->
-        </div>
+            </div>
         <div class="cart-footer">
             <div class="cart-total-row">
                 <span>Razem:</span>
                 <span id="cart-total-price">0.00 PLN</span>
             </div>
-            <div id="sell-app-cart-button-container">
-                <button class="btn-checkout" onclick="checkoutCart()">Przejdź do płatności</button>
+            <div>
+                <button class="btn-checkout" onclick="checkoutCart()">Kup Wybrane Produkty</button>
             </div>
         </div>
     </div>
@@ -700,7 +678,7 @@
     <div id="main-storefront">
         <header class="hero">
             <h1>Zmień zasady gry z<br><span>FO SHOP Premium</span></h1>
-            <p>Najwyższa jakość, błyskawiczna wysyłka w kilka minut oraz stuprocentowa gwarancja satysfakcji na konta PC oraz produkty Roblox.</p>
+            <p>Najwyższa jakość, błyskawiczna wysyłka w kilka minut oraz gwarancja satysfakcji na konta gier oraz produkty Roblox.</p>
         </header>
 
         <section class="pay-banner-v2">
@@ -708,7 +686,7 @@
                 <i class="fas fa-shield-halved"></i>
                 <p>Bezpieczne bramki płatnicze: <span>BLIK</span>, <span>Karta</span>, <span>Przelew</span> oraz <span>PayPal</span></p>
             </div>
-            <div class="pay-right-badge">⚠️ BLIK/Karta? Wybierz PayPal w koszyku!</div>
+            <div class="pay-right-badge">⚡ Kliknięcie przenosi bezpośrednio do płatności Sell.app</div>
         </section>
 
         <section class="categories-title">
@@ -734,7 +712,6 @@
             </div>
         </section>
 
-        <!-- ROBLOX STORE -->
         <div class="showcase-container" id="roblox">
             <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
             <div class="showcase-grid" style="margin-bottom: 30px;">
@@ -850,7 +827,6 @@
             </div>
         </div>
 
-        <!-- KONTA GRY PC -->
         <div class="showcase-container" id="games">
             <div class="sub-section-title"><i class="fas fa-desktop"></i> Gry PC Premium (Full Access)</div>
             <div class="showcase-grid">
@@ -877,7 +853,6 @@
             </div>
         </div>
 
-        <!-- FIVEM STORE (Z WIDOCZNYM STOCKIEM) -->
         <div class="showcase-container" id="fivem">
             <div class="sub-section-title"><i class="fas fa-car-on"></i> Produkty i Konta pod FiveM</div>
             <div class="showcase-grid">
@@ -890,13 +865,12 @@
                 <div class="cyber-product-card" onclick="openProductPageV2('discord_acc')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fab fa-discord"></i></div><span class="card-badge badge-purple">Min. 2 szt.</span></div>
                     <div class="card-info-main"><h3>Discord Account (Email + Phone Verified)</h3></div>
-                    <div class="card-stock-status" id="stock-tile-discord"><i class="fas fa-boxes-stacked"></i> W magazynie: 15 szt.</div>
+                    <div class="card-stock-status" id="stock-tile-discord"><i class="fas fa-boxes-stacked"></i> W magazynie: 14 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">1.50 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
             </div>
         </div>
 
-        <!-- STREAMING -->
         <div class="showcase-container" id="streaming">
             <div class="sub-section-title"><i class="fas fa-wand-magic-sparkles"></i> Usługi Strumieniowe Premium</div>
             <div class="showcase-grid">
@@ -904,25 +878,24 @@
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-video"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>NETFLIX Premium 4K</h3></div>
                     <div class="card-stock-status" id="stock-tile-netflix"><i class="fas fa-boxes-stacked"></i> W magazynie: 5 szt.</div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">15.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">15.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="openProductPageV2('disney')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-film"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>DISNEY+ Premium</h3></div>
                     <div class="card-stock-status" id="stock-tile-disney"><i class="fas fa-boxes-stacked"></i> W magazynie: 3 szt.</div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="openProductPageV2('crunchyroll')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-tv"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>CRUNCHYROLL Mega Fan</h3></div>
                     <div class="card-stock-status" id="stock-tile-crunchyroll"><i class="fas fa-boxes-stacked"></i> W magazynie: 4 szt.</div>
-                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
+                    <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- KARTA PODGLĄDU PRODUKTU -->
     <div id="product-page-view">
         <div class="back-to-shop-btn" onclick="backToStorefront()">
             <i class="fas fa-arrow-left-long"></i> Powrót do oferty sklepu
@@ -940,13 +913,13 @@
                 <div class="rebuild-purchase-card">
                     <div class="rebuild-status-bar">
                         <span>Dostawca: FO SHOP</span>
-                        <span class="status-online-tag" id="p-view-status-tag">Automatyczna wysyłka</span>
+                        <span class="status-online-tag" id="p-view-status-tag">Automatyczna dostawa</span>
                     </div>
                     <div class="rebuild-large-price" id="p-view-price-main">0.00 PLN</div>
                     
                     <div class="rebuild-qty-selector">
-                        <label for="p-view-qty">Ilość:</label>
-                        <input type="number" id="p-view-qty" class="rebuild-qty-input" value="1" min="1" onchange="validatePageQty()">
+                        <label for="p-view-qty">Ilość sztuk:</label>
+                        <input type="number" id="p-view-qty" class="rebuild-qty-input" value="1" min="1" oninput="calculateDynamicPagePrice()">
                     </div>
                     <div class="min-qty-alert" id="min-qty-alert-msg" style="display:none;">
                         <i class="fas fa-circle-info"></i> Minimalne zamówienie dla tego produktu to 2 sztuki!
@@ -954,10 +927,10 @@
 
                     <div class="action-buttons-group">
                         <button id="p-view-instant-btn" onclick="instantBuyFromPage()" class="rebuild-buy-button-anchor btn-instant-buy">
-                            <i class="fas fa-bolt"></i> Kup Teraz
+                            <i class="fas fa-bolt"></i> Kup Teraz (Przekierowanie Sell.app)
                         </button>
                         <button id="p-view-buy-btn" onclick="addItemToCartFromPage()" class="rebuild-buy-button-anchor">
-                            <i class="fas fa-cart-plus"></i> Dodaj do koszyka
+                            <i class="fas fa-cart-plus"></i> Dodaj do koszyka strony
                         </button>
                     </div>
                 </div>
@@ -968,7 +941,7 @@
                 </div>
 
                 <div class="rebuild-checkout-footer">
-                    <span>Szyfrowane połączenie SSL</span>
+                    <span>Zabezpieczone płatności SSL</span>
                     <div class="rebuild-gateways-row">
                         <i class="fab fa-cc-paypal" style="color:#00457c;"></i>
                         <i class="fab fa-cc-visa" style="color:#1a1f71;"></i>
@@ -984,49 +957,44 @@
 
     <footer class="footer">
         &copy; 2026 FO SHOP. Wszystkie prawa zastrzeżone.<br>
-        Strona internetowa jest własnością niezależną, niepowiązaną z Rockstar Games, Mojang Synergies, Electronic Arts ani Roblox Corporation.
+        Strona internetowa jest własnością niezależną, niepowiązaną z Rockstar Games, Mojang, Electronic Arts ani Roblox Corporation.
     </footer>
 
-    <!-- SKRYPT INTEGRACJI MODALU Z SELL.APP -->
-    <script src="https://cdn.sell.app/embed/script.js" type="module"></script>
-
     <script>
-        const SELL_APP_STORE_ID = "12345"; // <--- TUTAJ WPISZ SWÓJ STORE ID Z PANELU SELL.APP
-
         const productsData = {
-            dragon: { title: "DRAGON [PERM]", price: 155.00, image: "dragon.png", sellAppProductId: "dragon-perm", description: "Permanentny owoc Dragon w grze Blox Fruits." },
-            kitsune: { title: "KITSUNE [PERM]", price: 135.00, image: "kitsune.png", sellAppProductId: "kitsune-perm", description: "Permanentny owoc Kitsune w grze Blox Fruits." },
-            yeti: { title: "YETI [PERM]", price: 100.00, image: "yeti.png", sellAppProductId: "yeti-perm", description: "Permanentny owoc Yeti w grze Blox Fruits." },
-            tiger: { title: "TIGER [PERM]", price: 100.00, image: "tiger.png", sellAppProductId: "tiger-perm", description: "Permanentny owoc Tiger w grze Blox Fruits." },
-            gas: { title: "GAS [PERM]", price: 100.00, image: "gas.png", sellAppProductId: "gas-perm", description: "Permanentny owoc Gas w grze Blox Fruits." },
-            control: { title: "CONTROL [PERM]", price: 100.00, image: "control.png", sellAppProductId: "control-perm", description: "Permanentny owoc Control w grze Blox Fruits." },
-            buddha: { title: "BUDDHA [PERM]", price: 80.00, image: "buddha.png", sellAppProductId: "buddha-perm", description: "Permanentny owoc Buddha w grze Blox Fruits." },
-            trex: { title: "T-REX [PERM]", price: 75.00, image: "t-rex-perm", sellAppProductId: "t-rex-perm", description: "Permanentny owoc T-Rex w grze Blox Fruits." },
-            gravity: { title: "GRAVITY [PERM]", price: 75.00, image: "gravity.png", sellAppProductId: "gravity-perm", description: "Permanentny owoc Gravity w grze Blox Fruits." },
-            spirit: { title: "SPIRIT [PERM]", price: 75.00, image: "spirit.png", sellAppProductId: "spirit-perm", description: "Permanentny owoc Spirit w grze Blox Fruits." },
-            venom: { title: "VENOM [PERM]", price: 75.00, image: "venom.png", sellAppProductId: "venom-perm", description: "Permanentny owoc Venom w grze Blox Fruits." },
-            mammoth: { title: "MAMMOTH [PERM]", price: 75.00, image: "mammoth.png", sellAppProductId: "mammoth-perm", description: "Permanentny owoc Mammoth w grze Blox Fruits." },
-            portal: { title: "PORTAL [PERM]", price: 75.00, image: "portal.png", sellAppProductId: "portal-perm", description: "Permanentny owoc Portal w grze Blox Fruits." },
+            dragon: { title: "DRAGON [PERM]", price: 155.00, image: "dragon.png", purchaseUrl: "https://foshop.sell.app/product/dragon-perm", description: "Permanentny owoc Dragon w grze Blox Fruits." },
+            kitsune: { title: "KITSUNE [PERM]", price: 135.00, image: "kitsune.png", purchaseUrl: "https://foshop.sell.app/product/kitsune-perm", description: "Permanentny owoc Kitsune w grze Blox Fruits." },
+            yeti: { title: "YETI [PERM]", price: 100.00, image: "yeti.png", purchaseUrl: "https://foshop.sell.app/product/yeti-perm", description: "Permanentny owoc Yeti w grze Blox Fruits." },
+            tiger: { title: "TIGER [PERM]", price: 100.00, image: "tiger.png", purchaseUrl: "https://foshop.sell.app/product/tiger-perm", description: "Permanentny owoc Tiger w grze Blox Fruits." },
+            gas: { title: "GAS [PERM]", price: 100.00, image: "gas.png", purchaseUrl: "https://foshop.sell.app/product/gas-perm", description: "Permanentny owoc Gas w grze Blox Fruits." },
+            control: { title: "CONTROL [PERM]", price: 100.00, image: "control.png", purchaseUrl: "https://foshop.sell.app/product/control-perm", description: "Permanentny owoc Control w grze Blox Fruits." },
+            buddha: { title: "BUDDHA [PERM]", price: 80.00, image: "buddha.png", purchaseUrl: "https://foshop.sell.app/product/buddha-perm", description: "Permanentny owoc Buddha w grze Blox Fruits." },
+            trex: { title: "T-REX [PERM]", price: 75.00, image: "t-rex-perm", purchaseUrl: "https://foshop.sell.app/product/t-rex-perm", description: "Permanentny owoc T-Rex w grze Blox Fruits." },
+            gravity: { title: "GRAVITY [PERM]", price: 75.00, image: "gravity.png", purchaseUrl: "https://foshop.sell.app/product/gravity-perm", description: "Permanentny owoc Gravity w grze Blox Fruits." },
+            spirit: { title: "SPIRIT [PERM]", price: 75.00, image: "spirit.png", purchaseUrl: "https://foshop.sell.app/product/spirit-perm", description: "Permanentny owoc Spirit w grze Blox Fruits." },
+            venom: { title: "VENOM [PERM]", price: 75.00, image: "venom.png", purchaseUrl: "https://foshop.sell.app/product/venom-perm", description: "Permanentny owoc Venom w grze Blox Fruits." },
+            mammoth: { title: "MAMMOTH [PERM]", price: 75.00, image: "mammoth.png", purchaseUrl: "https://foshop.sell.app/product/mammoth-perm", description: "Permanentny owoc Mammoth w grze Blox Fruits." },
+            portal: { title: "PORTAL [PERM]", price: 75.00, image: "portal.png", purchaseUrl: "https://foshop.sell.app/product/portal-perm", description: "Permanentny owoc Portal w grze Blox Fruits." },
             
-            notifier: { title: "Fruit Notifier Pass", price: 100.00, image: "notifier.png", sellAppProductId: "fruit-notifier", description: "Gamepass Fruit Notifier ułatwiający szukanie spawnów owoców." },
-            boost: { title: "Exp Boosts 24h", price: 100.00, image: "boost.png", sellAppProductId: "exp-boosts-24h", description: "Mnożnik doświadczenia trwający pełne 24 godziny." },
-            yoru: { title: "Dark Blade (Yoru)", price: 65.00, image: "yoru.png", sellAppProductId: "dark-blade", description: "Legendarny, mityczny miecz Dark Blade (Yoru) przypisany na stałe." },
-            mastery: { title: "2x Mastery Pass", price: 20.00, image: "mastery.png", sellAppProductId: "2x-mastery", description: "Zwiększa dwukrotnie tempo zdobywania biegłości broni i owoców." },
-            money2x: { title: "2x Money Pass", price: 20.00, image: "money.png", sellAppProductId: "2x-money", description: "Podwaja zarobki pieniężne (Beli) z pokonanych NPC oraz zadań." },
-            storage: { title: "+1 Fruit Storage", price: 20.00, image: "storage.png", sellAppProductId: "1-fruit-storage", description: "Zwiększa pojemność Twojego ekwipunku na owoce o jeden slot." },
-            boats: { title: "Faster Boats Pass", price: 20.00, image: "boats.png", sellAppProductId: "faster-boats", description: "Daje dostęp do luksusowych, najszybszych łodzi w grze." },
-            drop: { title: "2x Drop Chance Pass", price: 20.00, image: "drop.png", sellAppProductId: "2x-drop-chance", description: "Podwaja szanse na drop cennych przedmiotów i akcesoriów z bossów." },
+            notifier: { title: "Fruit Notifier Pass", price: 100.00, image: "notifier.png", purchaseUrl: "https://foshop.sell.app/product/fruit-notifier", description: "Gamepass Fruit Notifier ułatwiający szukanie spawnów owoców." },
+            boost: { title: "Exp Boosts 24h", price: 100.00, image: "boost.png", purchaseUrl: "https://foshop.sell.app/product/exp-boosts-24h", description: "Mnożnik doświadczenia trwający pełne 24 godziny." },
+            yoru: { title: "Dark Blade (Yoru)", price: 65.00, image: "yoru.png", purchaseUrl: "https://foshop.sell.app/product/dark-blade", description: "Legendarny miecz Dark Blade (Yoru) przypisany na stałe do konta." },
+            mastery: { title: "2x Mastery Pass", price: 20.00, image: "mastery.png", purchaseUrl: "https://foshop.sell.app/product/2x-mastery", description: "Zwiększa dwukrotnie tempo zdobywania biegłości broni i owoców." },
+            money2x: { title: "2x Money Pass", price: 20.00, image: "money.png", purchaseUrl: "https://foshop.sell.app/product/2x-money", description: "Podwaja zarobki pieniężne (Beli) z zadań w grze." },
+            storage: { title: "+1 Fruit Storage", price: 20.00, image: "storage.png", purchaseUrl: "https://foshop.sell.app/product/1-fruit-storage", description: "Zwiększa pojemność Twojego ekwipunku na owoce." },
+            boats: { title: "Faster Boats Pass", price: 20.00, image: "boats.png", purchaseUrl: "https://foshop.sell.app/product/faster-boats", description: "Daje dostęp do luksusowych i superszybkich łodzi w grze." },
+            drop: { title: "2x Drop Chance Pass", price: 20.00, image: "drop.png", purchaseUrl: "https://foshop.sell.app/product/2x-drop-chance", description: "Podwaja szanse na drop cennych przedmiotów z bossów." },
 
-            eafc: { title: "EA SPORTS FC 26 Pełny Dostęp (PC)", price: 100.00, image: "eafc.png", sellAppProductId: "ea-sports-fc-26", description: "Konto platformy EA z grą FC 26 i pełną własnością." },
-            rdr2: { title: "Red Dead Redemption 2 Pełny Dostęp (PC)", price: 50.00, image: "rdr2.png", sellAppProductId: "red-dead-redemption-2", description: "Konto Social Club z grą Red Dead Redemption 2 fabuła + online." },
-            gta5: { title: "Grand Theft Auto V Pełny Dostęp (PC)", price: 45.00, image: "gta5.png", sellAppProductId: "grand-theft-auto-v", description: "Konto Social Club z grą GTA V oraz bonusem gotówkowym Online." },
-            minecraft: { title: "Minecraft Premium Account Pełny Dostęp (PC)", price: 35.00, image: "mincraft.png", sellAppProductId: "minecraft-premium", description: "Pełna wersja Minecraft Java i Bedrock na własność." },
+            eafc: { title: "EA SPORTS FC 26 Pełny Dostęp", price: 100.00, image: "eafc.png", purchaseUrl: "https://foshop.sell.app/product/ea-sports-fc-26", description: "Konto platformy EA z grą FC 26 i pełną własnością na własny adres e-mail." },
+            rdr2: { title: "Red Dead Redemption 2 Pełny Dostęp", price: 50.00, image: "rdr2.png", purchaseUrl: "https://foshop.sell.app/product/red-dead-redemption-2", description: "Konto Rockstar Games / Epic / Steam z grą Red Dead Redemption 2." },
+            gta5: { title: "Grand Theft Auto V Pełny Dostęp", price: 45.00, image: "gta5.png", purchaseUrl: "https://foshop.sell.app/product/grand-theft-auto-v", description: "Konto Rockstar Games z pełnym dostępem do Grand Theft Auto V Story + Online." },
+            minecraft: { title: "Minecraft Premium Account Pełny Dostęp", price: 35.00, image: "mincraft.png", purchaseUrl: "https://foshop.sell.app/product/minecraft-premium", description: "Pełna wersja konta Minecraft (Java oraz Bedrock Edition)." },
             
-            fivem_acc: { title: "FiveM Ready Rockstar Account", price: 1.00, image: "fivem.png", sellAppProductId: "fivem-ready-fresh-rockstar-account-full-access", minQty: 2, stock: 30, description: "Czyste konta Social Club pod omijanie banów (unban) lub testowanie cheatów." },
-            discord_acc: { title: "Discord Account (Verified)", price: 1.50, image: "discord.png", sellAppProductId: "discord-account-3-months-aged-e-mail-phone-verified", minQty: 2, stock: 15, description: "Konta Discord ze stażem zweryfikowane e-mailem oraz telefonem." },
-            netflix: { title: "NETFLIX Premium 4K UHD", price: 15.00, image: "netflix.png", sellAppProductId: "netflix-premium", stock: 5, description: "Dostęp do profilu Netflix Premium z jakością strumienia 4K Ultra HD." },
-            disney: { title: "DISNEY+ Premium", price: 10.00, image: "disney.png", sellAppProductId: "disney-premium", stock: 3, description: "Konto subskrypcji Disney Plus Premium z pełną bazą filmów i seriali." },
-            crunchyroll: { title: "CRUNCHYROLL Mega Fan", price: 10.00, image: "crunchyroll.png", sellAppProductId: "crunchyroll", stock: 4, description: "Abonament Crunchyroll Mega Fan zapewniający oglądanie anime bez reklam." }
+            fivem_acc: { title: "FiveM Ready Rockstar Account", price: 1.00, image: "fivem.png", purchaseUrl: "https://foshop.sell.app/product/fivem-ready-fresh-rockstar-account-full-access", minQty: 2, stock: 30, description: "Czyste konta Social Club pod omijanie blokad na serwerach FiveM." },
+            discord_acc: { title: "Discord Account (Verified)", price: 1.50, image: "discord.png", purchaseUrl: "https://foshop.sell.app/product/discord-account-3-months-aged-e-mail-phone-verified", minQty: 2, stock: 14, description: "Konta Discord ze stażem zweryfikowane e-mailem oraz numerem telefonu." },
+            netflix: { title: "NETFLIX Premium 4K UHD", price: 15.00, image: "netflix.png", purchaseUrl: "https://foshop.sell.app/product/netflix-premium", stock: 5, description: "Dostęp do profilu Netflix Premium z jakością strumienia Ultra HD." },
+            disney: { title: "DISNEY+ Premium", price: 10.00, image: "disney.png", purchaseUrl: "https://foshop.sell.app/product/disney-premium", stock: 3, description: "Profil subskrypcji Disney Plus Premium z pełną bazą filmów." },
+            crunchyroll: { title: "CRUNCHYROLL Mega Fan", price: 10.00, image: "crunchyroll.png", purchaseUrl: "https://foshop.sell.app/product/crunchyroll", stock: 4, description: "Abonament Crunchyroll Mega Fan zapewniający oglądanie anime bez reklam." }
         };
 
         let cart = {};
@@ -1035,22 +1003,68 @@
             document.getElementById('cart-modal').style.display = show ? 'flex' : 'none';
         }
 
-        function validatePageQty() {
+        function calculateDynamicPagePrice() {
             const currentId = document.getElementById('active-product-tracker').getAttribute('data-current');
+            if (!currentId || !productsData[currentId]) return;
+
+            const product = productsData[currentId];
             const qtyInput = document.getElementById('p-view-qty');
             const alertMsg = document.getElementById('min-qty-alert-msg');
             
-            if (!currentId || !productsData[currentId]) return;
-            
-            let val = parseInt(qtyInput.value) || 1;
-            const product = productsData[currentId];
-            
-            if (product.minQty && val < product.minQty) {
-                qtyInput.value = product.minQty;
-                alertMsg.style.display = 'block';
+            let qty = parseInt(qtyInput.value) || 1;
+
+            if (product.minQty && qty < product.minQty) {
+                alertMsg.style.display = 'flex';
             } else {
                 alertMsg.style.display = 'none';
             }
+
+            const currentTotal = product.price * qty;
+            document.getElementById('p-view-price-main').innerText = currentTotal.toFixed(2) + " PLN";
+        }
+
+        function openProductPageV2(productId) {
+            const product = productsData[productId];
+            if (!product) return;
+
+            document.getElementById('active-product-tracker').setAttribute('data-current', productId);
+            document.getElementById('p-view-title').innerText = product.title;
+            document.getElementById('p-view-price-top').innerText = product.price.toFixed(2) + " PLN";
+            document.getElementById('p-view-image').src = product.image;
+            document.getElementById('p-view-description').innerHTML = product.description;
+            
+            const qtyInput = document.getElementById('p-view-qty');
+            if (product.minQty) {
+                qtyInput.value = product.minQty;
+                qtyInput.setAttribute('min', product.minQty);
+                document.getElementById('min-qty-alert-msg').style.display = 'flex';
+            } else {
+                qtyInput.value = 1;
+                qtyInput.setAttribute('min', 1);
+                document.getElementById('min-qty-alert-msg').style.display = 'none';
+            }
+
+            calculateDynamicPagePrice();
+
+            document.getElementById('main-storefront').style.display = 'none';
+            document.getElementById('product-page-view').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function instantBuyFromPage() {
+            const currentId = document.getElementById('active-product-tracker').getAttribute('data-current');
+            if (!currentId || !productsData[currentId]) return;
+
+            const product = productsData[currentId];
+            let qty = parseInt(document.getElementById('p-view-qty').value) || 1;
+
+            if (product.minQty && qty < product.minQty) {
+                qty = product.minQty;
+            }
+
+            // Przekierowanie na Sell.app z zachowaniem wybranej ilości sztuk (?quantity=X)
+            const finalLink = `${product.purchaseUrl}?quantity=${qty}`;
+            window.open(finalLink, '_blank');
         }
 
         function addItemToCartFromPage() {
@@ -1070,7 +1084,7 @@
                 cart[currentId] = {
                     title: product.title,
                     price: product.price,
-                    sellAppProductId: product.sellAppProductId,
+                    purchaseUrl: product.purchaseUrl,
                     minQty: product.minQty || 1,
                     qty: qty
                 };
@@ -1078,28 +1092,6 @@
 
             renderCart();
             toggleCart(true);
-        }
-
-        function instantBuyFromPage() {
-            const currentId = document.getElementById('active-product-tracker').getAttribute('data-current');
-            if (!currentId || !productsData[currentId]) return;
-
-            const product = productsData[currentId];
-            let qty = parseInt(document.getElementById('p-view-qty').value) || 1;
-
-            if (product.minQty && qty < product.minQty) {
-                qty = product.minQty;
-            }
-
-            const dummyBtn = document.createElement('button');
-            dummyBtn.setAttribute('data-sell-store', SELL_APP_STORE_ID);
-            dummyBtn.setAttribute('data-sell-product', product.sellAppProductId);
-            dummyBtn.setAttribute('data-sell-quantity', qty);
-            dummyBtn.style.display = 'none';
-            
-            document.body.appendChild(dummyBtn);
-            dummyBtn.click();
-            document.body.removeChild(dummyBtn);
         }
 
         function updateCartItemQty(key, inputElement) {
@@ -1138,7 +1130,7 @@
                     <div class="cart-item">
                         <div class="cart-item-info">
                             <h4>${item.title}</h4>
-                            <span>${item.price.toFixed(2)} PLN</span>
+                            <span>${(item.price * item.qty).toFixed(2)} PLN (${item.qty} szt.)</span>
                         </div>
                         <div class="cart-item-qty">
                             <input type="number" value="${item.qty}" min="${item.minQty || 1}" onchange="updateCartItemQty('${key}', this)">
@@ -1152,29 +1144,24 @@
             document.getElementById('cart-total-price').innerText = total.toFixed(2) + ' PLN';
             
             if (count === 0) {
-                container.innerHTML = '<p style="color: #64748b; text-align:center; padding: 20px;">Twój koszyk jest pusty.</p>';
+                container.innerHTML = '<p style="color: #64748b; text-align:center; padding: 20px;">Twój koszyk na stronie jest pusty.</p>';
             }
         }
 
         function checkoutCart() {
             const keys = Object.keys(cart);
             if (keys.length === 0) {
-                alert("Koszyk jest pusty!");
+                alert("Twój koszyk jest pusty!");
                 return;
             }
 
+            // Przekierowanie do pierwszego wybranego produktu z koszyka na Sell.app
             let firstKey = keys[0];
             let item = cart[firstKey];
-
-            const dummyBtn = document.createElement('button');
-            dummyBtn.setAttribute('data-sell-store', SELL_APP_STORE_ID);
-            dummyBtn.setAttribute('data-sell-product', item.sellAppProductId);
-            dummyBtn.setAttribute('data-sell-quantity', item.qty);
-            dummyBtn.style.display = 'none';
             
-            document.body.appendChild(dummyBtn);
-            dummyBtn.click();
-            document.body.removeChild(dummyBtn);
+            alert(`Przekierowujemy do bramki płatności dla produktu: ${item.title} w ilości ${item.qty} szt.`);
+            const finalLink = `${item.purchaseUrl}?quantity=${item.qty}`;
+            window.open(finalLink, '_blank');
             
             cart = {};
             renderCart();
@@ -1195,33 +1182,6 @@
             if (element) element.classList.add('active');
         }
 
-        function openProductPageV2(productId) {
-            const product = productsData[productId];
-            if (!product) return;
-
-            document.getElementById('active-product-tracker').setAttribute('data-current', productId);
-            document.getElementById('p-view-title').innerText = product.title;
-            document.getElementById('p-view-price-top').innerText = product.price.toFixed(2) + " PLN";
-            document.getElementById('p-view-price-main').innerText = product.price.toFixed(2) + " PLN";
-            document.getElementById('p-view-image').src = product.image;
-            document.getElementById('p-view-description').innerHTML = product.description;
-            
-            const qtyInput = document.getElementById('p-view-qty');
-            if (product.minQty) {
-                qtyInput.value = product.minQty;
-                qtyInput.setAttribute('min', product.minQty);
-                document.getElementById('min-qty-alert-msg').style.display = 'flex';
-            } else {
-                qtyInput.value = 1;
-                qtyInput.setAttribute('min', 1);
-                document.getElementById('min-qty-alert-msg').style.display = 'none';
-            }
-
-            document.getElementById('main-storefront').style.display = 'none';
-            document.getElementById('product-page-view').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
         function backToStorefront() {
             document.getElementById('active-product-tracker').setAttribute('data-current', '');
             document.getElementById('product-page-view').style.display = 'none';
@@ -1232,7 +1192,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             showCategoryV2('roblox', document.querySelector('.cyber-category-card'));
             
-            // Domyślne ładowanie statycznych wartości magazynu
+            // Wczytywanie stanów magazynowych na kafelkach
             const trackedStock = ['netflix', 'disney', 'crunchyroll', 'fivem_acc', 'discord_acc'];
             trackedStock.forEach(id => {
                 const tileElement = document.getElementById(`stock-tile-${id}`);
