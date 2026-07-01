@@ -404,7 +404,7 @@
             color: #030207;
         }
 
-        /* WIDOK PRODUKTU */
+        /* STRONA PODGLĄDU PRODUKTU PC / FIVEM / DISCORD */
         #product-page-view {
             display: none;
             max-width: 1200px;
@@ -413,18 +413,84 @@
             animation: viewSlipIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        .rebuild-product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        @media(max-width: 992px) { 
+            .rebuild-product-layout { grid-template-columns: 1fr; gap: 40px; } 
+        }
+
+        .rebuild-media-side img {
+            width: 100%; 
+            height: auto; 
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .rebuild-details-side h2 { 
+            font-size: 2.6rem; 
+            font-weight: 800; 
+            letter-spacing: -1px; 
+            margin-bottom: 15px; 
+            line-height: 1.1; 
+        }
+
+        .rebuild-price-badge-top { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            color: #34d399; 
+            margin-bottom: 30px; 
+        }
+
+        .rebuild-purchase-card { 
+            background: linear-gradient(135deg, #0b0912 0%, #050409 100%); 
+            border: 1px solid rgba(168, 85, 247, 0.25); 
+            border-radius: 20px; 
+            padding: 30px; 
+            margin-bottom: 35px; 
+            position: relative; 
+        }
+
+        .rebuild-status-bar { 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 0.85rem; 
+            color: #64748b; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            letter-spacing: 0.5px; 
+            margin-bottom: 20px; 
+        }
+
+        .status-online-tag { color: #34d399; display: flex; align-items: center; gap: 6px; }
+        .status-online-tag::before { content: ''; width: 8px; height: 8px; background: #34d399; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #34d399; }
+        
+        .rebuild-large-price { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            color: #ffffff; 
+            margin-bottom: 25px; 
+            letter-spacing: -0.5px; 
+        }
+
         .rebuild-qty-selector {
-            margin: 15px 0;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        .rebuild-qty-selector label { font-size: 0.9rem; font-weight: 700; color: #94a3b8; }
+        .rebuild-qty-selector label { font-size: 0.95rem; font-weight: 700; color: #94a3b8; }
+        
         .rebuild-qty-input {
             width: 80px;
             padding: 10px;
-            background: #09070f;
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            background: #030207;
+            border: 1px solid rgba(168, 85, 247, 0.4);
             border-radius: 8px;
             color: #fff;
             font-weight: 700;
@@ -432,12 +498,54 @@
         }
 
         .min-qty-alert {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #c084fc;
             font-weight: 600;
-            margin-top: -5px;
-            margin-bottom: 15px;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
+
+        .rebuild-buy-button-anchor { 
+            width: 100%;
+            background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%); 
+            color: #ffffff; 
+            padding: 16px; 
+            border-radius: 12px; 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            text-align: center; 
+            text-decoration: none; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 12px; 
+            box-shadow: 0 4px 25px rgba(168, 85, 247, 0.35); 
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
+            border: none; 
+            cursor: pointer; 
+        }
+
+        .rebuild-buy-button-anchor:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(168, 85, 247, 0.5);
+        }
+
+        .rebuild-buy-button-anchor.disabled {
+            background: #1e1b29 !important;
+            color: #4b4859 !important;
+            box-shadow: none !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+        }
+        
+        .rebuild-desc-header { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 8px; }
+        .rebuild-description-container { font-size: 1rem; color: #94a3b8; line-height: 1.6; }
+
+        .rebuild-checkout-footer { margin-top: 40px; background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .rebuild-gateways-row { display: flex; gap: 18px; font-size: 1.6rem; color: #64748b; }
 
         /* MODAL KOSZYKA */
         .cart-modal {
@@ -519,35 +627,6 @@
         }
         .btn-checkout:hover { transform: translateY(-1px); }
 
-        .rebuild-product-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        @media(max-width: 992px) { .rebuild-product-layout { grid-template-columns: 1fr; gap: 40px; } }
-
-        .rebuild-media-side img {
-            width: 100%; height: auto; border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-        }
-
-        .rebuild-details-side h2 { font-size: 2.6rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 15px; line-height: 1.1; }
-        .rebuild-price-badge-top { font-size: 1.5rem; font-weight: 800; color: #34d399; margin-bottom: 30px; }
-        .rebuild-purchase-card { background: linear-gradient(135deg, #0b0912 0%, #050409 100%); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 20px; padding: 30px; margin-bottom: 35px; position: relative; }
-        .rebuild-status-bar { display: flex; justify-content: space-between; font-size: 0.85rem; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 20px; }
-        .status-online-tag { color: #34d399; display: flex; align-items: center; gap: 6px; }
-        .status-online-tag::before { content: ''; width: 8px; height: 8px; background: #34d399; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #34d399; }
-        .rebuild-large-price { font-size: 2.5rem; font-weight: 800; color: #ffffff; margin-bottom: 25px; letter-spacing: -0.5px; }
-        
-        .rebuild-desc-header { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 8px; }
-        .rebuild-description-container { font-size: 1rem; color: #94a3b8; line-height: 1.6; }
-
-        .rebuild-checkout-footer { margin-top: 40px; background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
-        .rebuild-gateways-row { display: flex; gap: 18px; font-size: 1.6rem; color: #64748b; }
-
         @keyframes viewSlipIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideLeft { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
@@ -575,14 +654,13 @@
             <div class="cart-close" onclick="toggleCart(false)"><i class="fas fa-xmark"></i></div>
         </div>
         <div class="cart-items-container" id="cart-items-content">
-            <!-- Tutaj wskakują produkty -->
+            <!-- Produkty w koszyku -->
         </div>
         <div class="cart-footer">
             <div class="cart-total-row">
                 <span>Razem:</span>
                 <span id="cart-total-price">0.00 PLN</span>
             </div>
-            <!-- Dynamiczny przycisk kasy Sell.app -->
             <div id="sell-app-cart-button-container">
                 <button class="btn-checkout" onclick="checkoutCart()">Przejdź do płatności</button>
             </div>
@@ -630,7 +708,6 @@
         <div class="showcase-container" id="roblox">
             <div class="sub-section-title"><i class="fas fa-apple-whole"></i> Permanent Fruits</div>
             <div class="showcase-grid">
-                <!-- Przykładowe kafelki uproszczone na potrzeby integracji koszyka -->
                 <div class="cyber-product-card" onclick="openProductPageV2('dragon')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-dragon"></i></div><span class="card-badge badge-purple">Perm</span></div>
                     <div class="card-info-main"><h3>DRAGON [PERM]</h3></div>
@@ -704,17 +781,19 @@
         </div>
     </div>
 
-    <!-- KARTA PODGLĄDU PRODUKTU -->
+    <!-- KARTA PODGLĄDU PRODUKTU (NAPRAWIONY UKŁAD) -->
     <div id="product-page-view">
         <div class="back-to-shop-btn" onclick="backToStorefront()">
             <i class="fas fa-arrow-left-long"></i> Powrót do oferty sklepu
         </div>
 
         <div class="rebuild-product-layout">
+            <!-- Lewa kolumna: Obraz/Baner -->
             <div class="rebuild-media-side">
-                <img id="p-view-image" src="" alt="Baner Gry">
+                <img id="p-view-image" src="" alt="Baner Produktu">
             </div>
 
+            <!-- Prawa kolumna: Szczegóły zakupu, opisy -->
             <div class="rebuild-details-side">
                 <h2 id="p-view-title">Nazwa Produktu</h2>
                 <div class="rebuild-price-badge-top" id="p-view-price-top">0.00 PLN</div>
@@ -744,6 +823,16 @@
                 <div class="rebuild-description-container" id="p-view-description">
                     Opis...
                 </div>
+
+                <div class="rebuild-checkout-footer">
+                    <span>Szyfrowane połączenie SSL</span>
+                    <div class="rebuild-gateways-row">
+                        <i class="fab fa-cc-paypal" style="color:#00457c;"></i>
+                        <i class="fab fa-cc-visa" style="color:#1a1f71;"></i>
+                        <i class="fab fa-cc-mastercard" style="color:#eb001b;"></i>
+                        <i class="fas fa-mobile-screen-button" style="color:#34d399;"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -760,47 +849,109 @@
 
     <script>
         const SELL_APP_API_TOKEN = "TWÓJ_KLUCZ_API_Z_SELL_APP"; 
-        
-        // Zastąp te wartości swoimi ID wariantów/produktów z panelu Sell.app, aby koszyk przekazywał dane do zapłaty
         const SELL_APP_STORE_ID = "12345"; 
 
         const productsData = {
             dragon: { title: "DRAGON [PERM]", price: 155.00, image: "dragon.png", buyLink: "#", sellAppProductId: "111", description: "Permanentny owoc Dragon w Blox Fruits." },
             kitsune: { title: "KITSUNE [PERM]", price: 135.00, image: "kitsune.png", buyLink: "#", sellAppProductId: "222", description: "Permanentny owoc Kitsune w Blox Fruits." },
-            eafc: { title: "EA SPORTS FC 26 Pełny Dostęp", price: 100.00, image: "eafc.png", buyLink: "#", sellAppProductId: "333", description: "Konto EA z grą FC 26." },
-            minecraft: { title: "Minecraft Premium", price: 35.00, image: "mincraft.png", buyLink: "#", sellAppProductId: "444", description: "Pełny dostęp do konta Mojang." },
+            eafc: { title: "EA SPORTS FC 26 Pełny Dostęp (PC)", price: 100.00, image: "eafc.png", buyLink: "#", sellAppProductId: "333", description: "Konto EA z grą FC 26." },
+            minecraft: { title: "Minecraft Premium Account Pełny Dostęp (PC)", price: 35.00, image: "mincraft.png", buyLink: "#", sellAppProductId: "444", description: "Pełny dostęp do konta Mojang." },
             
             fivem_acc: {
-                title: "FiveM Ready [ Fresh ] Rockstar Account",
+                title: "FiveM Ready [ Fresh ] Rockstar Account (Full Access)",
                 price: 1.00,
                 image: "fivem.png",
                 buyLink: "#",
                 sellAppProductId: "555",
                 minQty: 2,
-                description: "Czyste konto pod platformę FiveM. Omijaj blokady HWID."
+                description: `
+                    Zyskaj świeże konto Rockstar Games (Social Club) zsynchronizowane pod natychmiastowe działanie z platformą FiveM. Idealne rozwiązanie do bezpiecznego omijania blokad (unban), testowania cheatów ze spooferami lub po prostu rozpoczęcia nowej rozgrywki na czystym koncie bez historii kar!
+                    <br><br>
+                    <div class="game-features-grid">
+                        <div class="game-feature-item">
+                            <i class="fas fa-envelope-open"></i>
+                            <div class="game-feature-text">
+                                <strong>FORMAT LOGOWANIA (FA)</strong>
+                                <span>Otrzymujesz pełne dane w wygodnym formacie Rockstar + Outlook Login (100% własności).</span>
+                            </div>
+                        </div>
+                        <div class="game-feature-item">
+                            <i class="fas fa-user-secret"></i>
+                            <div class="game-feature-text">
+                                <strong>UNBAN & SPOOFER READY</strong>
+                                <span>Konta są w pełni zoptymalizowane i czyste, idealnie współpracują ze spooferami HWID oraz unbanami.</span>
+                            </div>
+                        </div>
+                        <div class="game-feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <div class="game-feature-text">
+                                <strong>BŁYSKAWICZNA DOSTAWA</strong>
+                                <span>System automatycznie wysyła dane logowania na Twój adres e-mail w zaledwie 2 do 15 minut od wpłaty.</span>
+                            </div>
+                        </div>
+                        <div class="game-feature-item">
+                            <i class="fas fa-shield-halved"></i>
+                            <div class="game-feature-text">
+                                <strong>GWARANCJA DO 120 GODZIN</strong>
+                                <span>Zapewniamy najdłuższą stabilność na rynku oraz pełne wsparcie techniczne i 48h/120h gwarancji wymiany.</span>
+                            </div>
+                        </div>
+                    </div>
+                `
             },
             discord_acc: {
-                title: "Discord Account (3+ Months Aged)",
+                title: "Discord Account (3+ Months Aged, E-mail & Phone Verified)",
                 price: 1.50,
                 image: "discord.png",
                 buyLink: "#",
                 sellAppProductId: "666",
                 minQty: 2,
-                description: "Zweryfikowane konto Discord ze stażem 3 miesięcy."
+                description: `
+                    W pełni zweryfikowane, starsze konta Discord z co najmniej 3-miesięcznym stażem (Aged Accounts). Doskonale nadają się do zarządzania serwerami, masowej reklamy, omijania filtrów antyspamowych, rajdów, testowania botów, funkcji Nitro oraz jako bezpieczne, główne lub zapasowe konta do codziennego użytku.
+                    <br><br>
+                    <div class="game-features-grid">
+                        <div class="game-feature-item">
+                            <i class="fas fa-check-double"></i>
+                            <div class="game-feature-text">
+                                <strong>PODWÓJNA WERYFIKACJA</strong>
+                                <span>Konta posiadają przypisany, zweryfikowany adres e-mail (w zestawie) oraz unikalny numer telefonu.</span>
+                            </div>
+                        </div>
+                        <div class="game-feature-item">
+                            <i class="fas fa-history"></i>
+                            <div class="game-feature-text">
+                                <strong>STAŻ 3+ MIESIĘCY (AGED)</strong>
+                                <span>Dzięki realnemu wiekowi, konta posiadają wysoki współczynnik zaufania (Trust Score) i nie dostają łatwo banów.</span>
+                            </div>
+                        </div>
+                        <div class="game-feature-item">
+                            <i class="fas fa-unlock-keyhole"></i>
+                            <div class="game-feature-text">
+                                <strong>PEŁNY DOSTĘP (FA)</strong>
+                                <span>Otrzymujesz pełne uprawnienia – możesz od razu zmienić hasło, e-mail, avatar, pseudonim oraz tokeny.</span>
+                            </div>
+                        </div>
+                        <div class="game-feature-item">
+                            <i class="fas fa-handshake"></i>
+                            <div class="game-feature-text">
+                                <strong>BEZPIECZEŃSTWO I WSPARCIE</strong>
+                                <span>Konta są całkowicie prywatne, nigdy wcześniej nieużywane przez osoby trzecie, objęte dożywotnim supportem FO SHOP.</span>
+                            </div>
+                        </div>
+                    </div>
+                `
             },
-            netflix: { title: "NETFLIX Premium 4K UHD", price: 15.00, image: "netflix.png", buyLink: "#", sellAppProductId: "777", stock: 5, description: "Konto Netflix Ultra HD." },
-            disney: { title: "DISNEY+ Premium", price: 10.00, image: "disney.png", buyLink: "#", sellAppProductId: "888", stock: 3, description: "Dostęp do bazy Disney+." },
-            crunchyroll: { title: "CRUNCHYROLL Mega Fan", price: 10.00, image: "crunchyroll.png", buyLink: "#", sellAppProductId: "999", stock: 4, description: "Konto dla fanów Anime." }
+            netflix: { title: "NETFLIX Premium 4K UHD", price: 15.00, image: "netflix.png", buyLink: "#", sellAppProductId: "777", stock: 5, description: "Konto Netflix Ultra HD w jakości 4K." },
+            disney: { title: "DISNEY+ Premium", price: 10.00, image: "disney.png", buyLink: "#", sellAppProductId: "888", stock: 3, description: "Pełny dostęp premium do bazy Disney+." },
+            crunchyroll: { title: "CRUNCHYROLL Mega Fan", price: 10.00, image: "crunchyroll.png", buyLink: "#", sellAppProductId: "999", stock: 4, description: "Konto Crunchyroll Mega Fan bez reklam." }
         };
 
         let cart = {};
 
-        // Funkcja otwierania/zamykania fioletowego koszyka
         function toggleCart(show) {
             document.getElementById('cart-modal').style.display = show ? 'flex' : 'none';
         }
 
-        // Walidacja ilości na karcie produktu (blokowanie wpisywania mniej niż 2 sztuki)
         function validatePageQty() {
             const currentId = document.getElementById('active-product-tracker').getAttribute('data-current');
             const qtyInput = document.getElementById('p-view-qty');
@@ -819,7 +970,6 @@
             }
         }
 
-        // Dodawanie do koszyka bezpośrednio z poziomu karty produktu
         function addItemToCartFromPage() {
             const currentId = document.getElementById('active-product-tracker').getAttribute('data-current');
             if (!currentId || !productsData[currentId]) return;
@@ -847,7 +997,6 @@
             toggleCart(true);
         }
 
-        // Zmiana ilości z wewnątrz koszyka
         function updateCartItemQty(key, inputElement) {
             let val = parseInt(inputElement.value) || 1;
             const item = cart[key];
@@ -855,7 +1004,7 @@
             if (item.minQty && val < item.minQty) {
                 val = item.minQty;
                 inputElement.value = val;
-                alert(`Dla produktu ${item.title} minimalna ilość zamówienia to ${item.minQty} sztuki!`);
+                alert(`Dla produktu ${item.title} minimalna ilość zamówienia to ${item.minQty} warianty!`);
             }
             
             item.qty = val;
@@ -867,7 +1016,6 @@
             renderCart();
         }
 
-        // Renderowanie fioletowej listy koszyka
         function renderCart() {
             const container = document.getElementById('cart-items-content');
             container.innerHTML = '';
@@ -903,19 +1051,15 @@
             }
         }
 
-        // Funkcja kasy - integracja z systemem Embed Sell.app
         function checkoutCart() {
             if (Object.keys(cart).length === 0) {
                 alert("Koszyk jest pusty!");
                 return;
             }
 
-            // Sell.app obsługuje natywne przyciski z koszykiem za pomocą data-atrybutów.
-            // Generujemy w locie niewidzialny bilet zakupu zgodny ze strukturą Sell.js:
             let firstKey = Object.keys(cart)[0];
             let item = cart[firstKey];
 
-            // Przykład realizacji pierwszego elementu bezpośrednio przez modal Sell.app:
             const dummyBtn = document.createElement('button');
             dummyBtn.setAttribute('data-sell-store', SELL_APP_STORE_ID);
             dummyBtn.setAttribute('data-sell-product', item.sellAppProductId);
@@ -927,7 +1071,6 @@
             document.body.removeChild(dummyBtn);
         }
 
-        // Funkcja pobierająca stany z API Sell.app
         async function fetchSellAppStock() {
             if (SELL_APP_API_TOKEN === "TWÓJ_KLUCZ_API_Z_SELL_APP") {
                 productsData.netflix.stock = 5;
@@ -1003,7 +1146,7 @@
             if (product.minQty) {
                 qtyInput.value = product.minQty;
                 qtyInput.setAttribute('min', product.minQty);
-                document.getElementById('min-qty-alert-msg').style.display = 'block';
+                document.getElementById('min-qty-alert-msg').style.display = 'flex';
             } else {
                 qtyInput.value = 1;
                 qtyInput.setAttribute('min', 1);
