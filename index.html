@@ -340,6 +340,9 @@
             align-items: center;
             gap: 6px;
         }
+        .card-stock-status.out-of-stock {
+            color: #ef4444;
+        }
 
         .card-footer-price-row {
             display: flex;
@@ -488,6 +491,15 @@
         .rebuild-buy-button-anchor:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 30px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Klasa blokady gdy wyprzedane */
+        .rebuild-buy-button-anchor.disabled {
+            background: #1e1b29 !important;
+            color: #4b4859 !important;
+            box-shadow: none !important;
+            cursor: not-allowed !important;
+            transform: none !important;
         }
 
         .rebuild-desc-header {
@@ -765,22 +777,22 @@
         <div class="showcase-container" id="streaming">
             <div class="sub-section-title"><i class="fas fa-wand-magic-sparkles"></i> Usługi Strumieniowe Premium</div>
             <div class="showcase-grid">
-                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/netflix-premium', '_blank')">
+                <div class="cyber-product-card" onclick="openProductPageV2('netflix')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-video"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>NETFLIX Premium 4K</h3></div>
-                    <div class="card-stock-status"><i class="fas fa-boxes-stacked"></i> W magazynie: 42 szt.</div>
+                    <div class="card-stock-status" id="stock-tile-netflix"><i class="fas fa-boxes-stacked"></i> Sprawdzanie...</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">15.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
-                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/disney-premium', '_blank')">
+                <div class="cyber-product-card" onclick="openProductPageV2('disney')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-film"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>DISNEY+ Premium</h3></div>
-                    <div class="card-stock-status"><i class="fas fa-boxes-stacked"></i> W magazynie: 19 szt.</div>
+                    <div class="card-stock-status" id="stock-tile-disney"><i class="fas fa-boxes-stacked"></i> Sprawdzanie...</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
-                <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/crunchyroll', '_blank')">
+                <div class="cyber-product-card" onclick="openProductPageV2('crunchyroll')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-tv"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>CRUNCHYROLL Mega Fan</h3></div>
-                    <div class="card-stock-status"><i class="fas fa-boxes-stacked"></i> W magazynie: 25 szt.</div>
+                    <div class="card-stock-status" id="stock-tile-crunchyroll"><i class="fas fa-boxes-stacked"></i> Sprawdzanie...</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
             </div>
@@ -861,7 +873,7 @@
                 image: "rdr2.png",
                 buyLink: "https://foshop.sell.app/product/red-dead-redemption-2",
                 description: `
-                    Kupujesz pełny dostęp (Full Access) do konta Rockstar Games Social Club z grą Red Dead Redemption 2 na PC! Stań się legendą Dzikiego Zachodu w jednej z najlepiej ocenianych gier wszech czasów.
+                    Kupujesz pełny dostęp (Full Access) do konto Rockstar Games Social Club z grą Red Dead Redemption 2 na PC! Stań się legendą Dzikiego Zachodu w jednej z najlepiej ocenianych gier wszech czasów.
                     <br><br>
                     <div class="game-features-grid">
                         <div class="game-feature-item"><i class="fas fa-shield-alt"></i><div class="game-feature-text"><strong>BEZPIECZNE KONTA</strong><span>Zaufane źródło. Zmiana maila, hasła i nicku na własne (100% własności).</span></div></div>
@@ -931,15 +943,75 @@
                         <div class="game-feature-item"><i class="fas fa-check-double"></i><div class="game-feature-text"><strong>PODWÓJNA WERYFIKACJA</strong><span>Konto posiada w pełni potwierdzony adres e-mail oraz unikalny numer telefonu.</span></div></div>
                         <div class="game-feature-item"><i class="fas fa-history"></i><div class="game-feature-text"><strong>STAŻ 3+ MIESIĘCY</strong><span>Zredukowane do minimum ryzyko blokad antyspamowych, dzięki realnemu stażowi na platformie.</span></div></div>
                         <div class="game-feature-item"><i class="fas fa-unlock-keyhole"></i><div class="game-feature-text"><strong>PEŁNY DOSTĘP (FA)</strong><span>Możesz dowolnie zmienić adres e-mail, hasło oraz tokeny autoryzacyjne.</span></div></div>
-                        <div class="game-feature-item"><i class="fas fa-handshake"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>Prywatne, nieużywane wcześniej konta z natychmiastowym wsparciem w przypadku problemów.</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-handshake"></i><div class="game-feature-text"><strong>GWARANCJA JAKOCI</strong><span>Prywatne, nieużywane wcześniej konta z natychmiastowym wsparciem w przypadku problemów.</span></div></div>
                     </div>
                 `
             },
-            // Sekcja ze stockiem przekazywanym do podglądu karty produktu
-            'netflix-premium': { stock: "42 szt." },
-            'disney-premium': { stock: "19 szt." },
-            'crunchyroll': { stock: "25 szt." }
+            // PRODUKTY STREAMING Z OBSŁUGĄ KONTROLI STOCKU
+            netflix: {
+                title: "NETFLIX Premium 4K UHD",
+                price: "15.00 PLN",
+                image: "netflix.png",
+                buyLink: "https://foshop.sell.app/product/netflix-premium",
+                stock: 42, // Zmień na 0 żeby przetestować blokadę
+                description: `
+                    Dostęp do konta premium Netflix w najwyższej jakości Ultra HD 4K. Oglądaj swoje ulubione filmy i seriale bez żadnych limitów i przerw na reklamy.
+                    <br><br>
+                    <div class="game-features-grid">
+                        <div class="game-feature-item"><i class="fas fa-video"></i><div class="game-feature-text"><strong>JAKOŚĆ ULTRA HD</strong><span>Ciesz się nieskazitelnym obrazem w rozdzielczości 4K HDR na dowolnym urządzeniu.</span></div></div>
+                        <div class="game-feature-item"><i class="fas fa-bolt"></i><div class="game-feature-text"><strong>AUTOMATYCZNY DOSTĘP</strong><span>Dane przesyłane automatycznie na Twój adres e-mail bezpośrednio po zakupie.</span></div></div>
+                    </div>
+                `
+            },
+            disney: {
+                title: "DISNEY+ Premium",
+                price: "100.00 PLN",
+                image: "disney.png",
+                buyLink: "https://foshop.sell.app/product/disney-premium",
+                stock: 0, // Ustawione na 0 -> Ten produkt pokaże "Brak w magazynie" i zablokuje zakup
+                description: `
+                    Pełny dostęp premium do platformy Disney+. Zyskaj dostęp do uniwersum Marvela, Gwiezdnych Wojen, bajek Disneya i produkcji Pixara w najwyższej jakości.
+                    <br><br>
+                    <div class="game-features-grid">
+                        <div class="game-feature-item"><i class="fas fa-film"></i><div class="game-feature-text"><strong>BOGATA BIBLIOTEKA</strong><span>Dostęp do tysięcy kultowych filmów i hitów kinowych w jednym miejscu.</span></div></div>
+                    </div>
+                `
+            },
+            crunchyroll: {
+                title: "CRUNCHYROLL Mega Fan",
+                price: "10.00 PLN",
+                image: "crunchyroll.png",
+                buyLink: "https://foshop.sell.app/product/crunchyroll",
+                stock: 25,
+                description: `
+                    Konto Crunchyroll w wersji Mega Fan. Najlepsza platforma dla fanów anime – oglądaj najnowsze odcinki prosto z Japonii bez reklam i w trybie offline.
+                    <br><br>
+                    <div class="game-features-grid">
+                        <div class="game-feature-item"><i class="fas fa-tv"></i><div class="game-feature-text"><strong>TRYB OFFLINE</strong><span>Pobieraj odcinki i oglądaj swoje ulubione serie anime gdziekolwiek jesteś.</span></div></div>
+                    </div>
+                `
+            }
         };
+
+        // Funkcja do aktualizowania kafelków na stronie głównej w zależności od właściwości stock
+        function updateStreamingTiles() {
+            const streamingProducts = ['netflix', 'disney', 'crunchyroll'];
+            
+            streamingProducts.forEach(id => {
+                const product = productsData[id];
+                const tileElement = document.getElementById(`stock-tile-${id}`);
+                
+                if (product && tileElement) {
+                    if (product.stock > 0) {
+                        tileElement.innerHTML = `<i class="fas fa-boxes-stacked"></i> W magazynie: ${product.stock} szt.`;
+                        tileElement.classList.remove('out-of-stock');
+                    } else {
+                        tileElement.innerHTML = `<i class="fas fa-circle-xmark"></i> BRAK W MAGAZYNIE`;
+                        tileElement.classList.add('out-of-stock');
+                    }
+                }
+            });
+        }
 
         function showCategoryV2(categoryId, element) {
             document.getElementById('roblox').style.display = 'none';
@@ -968,14 +1040,34 @@
             document.getElementById('p-view-price-main').innerText = product.price;
             document.getElementById('p-view-image').src = product.image;
             document.getElementById('p-view-description').innerHTML = product.description;
-            document.getElementById('p-view-buy-btn').href = product.buyLink;
-
-            // Jeśli produkt ma określony stock (jak sekcja streaming), dopisz go do statusu
+            
+            const buyBtn = document.getElementById('p-view-buy-btn');
             const statusTag = document.getElementById('p-view-status-tag');
-            if(product.stock) {
-                statusTag.innerHTML = `Automatyczna wysyłka (Magazyn: ${product.stock})`;
+
+            // ANALIZA MAGAZYNU (STOCK)
+            if (product.hasOwnProperty('stock')) {
+                if (product.stock > 0) {
+                    // Produkt jest dostępny
+                    statusTag.innerHTML = `Automatyczna wysyłka (Magazyn: ${product.stock} szt.)`;
+                    buyBtn.href = product.buyLink;
+                    buyBtn.innerHTML = `<i class="fas fa-bolt"></i> Zamów i Odbierz Teraz`;
+                    buyBtn.classList.remove('disabled');
+                    buyBtn.style.pointerEvents = "auto"; 
+                } else {
+                    // BRAK W MAGAZYNIE - Blokada zakupu
+                    statusTag.innerHTML = `<span style="color:#ef4444;"><i class="fas fa-circle-xmark"></i> Produkt chwilowo wyprzedany</span>`;
+                    buyBtn.removeAttribute('href');
+                    buyBtn.innerHTML = `<i class="fas fa-ban"></i> Wyprzedane (Brak sztuk)`;
+                    buyBtn.classList.add('disabled');
+                    buyBtn.style.pointerEvents = "none"; // Całkowite zablokowanie kliknięcia
+                }
             } else {
+                // Dla produktów bez określonego stocku (np. gry PC/FiveM działają normalnie)
                 statusTag.innerHTML = `Automatyczna wysyłka`;
+                buyBtn.href = product.buyLink;
+                buyBtn.innerHTML = `<i class="fas fa-bolt"></i> Zamów i Odbierz Teraz`;
+                buyBtn.classList.remove('disabled');
+                buyBtn.style.pointerEvents = "auto";
             }
 
             document.getElementById('main-storefront').style.display = 'none';
@@ -992,6 +1084,9 @@
         window.addEventListener('DOMContentLoaded', () => {
             const firstCard = document.querySelector('.cyber-category-card');
             if(firstCard) showCategoryV2('roblox', firstCard);
+            
+            // Inicjalizacja stanów magazynowych na kafelkach
+            updateStreamingTiles();
         });
     </script>
 </body>
