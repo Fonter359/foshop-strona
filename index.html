@@ -877,18 +877,20 @@
             </div>
         </div>
 
-        <!-- FIVEM STORE -->
+        <!-- FIVEM STORE (Z WIDOCZNYM STOCKIEM) -->
         <div class="showcase-container" id="fivem">
             <div class="sub-section-title"><i class="fas fa-car-on"></i> Produkty i Konta pod FiveM</div>
             <div class="showcase-grid">
                 <div class="cyber-product-card" onclick="openProductPageV2('fivem_acc')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-key"></i></div><span class="card-badge badge-purple">Min. 2 szt.</span></div>
                     <div class="card-info-main"><h3>FiveM Ready Rockstar Account</h3></div>
+                    <div class="card-stock-status" id="stock-tile-fivem"><i class="fas fa-boxes-stacked"></i> W magazynie: 30 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">1.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="openProductPageV2('discord_acc')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fab fa-discord"></i></div><span class="card-badge badge-purple">Min. 2 szt.</span></div>
                     <div class="card-info-main"><h3>Discord Account (Email + Phone Verified)</h3></div>
+                    <div class="card-stock-status" id="stock-tile-discord"><i class="fas fa-boxes-stacked"></i> W magazynie: 15 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">1.50 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-chevron-right"></i></div></div>
                 </div>
             </div>
@@ -901,19 +903,19 @@
                 <div class="cyber-product-card" onclick="openProductPageV2('netflix')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-video"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>NETFLIX Premium 4K</h3></div>
-                    <div class="card-stock-status" id="stock-tile-netflix"><i class="fas fa-spinner fa-spin"></i> Łączenie...</div>
+                    <div class="card-stock-status" id="stock-tile-netflix"><i class="fas fa-boxes-stacked"></i> W magazynie: 5 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">15.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="openProductPageV2('disney')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-film"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>DISNEY+ Premium</h3></div>
-                    <div class="card-stock-status" id="stock-tile-disney"><i class="fas fa-spinner fa-spin"></i> Łączenie...</div>
+                    <div class="card-stock-status" id="stock-tile-disney"><i class="fas fa-boxes-stacked"></i> W magazynie: 3 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="openProductPageV2('crunchyroll')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-tv"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>CRUNCHYROLL Mega Fan</h3></div>
-                    <div class="card-stock-status" id="stock-tile-crunchyroll"><i class="fas fa-spinner fa-spin"></i> Łączenie...</div>
+                    <div class="card-stock-status" id="stock-tile-crunchyroll"><i class="fas fa-boxes-stacked"></i> W magazynie: 4 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
             </div>
@@ -992,39 +994,39 @@
         const SELL_APP_STORE_ID = "12345"; // <--- TUTAJ WPISZ SWÓJ STORE ID Z PANELU SELL.APP
 
         const productsData = {
-            dragon: { title: "DRAGON [PERM]", price: 155.00, image: "dragon.png", sellAppProductId: "111", description: "Permanentny owoc Dragon w grze Blox Fruits." },
-            kitsune: { title: "KITSUNE [PERM]", price: 135.00, image: "kitsune.png", sellAppProductId: "222", description: "Permanentny owoc Kitsune w grze Blox Fruits." },
-            yeti: { title: "YETI [PERM]", price: 100.00, image: "yeti.png", sellAppProductId: "333", description: "Permanentny owoc Yeti w grze Blox Fruits." },
-            tiger: { title: "TIGER [PERM]", price: 100.00, image: "tiger.png", sellAppProductId: "444", description: "Permanentny owoc Tiger w grze Blox Fruits." },
-            gas: { title: "GAS [PERM]", price: 100.00, image: "gas.png", sellAppProductId: "555", description: "Permanentny owoc Gas w grze Blox Fruits." },
-            control: { title: "CONTROL [PERM]", price: 100.00, image: "control.png", sellAppProductId: "666", description: "Permanentny owoc Control w grze Blox Fruits." },
-            buddha: { title: "BUDDHA [PERM]", price: 80.00, image: "buddha.png", sellAppProductId: "777", description: "Permanentny owoc Buddha w grze Blox Fruits." },
-            trex: { title: "T-REX [PERM]", price: 75.00, image: "trex.png", sellAppProductId: "888", description: "Permanentny owoc T-Rex w grze Blox Fruits." },
-            gravity: { title: "GRAVITY [PERM]", price: 75.00, image: "gravity.png", sellAppProductId: "999", description: "Permanentny owoc Gravity w grze Blox Fruits." },
-            spirit: { title: "SPIRIT [PERM]", price: 75.00, image: "spirit.png", sellAppProductId: "101", description: "Permanentny owoc Spirit w grze Blox Fruits." },
-            venom: { title: "VENOM [PERM]", price: 75.00, image: "venom.png", sellAppProductId: "102", description: "Permanentny owoc Venom w grze Blox Fruits." },
-            mammoth: { title: "MAMMOTH [PERM]", price: 75.00, image: "mammoth.png", sellAppProductId: "103", description: "Permanentny owoc Mammoth w grze Blox Fruits." },
-            portal: { title: "PORTAL [PERM]", price: 75.00, image: "portal.png", sellAppProductId: "104", description: "Permanentny owoc Portal w grze Blox Fruits." },
+            dragon: { title: "DRAGON [PERM]", price: 155.00, image: "dragon.png", sellAppProductId: "dragon-perm", description: "Permanentny owoc Dragon w grze Blox Fruits." },
+            kitsune: { title: "KITSUNE [PERM]", price: 135.00, image: "kitsune.png", sellAppProductId: "kitsune-perm", description: "Permanentny owoc Kitsune w grze Blox Fruits." },
+            yeti: { title: "YETI [PERM]", price: 100.00, image: "yeti.png", sellAppProductId: "yeti-perm", description: "Permanentny owoc Yeti w grze Blox Fruits." },
+            tiger: { title: "TIGER [PERM]", price: 100.00, image: "tiger.png", sellAppProductId: "tiger-perm", description: "Permanentny owoc Tiger w grze Blox Fruits." },
+            gas: { title: "GAS [PERM]", price: 100.00, image: "gas.png", sellAppProductId: "gas-perm", description: "Permanentny owoc Gas w grze Blox Fruits." },
+            control: { title: "CONTROL [PERM]", price: 100.00, image: "control.png", sellAppProductId: "control-perm", description: "Permanentny owoc Control w grze Blox Fruits." },
+            buddha: { title: "BUDDHA [PERM]", price: 80.00, image: "buddha.png", sellAppProductId: "buddha-perm", description: "Permanentny owoc Buddha w grze Blox Fruits." },
+            trex: { title: "T-REX [PERM]", price: 75.00, image: "t-rex-perm", sellAppProductId: "t-rex-perm", description: "Permanentny owoc T-Rex w grze Blox Fruits." },
+            gravity: { title: "GRAVITY [PERM]", price: 75.00, image: "gravity.png", sellAppProductId: "gravity-perm", description: "Permanentny owoc Gravity w grze Blox Fruits." },
+            spirit: { title: "SPIRIT [PERM]", price: 75.00, image: "spirit.png", sellAppProductId: "spirit-perm", description: "Permanentny owoc Spirit w grze Blox Fruits." },
+            venom: { title: "VENOM [PERM]", price: 75.00, image: "venom.png", sellAppProductId: "venom-perm", description: "Permanentny owoc Venom w grze Blox Fruits." },
+            mammoth: { title: "MAMMOTH [PERM]", price: 75.00, image: "mammoth.png", sellAppProductId: "mammoth-perm", description: "Permanentny owoc Mammoth w grze Blox Fruits." },
+            portal: { title: "PORTAL [PERM]", price: 75.00, image: "portal.png", sellAppProductId: "portal-perm", description: "Permanentny owoc Portal w grze Blox Fruits." },
             
-            notifier: { title: "Fruit Notifier Pass", price: 100.00, image: "notifier.png", sellAppProductId: "105", description: "Gamepass Fruit Notifier ułatwiający szukanie spawnów owoców." },
-            boost: { title: "Exp Boosts 24h", price: 100.00, image: "boost.png", sellAppProductId: "106", description: "Mnożnik doświadczenia trwający pełne 24 godziny." },
-            yoru: { title: "Dark Blade (Yoru)", price: 65.00, image: "yoru.png", sellAppProductId: "107", description: "Legendarny, mityczny miecz Dark Blade (Yoru) przypisany na stałe." },
-            mastery: { title: "2x Mastery Pass", price: 20.00, image: "mastery.png", sellAppProductId: "108", description: "Zwiększa dwukrotnie tempo zdobywania biegłości broni i owoców." },
-            money2x: { title: "2x Money Pass", price: 20.00, image: "money.png", sellAppProductId: "109", description: "Podwaja zarobki pieniężne (Beli) z pokonanych NPC oraz zadań." },
-            storage: { title: "+1 Fruit Storage", price: 20.00, image: "storage.png", sellAppProductId: "110", description: "Zwiększa pojemność Twojego ekwipunku na owoce o jeden slot." },
-            boats: { title: "Faster Boats Pass", price: 20.00, image: "boats.png", sellAppProductId: "112", description: "Daje dostęp do luksusowych, najszybszych łodzi w grze." },
-            drop: { title: "2x Drop Chance Pass", price: 20.00, image: "drop.png", sellAppProductId: "113", description: "Podwaja szanse na drop cennych przedmiotów i akcesoriów z bossów." },
+            notifier: { title: "Fruit Notifier Pass", price: 100.00, image: "notifier.png", sellAppProductId: "fruit-notifier", description: "Gamepass Fruit Notifier ułatwiający szukanie spawnów owoców." },
+            boost: { title: "Exp Boosts 24h", price: 100.00, image: "boost.png", sellAppProductId: "exp-boosts-24h", description: "Mnożnik doświadczenia trwający pełne 24 godziny." },
+            yoru: { title: "Dark Blade (Yoru)", price: 65.00, image: "yoru.png", sellAppProductId: "dark-blade", description: "Legendarny, mityczny miecz Dark Blade (Yoru) przypisany na stałe." },
+            mastery: { title: "2x Mastery Pass", price: 20.00, image: "mastery.png", sellAppProductId: "2x-mastery", description: "Zwiększa dwukrotnie tempo zdobywania biegłości broni i owoców." },
+            money2x: { title: "2x Money Pass", price: 20.00, image: "money.png", sellAppProductId: "2x-money", description: "Podwaja zarobki pieniężne (Beli) z pokonanych NPC oraz zadań." },
+            storage: { title: "+1 Fruit Storage", price: 20.00, image: "storage.png", sellAppProductId: "1-fruit-storage", description: "Zwiększa pojemność Twojego ekwipunku na owoce o jeden slot." },
+            boats: { title: "Faster Boats Pass", price: 20.00, image: "boats.png", sellAppProductId: "faster-boats", description: "Daje dostęp do luksusowych, najszybszych łodzi w grze." },
+            drop: { title: "2x Drop Chance Pass", price: 20.00, image: "drop.png", sellAppProductId: "2x-drop-chance", description: "Podwaja szanse na drop cennych przedmiotów i akcesoriów z bossów." },
 
-            eafc: { title: "EA SPORTS FC 26 Pełny Dostęp (PC)", price: 100.00, image: "eafc.png", sellAppProductId: "333", description: "Konto platformy EA z grą FC 26 i pełną własnością." },
-            rdr2: { title: "Red Dead Redemption 2 Pełny Dostęp (PC)", price: 50.00, image: "rdr2.png", sellAppProductId: "114", description: "Konto Social Club z grą Red Dead Redemption 2 fabuła + online." },
-            gta5: { title: "Grand Theft Auto V Pełny Dostęp (PC)", price: 45.00, image: "gta5.png", sellAppProductId: "115", description: "Konto Social Club z grą GTA V oraz bonusem gotówkowym Online." },
-            minecraft: { title: "Minecraft Premium Account Pełny Dostęp (PC)", price: 35.00, image: "mincraft.png", sellAppProductId: "444", description: "Pełna wersja Minecraft Java i Bedrock na własność." },
+            eafc: { title: "EA SPORTS FC 26 Pełny Dostęp (PC)", price: 100.00, image: "eafc.png", sellAppProductId: "ea-sports-fc-26", description: "Konto platformy EA z grą FC 26 i pełną własnością." },
+            rdr2: { title: "Red Dead Redemption 2 Pełny Dostęp (PC)", price: 50.00, image: "rdr2.png", sellAppProductId: "red-dead-redemption-2", description: "Konto Social Club z grą Red Dead Redemption 2 fabuła + online." },
+            gta5: { title: "Grand Theft Auto V Pełny Dostęp (PC)", price: 45.00, image: "gta5.png", sellAppProductId: "grand-theft-auto-v", description: "Konto Social Club z grą GTA V oraz bonusem gotówkowym Online." },
+            minecraft: { title: "Minecraft Premium Account Pełny Dostęp (PC)", price: 35.00, image: "mincraft.png", sellAppProductId: "minecraft-premium", description: "Pełna wersja Minecraft Java i Bedrock na własność." },
             
-            fivem_acc: { title: "FiveM Ready Rockstar Account", price: 1.00, image: "fivem.png", sellAppProductId: "555", minQty: 2, description: "Czyste konta Social Club pod omijanie banów (unban) lub testowanie cheatów." },
-            discord_acc: { title: "Discord Account (Verified)", price: 1.50, image: "discord.png", sellAppProductId: "666", minQty: 2, description: "Konta Discord ze stażem zweryfikowane e-mailem oraz telefonem." },
-            netflix: { title: "NETFLIX Premium 4K UHD", price: 15.00, image: "netflix.png", sellAppProductId: "777", stock: 5, description: "Dostęp do profilu Netflix Premium z jakością strumienia 4K Ultra HD." },
-            disney: { title: "DISNEY+ Premium", price: 10.00, image: "disney.png", sellAppProductId: "888", stock: 3, description: "Konto subskrypcji Disney Plus Premium z pełną bazą filmów i seriali." },
-            crunchyroll: { title: "CRUNCHYROLL Mega Fan", price: 10.00, image: "crunchyroll.png", sellAppProductId: "999", stock: 4, description: "Abonament Crunchyroll Mega Fan zapewniający oglądanie anime bez reklam." }
+            fivem_acc: { title: "FiveM Ready Rockstar Account", price: 1.00, image: "fivem.png", sellAppProductId: "fivem-ready-fresh-rockstar-account-full-access", minQty: 2, stock: 30, description: "Czyste konta Social Club pod omijanie banów (unban) lub testowanie cheatów." },
+            discord_acc: { title: "Discord Account (Verified)", price: 1.50, image: "discord.png", sellAppProductId: "discord-account-3-months-aged-e-mail-phone-verified", minQty: 2, stock: 15, description: "Konta Discord ze stażem zweryfikowane e-mailem oraz telefonem." },
+            netflix: { title: "NETFLIX Premium 4K UHD", price: 15.00, image: "netflix.png", sellAppProductId: "netflix-premium", stock: 5, description: "Dostęp do profilu Netflix Premium z jakością strumienia 4K Ultra HD." },
+            disney: { title: "DISNEY+ Premium", price: 10.00, image: "disney.png", sellAppProductId: "disney-premium", stock: 3, description: "Konto subskrypcji Disney Plus Premium z pełną bazą filmów i seriali." },
+            crunchyroll: { title: "CRUNCHYROLL Mega Fan", price: 10.00, image: "crunchyroll.png", sellAppProductId: "crunchyroll", stock: 4, description: "Abonament Crunchyroll Mega Fan zapewniający oglądanie anime bez reklam." }
         };
 
         let cart = {};
@@ -1078,7 +1080,6 @@
             toggleCart(true);
         }
 
-        // POPRAWIONA I DZIAŁAJĄCA METODA SZYBKIEGO ZAKUPU
         function instantBuyFromPage() {
             const currentId = document.getElementById('active-product-tracker').getAttribute('data-current');
             if (!currentId || !productsData[currentId]) return;
@@ -1090,7 +1091,6 @@
                 qty = product.minQty;
             }
 
-            // Tworzymy ukryty przycisk, który bezpośrednio aktywuje skrypt Sell.app embed
             const dummyBtn = document.createElement('button');
             dummyBtn.setAttribute('data-sell-store', SELL_APP_STORE_ID);
             dummyBtn.setAttribute('data-sell-product', product.sellAppProductId);
@@ -1156,7 +1156,6 @@
             }
         }
 
-        // FINALIZACJA KOSZYKA Z WIELOMA PRZEDMIOTAMI
         function checkoutCart() {
             const keys = Object.keys(cart);
             if (keys.length === 0) {
@@ -1164,7 +1163,6 @@
                 return;
             }
 
-            // Realizujemy zakup pierwszej pozycji z koszyka za pomocą API ramki Sell.app
             let firstKey = keys[0];
             let item = cart[firstKey];
 
@@ -1178,7 +1176,6 @@
             dummyBtn.click();
             document.body.removeChild(dummyBtn);
             
-            // Czyszczenie koszyka po otwarciu okna transakcyjnego
             cart = {};
             renderCart();
             toggleCart(false);
@@ -1235,9 +1232,9 @@
         window.addEventListener('DOMContentLoaded', () => {
             showCategoryV2('roblox', document.querySelector('.cyber-category-card'));
             
-            // Domyślne stany magazynowe w przypadku braku tokenu API
-            const streamingProducts = ['netflix', 'disney', 'crunchyroll'];
-            streamingProducts.forEach(id => {
+            // Domyślne ładowanie statycznych wartości magazynu
+            const trackedStock = ['netflix', 'disney', 'crunchyroll', 'fivem_acc', 'discord_acc'];
+            trackedStock.forEach(id => {
                 const tileElement = document.getElementById(`stock-tile-${id}`);
                 if (tileElement && productsData[id]) {
                     tileElement.innerHTML = `<i class="fas fa-boxes-stacked"></i> W magazynie: ${productsData[id].stock} szt.`;
