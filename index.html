@@ -326,8 +326,19 @@
         .card-info-main h3 {
             font-size: 1.15rem;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 5px;
             line-height: 1.3;
+        }
+
+        /* Sekcja Stock */
+        .card-stock-status {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #a855f7;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .card-footer-price-row {
@@ -757,16 +768,19 @@
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/netflix-premium', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-video"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>NETFLIX Premium 4K</h3></div>
+                    <div class="card-stock-status"><i class="fas fa-boxes-stacked"></i> W magazynie: 42 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">15.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/disney-premium', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-film"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>DISNEY+ Premium</h3></div>
+                    <div class="card-stock-status"><i class="fas fa-boxes-stacked"></i> W magazynie: 19 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
                 <div class="cyber-product-card" onclick="window.open('https://foshop.sell.app/product/crunchyroll', '_blank')">
                     <div class="card-top-row"><div class="card-icon-wrap"><i class="fas fa-tv"></i></div><span class="card-badge badge-purple">Streaming</span></div>
                     <div class="card-info-main"><h3>CRUNCHYROLL Mega Fan</h3></div>
+                    <div class="card-stock-status"><i class="fas fa-boxes-stacked"></i> W magazynie: 25 szt.</div>
                     <div class="card-footer-price-row"><div class="price-block"><div class="card-price-label">Cena</div><div class="card-price-val">10.00 PLN</div></div><div class="card-arrow-btn"><i class="fas fa-shopping-basket"></i></div></div>
                 </div>
             </div>
@@ -791,7 +805,7 @@
                 <div class="rebuild-purchase-card">
                     <div class="rebuild-status-bar">
                         <span>Dostawca: FO SHOP</span>
-                        <span class="status-online-tag">Automatyczna wysyłka</span>
+                        <span class="status-online-tag" id="p-view-status-tag">Automatyczna wysyłka</span>
                     </div>
                     <div class="rebuild-large-price" id="p-view-price-main">0.00 PLN</div>
                     
@@ -920,7 +934,11 @@
                         <div class="game-feature-item"><i class="fas fa-handshake"></i><div class="game-feature-text"><strong>GWARANCJA JAKOŚCI</strong><span>Prywatne, nieużywane wcześniej konta z natychmiastowym wsparciem w przypadku problemów.</span></div></div>
                     </div>
                 `
-            }
+            },
+            // Sekcja ze stockiem przekazywanym do podglądu karty produktu
+            'netflix-premium': { stock: "42 szt." },
+            'disney-premium': { stock: "19 szt." },
+            'crunchyroll': { stock: "25 szt." }
         };
 
         function showCategoryV2(categoryId, element) {
@@ -951,6 +969,14 @@
             document.getElementById('p-view-image').src = product.image;
             document.getElementById('p-view-description').innerHTML = product.description;
             document.getElementById('p-view-buy-btn').href = product.buyLink;
+
+            // Jeśli produkt ma określony stock (jak sekcja streaming), dopisz go do statusu
+            const statusTag = document.getElementById('p-view-status-tag');
+            if(product.stock) {
+                statusTag.innerHTML = `Automatyczna wysyłka (Magazyn: ${product.stock})`;
+            } else {
+                statusTag.innerHTML = `Automatyczna wysyłka`;
+            }
 
             document.getElementById('main-storefront').style.display = 'none';
             document.getElementById('product-page-view').style.display = 'block';
