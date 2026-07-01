@@ -413,6 +413,22 @@
             animation: viewSlipIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        .back-to-shop-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #94a3b8;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: color 0.2s ease;
+        }
+
+        .back-to-shop-btn:hover {
+            color: #ffffff;
+        }
+
         .rebuild-product-layout {
             display: grid;
             grid-template-columns: 1fr 1.1fr;
@@ -508,37 +524,60 @@
             gap: 6px;
         }
 
+        /* SEKCDJA 2 PRZYCISKÓW */
+        .product-actions-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .btn-buy-now {
+            width: 100%;
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            color: #ffffff;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 25px rgba(52, 211, 153, 0.25);
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-buy-now:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(52, 211, 153, 0.45);
+        }
+
         .rebuild-buy-button-anchor { 
             width: 100%;
-            background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%); 
+            background: rgba(168, 85, 247, 0.1); 
             color: #ffffff; 
             padding: 16px; 
             border-radius: 12px; 
             font-weight: 800; 
             font-size: 1.1rem; 
             text-align: center; 
-            text-decoration: none; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             gap: 12px; 
-            box-shadow: 0 4px 25px rgba(168, 85, 247, 0.35); 
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
-            border: none; 
+            border: 1px solid rgba(168, 85, 247, 0.4); 
             cursor: pointer; 
+            transition: all 0.2s ease;
         }
 
         .rebuild-buy-button-anchor:hover {
+            background: rgba(168, 85, 247, 0.25);
+            border-color: #a855f7;
             transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(168, 85, 247, 0.5);
-        }
-
-        .rebuild-buy-button-anchor.disabled {
-            background: #1e1b29 !important;
-            color: #4b4859 !important;
-            box-shadow: none !important;
-            cursor: not-allowed !important;
-            transform: none !important;
         }
         
         .rebuild-desc-header { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 8px; }
@@ -609,7 +648,7 @@
         .cart-footer {
             border-top: 1px solid rgba(255,255,255,0.05);
             padding-top: 20px;
-        </div>
+        }
         .cart-total-row {
             display: flex;
             justify-content: space-between;
@@ -781,7 +820,7 @@
         </div>
     </div>
 
-    <!-- KARTA PODGLĄDU PRODUKTU (NAPRAWIONY UKŁAD) -->
+    <!-- KARTA PODGLĄDU PRODUKTU -->
     <div id="product-page-view">
         <div class="back-to-shop-btn" onclick="backToStorefront()">
             <i class="fas fa-arrow-left-long"></i> Powrót do oferty sklepu
@@ -814,9 +853,15 @@
                         <i class="fas fa-circle-info"></i> Minimalne zamówienie dla tego produktu to 2 sztuki!
                     </div>
 
-                    <button id="p-view-buy-btn" onclick="addItemToCartFromPage()" class="rebuild-buy-button-anchor">
-                        <i class="fas fa-cart-plus"></i> Dodaj do koszyka
-                    </button>
+                    <!-- GRUPA 2 PRZYCISKÓW -->
+                    <div class="product-actions-group">
+                        <button id="p-view-direct-btn" onclick="buyNowFromPage()" class="btn-buy-now">
+                            <i class="fas fa-bolt"></i> Kup teraz
+                        </button>
+                        <button id="p-view-buy-btn" onclick="addItemToCartFromPage()" class="rebuild-buy-button-anchor">
+                            <i class="fas fa-cart-plus"></i> Dodaj do koszyka
+                        </button>
+                    </div>
                 </div>
 
                 <div class="rebuild-desc-header">Pełna specyfikacja produktu</div>
@@ -970,6 +1015,30 @@
             }
         }
 
+        // AKCJA KUP TERAZ (BEZPOŚREDNIO Z PODGLĄDU)
+        function buyNowFromPage() {
+            const currentId = document.getElementById('active-product-tracker').getAttribute('data-current');
+            if (!currentId || !productsData[currentId]) return;
+
+            const product = productsData[currentId];
+            let qty = parseInt(document.getElementById('p-view-qty').value) || 1;
+
+            if (product.minQty && qty < product.minQty) {
+                qty = product.minQty;
+            }
+
+            // Integracja z osadzonym skryptem Sell.app
+            const dummyBtn = document.createElement('button');
+            dummyBtn.setAttribute('data-sell-store', SELL_APP_STORE_ID);
+            dummyBtn.setAttribute('data-sell-product', product.sellAppProductId);
+            dummyBtn.setAttribute('data-sell-quantity', qty);
+            dummyBtn.style.display = 'none';
+            
+            document.body.appendChild(dummyBtn);
+            dummyBtn.click();
+            document.body.removeChild(dummyBtn);
+        }
+
         function addItemToCartFromPage() {
             const currentId = document.getElementById('active-product-tracker').getAttribute('data-current');
             if (!currentId || !productsData[currentId]) return;
@@ -1004,7 +1073,7 @@
             if (item.minQty && val < item.minQty) {
                 val = item.minQty;
                 inputElement.value = val;
-                alert(`Dla produktu ${item.title} minimalna ilość zamówienia to ${item.minQty} warianty!`);
+                alert(`Dla produktu ${item.title} minimalna ilość zamówienia to ${item.minQty} sztuki!`);
             }
             
             item.qty = val;
@@ -1057,6 +1126,7 @@
                 return;
             }
 
+            // Realizacja koszyka dla Sell.app
             let firstKey = Object.keys(cart)[0];
             let item = cart[firstKey];
 
